@@ -15,10 +15,8 @@ int add(int x, int y,){
 	char readBuffer[5];
 	c150debug->printf(C150RPCDEBUG,"arithmetic.proxy.cpp: invoking");
 	RPCPROXYSOCKET->write("add", strlen(add)+1);
-
 	char *intData0 = (char*)convertIntToByte(x," x");
 	RPCPROXYSOCKET->write(intData0, *intData0);
-
 
 	char *intData1 = (char*)convertIntToByte(y," y");
 	RPCPROXYSOCKET->write(intData1, *intData1);
@@ -37,10 +35,8 @@ int divide(int x, int y,){
 	char readBuffer[5];
 	c150debug->printf(C150RPCDEBUG,"arithmetic.proxy.cpp: invoking");
 	RPCPROXYSOCKET->write("divide", strlen(divide)+1);
-
 	char *intData0 = (char*)convertIntToByte(x," x");
 	RPCPROXYSOCKET->write(intData0, *intData0);
-
 
 	char *intData1 = (char*)convertIntToByte(y," y");
 	RPCPROXYSOCKET->write(intData1, *intData1);
@@ -59,10 +55,8 @@ int multiply(int x, int y,){
 	char readBuffer[5];
 	c150debug->printf(C150RPCDEBUG,"arithmetic.proxy.cpp: invoking");
 	RPCPROXYSOCKET->write("multiply", strlen(multiply)+1);
-
 	char *intData0 = (char*)convertIntToByte(x," x");
 	RPCPROXYSOCKET->write(intData0, *intData0);
-
 
 	char *intData1 = (char*)convertIntToByte(y," y");
 	RPCPROXYSOCKET->write(intData1, *intData1);
@@ -81,10 +75,8 @@ int subtract(int x, int y,){
 	char readBuffer[5];
 	c150debug->printf(C150RPCDEBUG,"arithmetic.proxy.cpp: invoking");
 	RPCPROXYSOCKET->write("subtract", strlen(subtract)+1);
-
 	char *intData0 = (char*)convertIntToByte(x," x");
 	RPCPROXYSOCKET->write(intData0, *intData0);
-
 
 	char *intData1 = (char*)convertIntToByte(y," y");
 	RPCPROXYSOCKET->write(intData1, *intData1);

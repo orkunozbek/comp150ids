@@ -85,27 +85,27 @@ int main(int argc, char *argv[]){
       		ArgumentVector& args = functionp -> getArgumentVector();
       		size_t argsSize = args.size();
       		for(size_t argnum=0; argnum < argsSize; argnum++) {
-			argumentConversions.append("\n");
+			
       			Arg_or_Member_Declaration* argp = args[argnum];
       			typeNameStr = argp->getType()->getName();
       			argNameStr  = argp->getName();
       			funcHeadStr.append(typeNameStr + " " + argNameStr + ", ");
       			// Holds the value of argNum
-			char strBuffer[33];
-			snprintf(strBuffer, sizeof(strBuffer), "%d", (int)argnum);
-			string strNum(strBuffer);
-	  		if(typeNameStr == "int"){
+				char strBuffer[33];
+				snprintf(strBuffer, sizeof(strBuffer), "%d", (int)argnum);
+				string strNum(strBuffer);
+	  			if(typeNameStr == "int"){
 	  				argumentConversions.append("\tchar *intData" + strNum + " = (char*)convertIntToByte(" + argNameStr + ",\" " + argNameStr + "\");\n");
 	  				argumentConversions.append("\tRPCPROXYSOCKET->write(intData" + strNum + ", *intData" + strNum + ");\n");
-	  		}else if(typeNameStr == "float"){
+	  			}else if(typeNameStr == "float"){
 	      			argumentConversions.append("\tchar *floatData" + strNum+ " = (char*)convertFloatToByte(" + argNameStr + ", " + argNameStr + ");\n");
 	      			argumentConversions.append("\tRPCPROXYSOCKET->write(floatData" + strNum + ", *floatData" + strNum + ");\n");
-	  		}else if(typeNameStr == "string"){
+	  			}else if(typeNameStr == "string"){
 	      			argumentConversions.append("\tchar *stringData" + strNum + " = (char*)convertStringToByte(" + argNameStr + ", " + argNameStr + ");\n");
 	      			argumentConversions.append("\tRPCPROXYSOCKET->write(stringData" + strNum + ", *stringData" + strNum + ");\n");
-	  		}
-			argumentConversions.append("\n");
-	  	}
+	  			}
+	  			argumentConversions.append("\n");
+      		}
       		if (argsSize != 0){
       			funcHeadStr.erase(funcHeadStr.length() - 1);
       		}
@@ -134,11 +134,9 @@ int main(int argc, char *argv[]){
 		string header("//INSERT_IDL_HEADERS_HERE");
 		
 		int proxiesPos = proxyFileStr.find(proxies);
+		proxyFileStr.replace(proxiesPos, 0, proxyCodeStr);
 		int headerPos = proxyFileStr.find(header);
-		printf("%d--%d--%d",(int)proxyFileStr.length(),proxiesPos, headerPos);
-	    
-	    proxyFileStr.replace(proxiesPos, 0, proxyCodeStr);
-	    proxyFileStr.replace(headerPos, 0,  includeStr);
+		proxyFileStr.replace(headerPos, 0,  includeStr);
 	    
 	    ofstream file;
 	    file.open(proxyFileNameStr.c_str());
