@@ -79,6 +79,31 @@ string createStructConversionFunction(string str, TypeDeclaration *typep){
     }
     found = str.find(size, found);
     str.replace(found, size.length(), appendedStr);
+    
+    
+    string conversions = "${APPEND_MEMBER_CONVERSIONS}";
+	appendedStr.clear();
+
+    for(size_t memberNum=0; memberNum<members.size();memberNum++) {
+      Arg_or_Member_Declaration* memp = members[memberNum];
+      //ss << endl << "   " << memp->getType()->getName() << "  " << memp->getName();
+      string type = memp->getType()->getName();
+      string memberName = memp->getName();
+      if (type == "int"){
+          appendedStr.append("\ts." + memberName + "= fromDataToInt(tmp);\n");
+          appendedStr.append("\ttmp+=*tmp;\n");
+      }
+      else if(type == "float"){
+           appendedStr.append("\ts." + memberName + "= fromDataToFloat(tmp);\n");
+           appendedStr.append("\ttmp+=*tmp;\n");
+      }
+      else if(type == "string"){
+           appendedStr.append("\ts." + memberName + "= fromDataToString(tmp);\n");
+           appendedStr.append("\ttmp+=*tmp;\n");
+      }
+    }
+    found = str.find(conversions, found);
+    str.replace(found, conversions.length(), appendedStr);    
 	
 	return str;
 }

@@ -3,9 +3,30 @@ void* convert${STRUCT_NAME}ToByte(${STRUCT_NAME} s, string fieldName){
 	char *data = malloc(len);
 	char *tmp++ = data;
 	*tmp++ = 5;
+	int fieldLen = fieldName.length()+1;
+	memcpy(tmp, &fieldLen, sizeof(int) );
+	tmp+=sizeof(int);
+	memcpy(tmp, fieldName.c_str(), fieldName.length()+1);
+	tmp += fieldName.length()+1;
 	
 ${APPEND_MEMBER_COPY}
 
 	memcpy(data, &len, sizeof(int));
 	return data;
+}
+
+${STRUCT_NAME}* fromDataTo${STRUCT_NAME}(char *data){
+	${STRUCT_NAME} *s = new ${STRUCT_NAME}();
+	char *tmp = data;
+	int len = *(*int)tmp;
+	tmp+=sizeof(4);
+	char type = *tmp++;
+	// Fieldname
+	while (*tmp != '\0');
+	tmp++;
+	
+${APPEND_MEMBER_CONVERSIONS}
+	
+
+	return s;
 }
