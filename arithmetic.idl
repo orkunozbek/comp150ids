@@ -1,0 +1,15 @@
+int add(int x, int y);
+int subtract(int x, int y);
+int multiply(int x, int y);
+int divide(int x, int y);
+
+struct Student{
+	int id;
+	string name;
+};
+
+struct Teacher{
+	int id;
+	string name;
+	float rating;
+};
