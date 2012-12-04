@@ -77,8 +77,8 @@ string createStructConversionFunction(string str, TypeDeclaration *typep){
           appendedStr.append("\ttmp+=getStringFieldSize(\"" + memp->getName() + "\", s." + memp->getName() + ");\n");
       }
     }
-    //found = str.find(size, found);
-    //str.replace(found, size.length(), appendedStr);
+    found = str.find(size, found);
+    str.replace(found, size.length(), appendedStr);
 	
 	return str;
 }
