@@ -117,7 +117,7 @@ int main(int argc, char *argv[]){
 			proxyCodeStr.append("\tc150debug->printf(C150RPCDEBUG,\"" + proxyFileNameStr + ": invoking\");\n");
             proxyCodeStr.append("\tint functionLength = strlen(\"" + funcNameStr + "\")+1;");
             proxyCodeStr.append("\tRPCPROXYSOCKET->write(&functionLength, sizeof(int));");
-			proxyCodeStr.append("\tRPCPROXYSOCKET->write(\""+ funcNameStr + "\", strlen(\""" + funcNameStr+ "\")+1);\n");
+			proxyCodeStr.append("\tRPCPROXYSOCKET->write(\""+ funcNameStr + "\", strlen(\"" + funcNameStr+ "\")+1);\n");
 			// Now Writer the argument conversions -- And send them
 			proxyCodeStr.append(argumentConversions);
 			
