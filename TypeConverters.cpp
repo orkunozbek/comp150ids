@@ -1,9 +1,10 @@
 #include "TypeConverters.h"
 
 // sizeof total data +  1 + fielName.lengt()+1 + 4
-void *convertIntToByte(int i, string fieldName){
+void *convertIntToByte(int i, string fieldName, char *data=NULL){
 	size_t len = sizeof(int) + 1 + sizeof(int) +fieldName.length() + 1 + sizeof(int);
-	char *data = (char*)malloc(len);
+	if (data == NULL)
+			data = (char*)malloc(len);
 	char *tmp  = data+sizeof(int);
 	*tmp++= 1;
 	int fieldLen = fieldName.length()+1;
@@ -17,9 +18,10 @@ void *convertIntToByte(int i, string fieldName){
 }
 
 // sizeof total data + 1 + fielName.lengt()+1 + 4
-void *convertFloatToByte(float f, string fieldName){
+void *convertFloatToByte(float f, string fieldName, char *data=NULL){
 	size_t len = sizeof(int) + 1 + sizeof(int) + fieldName.length() + 1 + sizeof(float);
-	char *data = (char*)malloc(len);
+	if (data == NULL)
+		data = (char*)malloc(len);
 	char *tmp  = data+sizeof(int);
 	*tmp++= 2;
 	int fieldLen = fieldName.length()+1;
@@ -33,9 +35,10 @@ void *convertFloatToByte(float f, string fieldName){
 }
 
 
-void *convertStringToByte(string str, string fieldName){
+void *convertStringToByte(string str, string fieldName, char *data=NULL){
 	size_t len = sizeof(int) +  1 + sizeof(int) + fieldName.length() + 1 + sizeof(int) + str.length() + 1;
-	char *data = (char*) malloc(len);
+	if (data == NULL)
+		data = (char*)malloc(len);
 	char *tmp  = data+sizeof(int);
 	*tmp++=4;
 	int fieldLen = fieldName.length()+1;
@@ -49,5 +52,6 @@ void *convertStringToByte(string str, string fieldName){
 	memcpy(tmp, str.c_str(), str.length()+1);
 	memcpy(data, &len, sizeof(int));
 	return data;
+  
 }
 
