@@ -90,15 +90,15 @@ string createStructConversionFunction(string str, TypeDeclaration *typep){
       string type = memp->getType()->getName();
       string memberName = memp->getName();
       if (type == "int"){
-          appendedStr.append("\ts." + memberName + "= fromDataToInt(tmp);\n");
+          appendedStr.append("\ts->" + memberName + "= fromDataToInt(tmp);\n");
           appendedStr.append("\ttmp+=*tmp;\n");
       }
       else if(type == "float"){
-           appendedStr.append("\ts." + memberName + "= fromDataToFloat(tmp);\n");
+           appendedStr.append("\ts->" + memberName + "= fromDataToFloat(tmp);\n");
            appendedStr.append("\ttmp+=*tmp;\n");
       }
       else if(type == "string"){
-           appendedStr.append("\ts." + memberName + "= fromDataToString(tmp);\n");
+           appendedStr.append("\ts->" + memberName + "= fromDataToString(tmp);\n");
            appendedStr.append("\ttmp+=*tmp;\n");
       }
     }

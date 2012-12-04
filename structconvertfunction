@@ -21,6 +21,8 @@ ${STRUCT_NAME}* fromDataTo${STRUCT_NAME}(char *data){
 	int len = *(*int)tmp;
 	tmp+=sizeof(4);
 	char type = *tmp++;
+	int fieldNameLen = *(int*)tmp;
+	tmp+=sizeof(int);
 	// Fieldname
 	while (*tmp != '\0');
 	tmp++;
