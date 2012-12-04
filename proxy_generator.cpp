@@ -95,13 +95,13 @@ int main(int argc, char *argv[]){
 				snprintf(strBuffer, sizeof(strBuffer), "%d", (int)argnum);
 				string strNum(strBuffer);
 	  			if(typeNameStr == "int"){
-	  				argumentConversions.append("\tchar *intData" + strNum + " = (char*)convertIntToByte(" + argNameStr + ",\" " + argNameStr + "\");\n");
+	  				argumentConversions.append("\tchar *intData" + strNum + " = (char*)convertIntToByte(" + argNameStr + ",\"" + argNameStr + "\");\n");
 	  				argumentConversions.append("\tRPCPROXYSOCKET->write(intData" + strNum + ", *intData" + strNum + ");\n");
 	  			}else if(typeNameStr == "float"){
-	      			argumentConversions.append("\tchar *floatData" + strNum+ " = (char*)convertFloatToByte(" + argNameStr + ", " + argNameStr + ");\n");
+	      			argumentConversions.append("\tchar *floatData" + strNum+ " = (char*)convertFloatToByte(" + argNameStr + ", \"" + argNameStr + "\");\n");
 	      			argumentConversions.append("\tRPCPROXYSOCKET->write(floatData" + strNum + ", *floatData" + strNum + ");\n");
 	  			}else if(typeNameStr == "string"){
-	      			argumentConversions.append("\tchar *stringData" + strNum + " = (char*)convertStringToByte(" + argNameStr + ", " + argNameStr + ");\n");
+	      			argumentConversions.append("\tchar *stringData" + strNum + " = (char*)convertStringToByte(" + argNameStr + ", \"" + argNameStr + "\");\n");
 	      			argumentConversions.append("\tRPCPROXYSOCKET->write(stringData" + strNum + ", *stringData" + strNum + ");\n");
 	  			}
 	  			argumentConversions.append("\n");
@@ -115,7 +115,9 @@ int main(int argc, char *argv[]){
 			proxyCodeStr.append("{\n");
 			proxyCodeStr.append("\tchar readBuffer[5];\n");
 			proxyCodeStr.append("\tc150debug->printf(C150RPCDEBUG,\"" + proxyFileNameStr + ": invoking\");\n");
-			proxyCodeStr.append("\tRPCPROXYSOCKET->write(\""+ funcNameStr + "\", strlen(" + funcNameStr+ ")+1);\n");
+            proxyCodeStr.append("\tint functionLength = strlen(\"" + funcNameStr + "\")+1;");
+            proxyCodeStr.append("\tRPCPROXYSOCKET->write(&functionLength, sizeof(int));");
+			proxyCodeStr.append("\tRPCPROXYSOCKET->write(\""+ funcNameStr + "\", strlen(\""" + funcNameStr+ "\")+1);\n");
 			// Now Writer the argument conversions -- And send them
 			proxyCodeStr.append(argumentConversions);
 			
