@@ -1,5 +1,11 @@
-size_t convert${STRUCT_NAME}ToByte(${STRUCT_NAME} s, string fieldName){
+void* convert${STRUCT_NAME}ToByte(${STRUCT_NAME} s, string fieldName){
 	size_t len = get${STRUCT_NAME}FieldSize(s, fieldName);
+	char *data = malloc(len);
+	char *tmp++ = data;
+	*tmp++ = 5;
+	
 ${APPEND_MEMBER_COPY}
-	return len;
+
+	memcpy(data, &len, sizeof(int));
+	return data;
 }
