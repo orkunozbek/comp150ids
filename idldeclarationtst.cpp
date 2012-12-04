@@ -64,15 +64,18 @@ string createStructConversionFunction(string str, TypeDeclaration *typep){
       //ss << endl << "   " << memp->getType()->getName() << "  " << memp->getName();
       string type = memp->getType()->getName();
       string memberName = memp->getName();
-      if (type == "int")
-        appendedStr.append("\tconvertIntToByte(s." + memberName + ", \"" + memberName+ "\", tmp);\n");
-        appendedStr.append("\ttmp+=getIntFieldSize(\"" + memp->getName() + "\");\n");
-      else if(type == "float")
+      if (type == "int"){
+          appendedStr.append("\tconvertIntToByte(s." + memberName + ", \"" + memberName+ "\", tmp);\n");
+          appendedStr.append("\ttmp+=getIntFieldSize(\"" + memp->getName() + "\");\n");
+      }
+      else if(type == "float"){
           appendedStr.append("\tconvertFloatToByte(s." + memberName + ", \"" + memberName+ "\", tmp);\n");
           appendedStr.append("\ttmp+=getFloatFieldSize(\"" + memp->getName() + "\");\n");
-      else if(type == "string")
-        appendedStr.append("\tconvertStringToByte(s." + memp->getName() + ", \"" + memp->getName() + "\", tmp);\n");
-        appendedStr.append("\ttmp+=getStringFieldSize(\"" + memp->getName() + "\", s." + memp->getName() + ");\n");
+      }
+      else if(type == "string"){
+          appendedStr.append("\tconvertStringToByte(s." + memp->getName() + ", \"" + memp->getName() + "\", tmp);\n");
+          appendedStr.append("\ttmp+=getStringFieldSize(\"" + memp->getName() + "\", s." + memp->getName() + ");\n");
+      }
     }
     //found = str.find(size, found);
     //str.replace(found, size.length(), appendedStr);
