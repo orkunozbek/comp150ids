@@ -118,7 +118,7 @@ arithmetic.proxy: arithmetic.proxy.o $(C150AR) $(C150IDSRPCAR)  $(INCLUDES)
 idldeclarationtst: idldeclarationtst.o $(C150AR) $(C150IDSRPCAR)  $(INCLUDES)
 	$(CPP) -o idldeclarationtst idldeclarationtst.o $(C150AR) $(C150IDSRPCAR) 
 	
-proxygenerator: proxy_generator.o TypeConverters.o $(C150AR) $(C150IDSRPCAR)  $(INCLUDES)
+proxygenerator: proxy_generator.o arithmetic.proxy.cpp TypeConverters.o $(C150AR) $(C150IDSRPCAR)  $(INCLUDES)
 	$(CPP) -o proxygenerator proxy_generator.o TypeConverters.o $(C150AR) $(C150IDSRPCAR) 	
 
 ########################################################################
