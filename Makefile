@@ -71,6 +71,9 @@ pingstreamserver: pingstreamserver.o  $(C150AR) $(C150IDSRPCAR)  $(INCLUDES)
 
 simplefunctionclient: arithmeticclient.o rpcproxyhelper.o arithmetic.proxy.o TypeConverters.o  $(C150AR) $(C150IDSRPCAR)  $(INCLUDES)
 	$(CPP) -o simplefunctionclient arithmeticclient.o rpcproxyhelper.o arithmetic.proxy.o TypeConverters.o  $(C150AR) $(C150IDSRPCAR) 
+	
+arithmeticclient: arithmeticclient.o rpcproxyhelper.o arithmetic.proxy.o TypeConverters.o  $(C150AR) $(C150IDSRPCAR)  $(INCLUDES)
+	$(CPP) -o arithmeticclient arithmeticclient.o rpcproxyhelper.o arithmetic.proxy.o TypeConverters.o  $(C150AR) $(C150IDSRPCAR) 
 
 # The following is NOT a mistake. The main program for any of the rpc servers
 # is rpcserver.o.  This way, we can make a different one for each set 

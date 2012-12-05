@@ -6,8 +6,6 @@
 #include "TypeConverters.h"
 
 #include "arithmetic.idl"
-
-
 //INSERT_IDL_HEADERS_HERE
 
 using namespace C150NETWORK;  // for all the comp150 utilities 
@@ -31,8 +29,8 @@ int add(int x,int y){
 		throw C150Exception("arithmetic.proxy.cpp: add received invalid response from the server");
 	}
 	c150debug->printf(C150RPCDEBUG,"arithmetic.proxy.cpp: add successful return from remote cal");
-
 	return 5;
+
 }
 
 int divide(int x,int y){
@@ -53,8 +51,8 @@ int divide(int x,int y){
 		throw C150Exception("arithmetic.proxy.cpp: divide received invalid response from the server");
 	}
 	c150debug->printf(C150RPCDEBUG,"arithmetic.proxy.cpp: divide successful return from remote cal");
-	return 5;
 
+	return 5;
 }
 
 int multiply(int x,int y){
@@ -101,9 +99,6 @@ int subtract(int x,int y){
 	return 5;
 }
 
-
-
 //INSERT_PROXIES_HERE
-
 
 
