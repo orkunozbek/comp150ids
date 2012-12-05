@@ -114,7 +114,7 @@ simplefunctionserver: simplefunction.stub.o rpcserver.o rpcstubhelper.o simplefu
 
 idldeclarationtst: idldeclarationtst.o $(C150AR) $(C150IDSRPCAR)  $(INCLUDES)
 	$(CPP) -o idldeclarationtst idldeclarationtst.o $(C150AR) $(C150IDSRPCAR) 
-	
+
 proxygenerator: proxy_generator.o TypeConverters.o $(C150AR) $(C150IDSRPCAR)  $(INCLUDES)
 	$(CPP) -o proxygenerator proxy_generator.o TypeConverters.o $(C150AR) $(C150IDSRPCAR) 	
 
