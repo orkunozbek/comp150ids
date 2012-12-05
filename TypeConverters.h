@@ -13,8 +13,14 @@
 using namespace std;
 
 enum TYPE {VOID, INT, FLOAT, STRING};
+size_t getIntFieldSize(string fieldName);
+size_t getFloatFieldSize(string fieldName);
+size_t getStringFieldSize(string fieldName, string str);
 void *convertIntToByte(int i, string fieldName);
 void *convertFloatToByte(float f, string fieldName);
 void *convertStringToByte(string str, string fieldName);
+int fromDataToInt(char* data);
+float fromDataToFloat(char *data);
+char * fromDataToString(char *data);
 
 #endif
