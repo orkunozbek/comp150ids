@@ -106,3 +106,4 @@ char * fromDataToString(char *data){
 	tmp+= sizeof(int);
 	return tmp;
 }
+
