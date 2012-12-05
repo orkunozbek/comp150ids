@@ -99,7 +99,7 @@ simplefunctionserver: simplefunction.stub.o rpcserver.o rpcstubhelper.o simplefu
 #
 ########################################################################
 
-%.proxy.cpp %.stub.cpp:%.idl $(RPCGEN)
+%.proxy.cpp %.stub.cpp: %.idl $(RPCGEN)
     $(RPCGEN) $<
 
 ########################################################################
