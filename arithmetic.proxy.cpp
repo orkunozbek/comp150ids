@@ -6,16 +6,18 @@
 #include "TypeConverters.h"
 
 #include "arithmetic.idl"
+
+
 //INSERT_IDL_HEADERS_HERE
 
 using namespace C150NETWORK;  // for all the comp150 utilities 
 
 
-int add(int x, int y,){
+int add(int x,int y){
 	char readBuffer[5];
 	c150debug->printf(C150RPCDEBUG,"arithmetic.proxy.cpp: invoking");
 	int functionLength = strlen("add")+1;
-	RPCPROXYSOCKET->write(&functionLength, sizeof(int));
+	RPCPROXYSOCKET->write((char*)&functionLength, sizeof(int));
 	RPCPROXYSOCKET->write("add", strlen("add")+1);
 	char *intData0 = (char*)convertIntToByte(x,"x");
 	RPCPROXYSOCKET->write(intData0, *intData0);
@@ -30,14 +32,14 @@ int add(int x, int y,){
 	}
 	c150debug->printf(C150RPCDEBUG,"arithmetic.proxy.cpp: add successful return from remote cal");
 
-
+	return 5;
 }
 
-int divide(int x, int y,){
+int divide(int x,int y){
 	char readBuffer[5];
 	c150debug->printf(C150RPCDEBUG,"arithmetic.proxy.cpp: invoking");
 	int functionLength = strlen("divide")+1;
-	RPCPROXYSOCKET->write(&functionLength, sizeof(int));
+	RPCPROXYSOCKET->write((char*)&functionLength, sizeof(int));
 	RPCPROXYSOCKET->write("divide", strlen("divide")+1);
 	char *intData0 = (char*)convertIntToByte(x,"x");
 	RPCPROXYSOCKET->write(intData0, *intData0);
@@ -51,15 +53,15 @@ int divide(int x, int y,){
 		throw C150Exception("arithmetic.proxy.cpp: divide received invalid response from the server");
 	}
 	c150debug->printf(C150RPCDEBUG,"arithmetic.proxy.cpp: divide successful return from remote cal");
-
+	return 5;
 
 }
 
-int multiply(int x, int y,){
+int multiply(int x,int y){
 	char readBuffer[5];
 	c150debug->printf(C150RPCDEBUG,"arithmetic.proxy.cpp: invoking");
 	int functionLength = strlen("multiply")+1;
-	RPCPROXYSOCKET->write(&functionLength, sizeof(int));
+	RPCPROXYSOCKET->write((char*)&functionLength, sizeof(int));
 	RPCPROXYSOCKET->write("multiply", strlen("multiply")+1);
 	char *intData0 = (char*)convertIntToByte(x,"x");
 	RPCPROXYSOCKET->write(intData0, *intData0);
@@ -74,14 +76,14 @@ int multiply(int x, int y,){
 	}
 	c150debug->printf(C150RPCDEBUG,"arithmetic.proxy.cpp: multiply successful return from remote cal");
 
-
+	return 5;
 }
 
-int subtract(int x, int y,){
+int subtract(int x,int y){
 	char readBuffer[5];
 	c150debug->printf(C150RPCDEBUG,"arithmetic.proxy.cpp: invoking");
 	int functionLength = strlen("subtract")+1;
-	RPCPROXYSOCKET->write(&functionLength, sizeof(int));
+	RPCPROXYSOCKET->write((char*)&functionLength, sizeof(int));
 	RPCPROXYSOCKET->write("subtract", strlen("subtract")+1);
 	char *intData0 = (char*)convertIntToByte(x,"x");
 	RPCPROXYSOCKET->write(intData0, *intData0);
@@ -96,7 +98,12 @@ int subtract(int x, int y,){
 	}
 	c150debug->printf(C150RPCDEBUG,"arithmetic.proxy.cpp: subtract successful return from remote cal");
 
-
+	return 5;
 }
 
+
+
 //INSERT_PROXIES_HERE
+
+
+

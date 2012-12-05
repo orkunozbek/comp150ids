@@ -89,7 +89,7 @@ int main(int argc, char *argv[]){
       			Arg_or_Member_Declaration* argp = args[argnum];
       			typeNameStr = argp->getType()->getName();
       			argNameStr  = argp->getName();
-      			funcHeadStr.append(typeNameStr + " " + argNameStr + ", ");
+      			funcHeadStr.append(typeNameStr + " " + argNameStr + ",");
       			// Holds the value of argNum
 				char strBuffer[33];
 				snprintf(strBuffer, sizeof(strBuffer), "%d", (int)argnum);
@@ -116,7 +116,7 @@ int main(int argc, char *argv[]){
 			proxyCodeStr.append("\tchar readBuffer[5];\n");
 			proxyCodeStr.append("\tc150debug->printf(C150RPCDEBUG,\"" + proxyFileNameStr + ": invoking\");\n");
             proxyCodeStr.append("\tint functionLength = strlen(\"" + funcNameStr + "\")+1;\n");
-            proxyCodeStr.append("\tRPCPROXYSOCKET->write(&functionLength, sizeof(int));\n");
+            proxyCodeStr.append("\tRPCPROXYSOCKET->write((char*)&functionLength, sizeof(int));\n");
 			proxyCodeStr.append("\tRPCPROXYSOCKET->write(\""+ funcNameStr + "\", strlen(\"" + funcNameStr+ "\")+1);\n");
 			// Now Writer the argument conversions -- And send them
 			proxyCodeStr.append(argumentConversions);
