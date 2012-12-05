@@ -2,7 +2,7 @@ void* convert${STRUCT_NAME}ToByte(${STRUCT_NAME} s, string fieldName){
 	size_t len = get${STRUCT_NAME}FieldSize(s, fieldName);
 	char *data = (char*)malloc(len);
 	char *tmp = data;
-	*tmp++;
+	tmp++;
 	*tmp++ = 5;
 	int fieldLen = fieldName.length()+1;
 	memcpy(tmp, &fieldLen, sizeof(int) );
@@ -19,10 +19,10 @@ ${APPEND_MEMBER_COPY}
 ${STRUCT_NAME}* fromDataTo${STRUCT_NAME}(char *data){
 	${STRUCT_NAME} *s = new ${STRUCT_NAME}();
 	char *tmp = data;
-	int len = *(*int)tmp;
+	//int len = *(int*)tmp;
 	tmp+=sizeof(int);
 	char type = *tmp++;
-	int fieldNameLen = *(int*)tmp;
+	//int fieldNameLen = *(int*)tmp;
 	tmp+=sizeof(int);
 	// Fieldname
 	while (*tmp != '\0');
