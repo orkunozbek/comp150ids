@@ -95,13 +95,13 @@ int main(int argc, char *argv[]){
 				snprintf(strBuffer, sizeof(strBuffer), "%d", (int)argnum);
 				string strNum(strBuffer);
 	  			if(typeNameStr == "int"){
-	  				argumentConversions.append("\tchar *intData" + strNum + " = (char*)convertIntToByte(" + argNameStr + ",\"" + argNameStr + "\");\n");
+	  				argumentConversions.append("\tchar *intData" + strNum + " = (char*)convertIntToByte(" + argNameStr + ",\"" + argNameStr + "\", NULL);\n");
 	  				argumentConversions.append("\tRPCPROXYSOCKET->write(intData" + strNum + ", *intData" + strNum + ");\n");
 	  			}else if(typeNameStr == "float"){
-	      			argumentConversions.append("\tchar *floatData" + strNum+ " = (char*)convertFloatToByte(" + argNameStr + ", \"" + argNameStr + "\");\n");
+	      			argumentConversions.append("\tchar *floatData" + strNum+ " = (char*)convertFloatToByte(" + argNameStr + ", \"" + argNameStr + "\", NULL);\n");
 	      			argumentConversions.append("\tRPCPROXYSOCKET->write(floatData" + strNum + ", *floatData" + strNum + ");\n");
 	  			}else if(typeNameStr == "string"){
-	      			argumentConversions.append("\tchar *stringData" + strNum + " = (char*)convertStringToByte(" + argNameStr + ", \"" + argNameStr + "\");\n");
+	      			argumentConversions.append("\tchar *stringData" + strNum + " = (char*)convertStringToByte(" + argNameStr + ", \"" + argNameStr + "\", NULL);\n");
 	      			argumentConversions.append("\tRPCPROXYSOCKET->write(stringData" + strNum + ", *stringData" + strNum + ");\n");
 	  			}
 	  			argumentConversions.append("\n");
