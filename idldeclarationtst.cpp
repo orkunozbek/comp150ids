@@ -66,15 +66,15 @@ string createStructConversionFunction(string str, TypeDeclaration *typep){
       string memberName = memp->getName();
       if (type == "int"){
           appendedStr.append("\tconvertIntToByte(s." + memberName + ", \"" + memberName+ "\", tmp);\n");
-          appendedStr.append("\ttmp+=getIntFieldSize(\"" + memp->getName() + "\");\n");
+          appendedStr.append("\ttmp+=*tmp;\n");
       }
       else if(type == "float"){
           appendedStr.append("\tconvertFloatToByte(s." + memberName + ", \"" + memberName+ "\", tmp);\n");
-          appendedStr.append("\ttmp+=getFloatFieldSize(\"" + memp->getName() + "\");\n");
+          appendedStr.append("\ttmp+=*tmp;\n");
       }
       else if(type == "string"){
           appendedStr.append("\tconvertStringToByte(s." + memp->getName() + ", \"" + memp->getName() + "\", tmp);\n");
-          appendedStr.append("\ttmp+=getStringFieldSize(\"" + memp->getName() + "\", s." + memp->getName() + ");\n");
+          appendedStr.append("\ttmp+=*tmp;\n");
       }
     }
     found = str.find(size, found);

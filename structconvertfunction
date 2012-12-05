@@ -7,8 +7,8 @@ void* convert${STRUCT_NAME}ToByte(${STRUCT_NAME} s, string fieldName){
 	int fieldLen = fieldName.length()+1;
 	memcpy(tmp, &fieldLen, sizeof(int) );
 	tmp+=sizeof(int);
-	memcpy(tmp, fieldName.c_str(), fieldName.length()+1);
-	tmp += fieldName.length()+1;
+	memcpy(tmp, fieldName.c_str(), fieldLen);
+	tmp += fieldLen;
 	
 ${APPEND_MEMBER_COPY}
 
@@ -22,11 +22,8 @@ ${STRUCT_NAME}* fromDataTo${STRUCT_NAME}(char *data){
 	//int len = *(int*)tmp;
 	tmp+=sizeof(int);
 	char type = *tmp++;
-	//int fieldNameLen = *(int*)tmp;
-	tmp+=sizeof(int);
-	// Fieldname
-	while (*tmp++ != '\0');
-	tmp++;
+	int fieldNameLen = *(int*)tmp;
+	tmp+=sizeof(int)+fieldNameLen;
 	
 ${APPEND_MEMBER_CONVERSIONS}
 	
