@@ -1,5 +1,18 @@
 #include "TypeConverters.h"
 
+
+size_t getIntFieldSize(string fieldName){
+	return sizeof(int) + 1 + sizeof(int) + fieldName.length() + 1 + sizeof(int);
+}
+
+size_t getFloatFieldSize(string fieldName){
+	return sizeof(int) + 1 + sizeof(int) + fieldName.length() + 1 + sizeof(float);
+}
+
+size_t getStringFieldSize(string fieldName, string str){
+	return sizeof(int) +  1 + sizeof(int) + fieldName.length() + 1 + sizeof(int) + str.length() + 1;
+}
+
 // sizeof total data +  1 + fielName.lengt()+1 + 4
 void *convertIntToByte(int i, string fieldName, char *data=NULL){
 	size_t len = sizeof(int) + 1 + sizeof(int) +fieldName.length() + 1 + sizeof(int);
@@ -55,3 +68,41 @@ void *convertStringToByte(string str, string fieldName, char *data=NULL){
   
 }
 
+int fromDataToInt(char* data){
+	char* tmp = data;
+	printf("INT ");
+	printf("%d ",*((int*)tmp));
+	tmp+=sizeof(int);
+	tmp++;
+	int fieldLen =  *(int *)tmp;
+	tmp+=sizeof(int) +fieldLen;
+
+	printf("%d\n",*((int*)tmp));
+
+	return *((int*)tmp);
+}
+
+float fromDataToFloat(char *data){
+	char* tmp = data;
+	printf("FLOAT ");
+	printf("%d ",*((int*)tmp));
+	tmp+=sizeof(int);
+	tmp++;
+	int fieldLen =  *(int *)tmp;
+	tmp+=sizeof(int) +fieldLen;
+	printf("%f\n",*((float*)tmp));
+	return *((float*)tmp);
+}
+
+char * fromDataToString(char *data){
+	char* tmp = data;
+	printf("STRING ");
+	printf("%d ",*((int*)tmp));
+	tmp+=sizeof(int);
+	tmp++;
+	int fieldLen =  *(int *)tmp;
+	tmp+=sizeof(int) +fieldLen;
+	printf("%i ",*((int*)tmp));
+	tmp+= sizeof(int);
+	return tmp;
+}
