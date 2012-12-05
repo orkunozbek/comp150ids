@@ -19,10 +19,10 @@ int add(int x,int y){
 	int functionLength = strlen("add")+1;
 	RPCPROXYSOCKET->write((char*)&functionLength, sizeof(int));
 	RPCPROXYSOCKET->write("add", strlen("add")+1);
-	char *intData0 = (char*)convertIntToByte(x,"x");
+	char *intData0 = (char*)convertIntToByte(x,"x", NULL);
 	RPCPROXYSOCKET->write(intData0, *intData0);
 
-	char *intData1 = (char*)convertIntToByte(y,"y");
+	char *intData1 = (char*)convertIntToByte(y,"y", NULL);
 	RPCPROXYSOCKET->write(intData1, *intData1);
 
 	c150debug->printf(C150RPCDEBUG,"arithmetic.proxy.cpp: returned from");
@@ -41,10 +41,10 @@ int divide(int x,int y){
 	int functionLength = strlen("divide")+1;
 	RPCPROXYSOCKET->write((char*)&functionLength, sizeof(int));
 	RPCPROXYSOCKET->write("divide", strlen("divide")+1);
-	char *intData0 = (char*)convertIntToByte(x,"x");
+	char *intData0 = (char*)convertIntToByte(x,"x", NULL);
 	RPCPROXYSOCKET->write(intData0, *intData0);
 
-	char *intData1 = (char*)convertIntToByte(y,"y");
+	char *intData1 = (char*)convertIntToByte(y,"y", NULL);
 	RPCPROXYSOCKET->write(intData1, *intData1);
 
 	c150debug->printf(C150RPCDEBUG,"arithmetic.proxy.cpp: returned from");
@@ -63,10 +63,10 @@ int multiply(int x,int y){
 	int functionLength = strlen("multiply")+1;
 	RPCPROXYSOCKET->write((char*)&functionLength, sizeof(int));
 	RPCPROXYSOCKET->write("multiply", strlen("multiply")+1);
-	char *intData0 = (char*)convertIntToByte(x,"x");
+	char *intData0 = (char*)convertIntToByte(x,"x", NULL);
 	RPCPROXYSOCKET->write(intData0, *intData0);
 
-	char *intData1 = (char*)convertIntToByte(y,"y");
+	char *intData1 = (char*)convertIntToByte(y,"y", NULL);
 	RPCPROXYSOCKET->write(intData1, *intData1);
 
 	c150debug->printf(C150RPCDEBUG,"arithmetic.proxy.cpp: returned from");
@@ -85,10 +85,10 @@ int subtract(int x,int y){
 	int functionLength = strlen("subtract")+1;
 	RPCPROXYSOCKET->write((char*)&functionLength, sizeof(int));
 	RPCPROXYSOCKET->write("subtract", strlen("subtract")+1);
-	char *intData0 = (char*)convertIntToByte(x,"x");
+	char *intData0 = (char*)convertIntToByte(x,"x", NULL);
 	RPCPROXYSOCKET->write(intData0, *intData0);
 
-	char *intData1 = (char*)convertIntToByte(y,"y");
+	char *intData1 = (char*)convertIntToByte(y,"y", NULL);
 	RPCPROXYSOCKET->write(intData1, *intData1);
 
 	c150debug->printf(C150RPCDEBUG,"arithmetic.proxy.cpp: returned from");

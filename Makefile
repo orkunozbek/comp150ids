@@ -39,7 +39,7 @@ CPPFLAGS = -g -Wall -Werror -I$(C150IDSRPC) -I$(C150LIB)
 LDFLAGS = 
 INCLUDES = $(C150LIB)c150streamsocket.h $(C150LIB)c150network.h $(C150LIB)c150exceptions.h $(C150LIB)c150debug.h $(C150LIB)c150utility.h $(C150LIB)c150grading.h $(C150IDSRPC)IDLToken.h $(C150IDSRPC)tokenizeddeclarations.h  $(C150IDSRPC)tokenizeddeclaration.h $(C150IDSRPC)declarations.h $(C150IDSRPC)declaration.h $(C150IDSRPC)functiondeclaration.h $(C150IDSRPC)typedeclaration.h $(C150IDSRPC)arg_or_member_declaration.h rpcproxyhelper.h rpcstubhelper.h TypeConverters.h simplefunction.idl arithmetic.idl floatarithmetic.idl 
 
-all: pingstreamclient pingstreamserver idldeclarationtst simplefunctionclient simplefunctionserver proxygenerator arithmetic.proxy
+all: pingstreamclient pingstreamserver idldeclarationtst simplefunctionclient simplefunctionserver proxygenerator
 
 ########################################################################
 #
@@ -69,8 +69,8 @@ pingstreamserver: pingstreamserver.o  $(C150AR) $(C150IDSRPCAR)  $(INCLUDES)
 #
 ########################################################################
 
-simplefunctionclient: simplefunctionclient.o rpcproxyhelper.o simplefunction.proxy.o  $(C150AR) $(C150IDSRPCAR)  $(INCLUDES)
-	$(CPP) -o simplefunctionclient simplefunctionclient.o rpcproxyhelper.o simplefunction.proxy.o  $(C150AR) $(C150IDSRPCAR) 
+simplefunctionclient: arithmeticclient.o rpcproxyhelper.o arithmetic.proxy.o TypeConverters.o  $(C150AR) $(C150IDSRPCAR)  $(INCLUDES)
+	$(CPP) -o simplefunctionclient arithmeticclient.o rpcproxyhelper.o arithmetic.proxy.o TypeConverters.o  $(C150AR) $(C150IDSRPCAR) 
 
 # The following is NOT a mistake. The main program for any of the rpc servers
 # is rpcserver.o.  This way, we can make a different one for each set 
@@ -79,9 +79,6 @@ simplefunctionclient: simplefunctionclient.o rpcproxyhelper.o simplefunction.pro
 simplefunctionserver: simplefunction.stub.o rpcserver.o rpcstubhelper.o simplefunction.o  $(C150AR) $(C150IDSRPCAR)  $(INCLUDES)
 	$(CPP) -o simplefunctionserver rpcserver.o simplefunction.stub.o simplefunction.o rpcstubhelper.o $(C150AR) $(C150IDSRPCAR) 
 	
-arithmetic.proxy: arithmetic.proxy.o $(C150AR) $(C150IDSRPCAR)  $(INCLUDES)
-	$(CPP) -c arithmetic.proxy.o  $(C150AR) $(C150IDSRPCAR) 
-
 
 ########################################################################
 #
@@ -118,7 +115,7 @@ arithmetic.proxy: arithmetic.proxy.o $(C150AR) $(C150IDSRPCAR)  $(INCLUDES)
 idldeclarationtst: idldeclarationtst.o $(C150AR) $(C150IDSRPCAR)  $(INCLUDES)
 	$(CPP) -o idldeclarationtst idldeclarationtst.o $(C150AR) $(C150IDSRPCAR) 
 	
-proxygenerator: proxy_generator.o arithmetic.proxy.cpp TypeConverters.o $(C150AR) $(C150IDSRPCAR)  $(INCLUDES)
+proxygenerator: proxy_generator.o TypeConverters.o $(C150AR) $(C150IDSRPCAR)  $(INCLUDES)
 	$(CPP) -o proxygenerator proxy_generator.o TypeConverters.o $(C150AR) $(C150IDSRPCAR) 	
 
 ########################################################################
