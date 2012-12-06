@@ -10,27 +10,41 @@
 
 using namespace C150NETWORK;  // for all the comp150 utilities 
 
+void getFunctionNamefromStream();
+void readNByte(char* buf, int i);
+
 
 int add(int x,int y){
-	printf("Hello OI\n");
+	cout << "Add called" << endl;
 	char readBuffer[5];
 	c150debug->printf(C150RPCDEBUG,"arithmetic.proxy.cpp: invoking");
 	int functionLength = strlen("add")+1;
 	RPCPROXYSOCKET->write((char*)&functionLength, sizeof(int));
 	RPCPROXYSOCKET->write("add", strlen("add")+1);
 	char *intData0 = (char*)convertIntToByte(x,"x", NULL);
-	RPCPROXYSOCKET->write(intData0, *intData0);
+	printf("%d -- %d", *(int *)intData0, (int)getIntFieldSize("X"));
+	RPCPROXYSOCKET->write(intData0, *(int*)intData0);
 
 	char *intData1 = (char*)convertIntToByte(y,"y", NULL);
-	RPCPROXYSOCKET->write(intData1, *intData1);
-
+	RPCPROXYSOCKET->write(intData1, *(int*)intData1);
 	c150debug->printf(C150RPCDEBUG,"arithmetic.proxy.cpp: returned from");
+	cout << "Waiting for DONE " << endl;
 	RPCPROXYSOCKET->read(readBuffer, sizeof(readBuffer));
 	if (strncmp(readBuffer,"DONE", sizeof(readBuffer))!=0) {
 		throw C150Exception("arithmetic.proxy.cpp: add received invalid response from the server");
 	}
+	cout << "Received DONE " << endl;
+	char* retLenPtr = (char*) malloc(sizeof(int));
+	readNByte(retLenPtr, sizeof(int));
+	char* arg0 = (char*) malloc(*(int *)retLenPtr);
+	memcpy(arg0, retLenPtr, sizeof(int));
+	char *data0 = arg0;
+	arg0 += sizeof(int);
+	readNByte(arg0, (*(int*)retLenPtr) - sizeof(int));
+	int x0 = fromDataToInt(data0);
+	cout << x0 << endl;
 	c150debug->printf(C150RPCDEBUG,"arithmetic.proxy.cpp: add successful return from remote cal");
-	return 5;
+	return x0;
 
 }
 
@@ -41,10 +55,10 @@ int divide(int x,int y){
 	RPCPROXYSOCKET->write((char*)&functionLength, sizeof(int));
 	RPCPROXYSOCKET->write("divide", strlen("divide")+1);
 	char *intData0 = (char*)convertIntToByte(x,"x", NULL);
-	RPCPROXYSOCKET->write(intData0, *intData0);
+	RPCPROXYSOCKET->write(intData0, *(int*)intData0);
 
 	char *intData1 = (char*)convertIntToByte(y,"y", NULL);
-	RPCPROXYSOCKET->write(intData1, *intData1);
+	RPCPROXYSOCKET->write(intData1, *(int*)intData1);
 
 	c150debug->printf(C150RPCDEBUG,"arithmetic.proxy.cpp: returned from");
 	RPCPROXYSOCKET->read(readBuffer, sizeof(readBuffer));
@@ -63,10 +77,10 @@ int multiply(int x,int y){
 	RPCPROXYSOCKET->write((char*)&functionLength, sizeof(int));
 	RPCPROXYSOCKET->write("multiply", strlen("multiply")+1);
 	char *intData0 = (char*)convertIntToByte(x,"x", NULL);
-	RPCPROXYSOCKET->write(intData0, *intData0);
+	RPCPROXYSOCKET->write(intData0, *(int*)intData0);
 
 	char *intData1 = (char*)convertIntToByte(y,"y", NULL);
-	RPCPROXYSOCKET->write(intData1, *intData1);
+	RPCPROXYSOCKET->write(intData1, *(int*)intData1);
 
 	c150debug->printf(C150RPCDEBUG,"arithmetic.proxy.cpp: returned from");
 	RPCPROXYSOCKET->read(readBuffer, sizeof(readBuffer));
@@ -85,10 +99,10 @@ int subtract(int x,int y){
 	RPCPROXYSOCKET->write((char*)&functionLength, sizeof(int));
 	RPCPROXYSOCKET->write("subtract", strlen("subtract")+1);
 	char *intData0 = (char*)convertIntToByte(x,"x", NULL);
-	RPCPROXYSOCKET->write(intData0, *intData0);
+	RPCPROXYSOCKET->write(intData0, *(int*)intData0);
 
 	char *intData1 = (char*)convertIntToByte(y,"y", NULL);
-	RPCPROXYSOCKET->write(intData1, *intData1);
+	RPCPROXYSOCKET->write(intData1, *(int*)intData1);
 
 	c150debug->printf(C150RPCDEBUG,"arithmetic.proxy.cpp: returned from");
 	RPCPROXYSOCKET->read(readBuffer, sizeof(readBuffer));
@@ -101,5 +115,38 @@ int subtract(int x,int y){
 }
 
 //INSERT_PROXIES_HERE
+
+
+void readNByte(char* buf, int n){
+  int readlen = 0;
+  int readSoFar = 0;
+  while (readSoFar != n){
+    readlen = RPCPROXYSOCKET-> read(buf + readSoFar, (n - readSoFar));
+    readSoFar += readlen;
+  }
+}
+
+char getArch(){
+  int val = 0x10203040;
+  char* x = (char*) &val;
+  if (*x == 0x10)
+    return 'B';
+  else
+    return 'L';
+}
+
+void reverseData(char* data, int dataLen){
+  int left  = 0;
+  int right = dataLen - 1;
+  char tmpVal;
+  
+  while (left < right){
+    tmpVal = data[right];
+    data[right] = data[left];
+    data[left]  = tmpVal;
+    left++;
+    right--;
+  }
+}
 
 

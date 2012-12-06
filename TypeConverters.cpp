@@ -70,14 +70,10 @@ void *convertStringToByte(string str, string fieldName, char *data=NULL){
 
 int fromDataToInt(char* data){
 	char* tmp = data;
-	printf("INT ");
-	printf("%d ",*((int*)tmp));
 	tmp+=sizeof(int);
 	tmp++;
 	int fieldLen =  *(int *)tmp;
 	tmp+=sizeof(int) +fieldLen;
-
-	printf("%d\n",*((int*)tmp));
 
 	return *((int*)tmp);
 }

@@ -1,2 +1,0 @@
-THIS IS LOG FILE: GRADELOG.simplefunctionclient.2012:11:21_21:27:46.txt
-Grading log started on 11/21/2012 21:27:46.266448 Command line = [./simplefunctionclient COMP150IDS-02]

@@ -110,7 +110,7 @@ main(int argc, char *argv[]) {
        //
        // Set up the socket so the proxies can find it
        //
-       //rpcproxyinitialize(argv[serverArg]);
+       rpcproxyinitialize(argv[serverArg]);
 
        // 
        // Call (possibly remote) add
