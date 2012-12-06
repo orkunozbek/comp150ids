@@ -98,7 +98,6 @@ void dispatchFunction() {
 	arg0 += sizeof(int);
 	readNByte(arg0, (*(int*)argLenPtr) - sizeof(int));
 	int x0 = fromDataToInt(data0);
-	cout << x0 << endl;
 
 	readNByte(argLenPtr, sizeof(int));
 	char* arg1 = (char*) malloc((*(int*)argLenPtr));
@@ -107,25 +106,9 @@ void dispatchFunction() {
 	arg1 += sizeof(int);
 	readNByte(arg1, (*(int*)argLenPtr) - sizeof(int));
 	int x1 = fromDataToInt(data1);
-	cout << x1 << endl;
 
 	__add(x0,x1);
   }
-
- /* else if (strcmp(funcName,"addFun") == 0){
-        readNByte(argLenPtr, sizeof(int));
-	char* arg0 = (char*) malloc((*(int*)argLenPtr));
-	readNByte(arg0,(*(int*)argLenPtr));
-	int x0 = fromDataToInt(arg0);
-
-	readNByte(argLenPtr, sizeof(int));
-	char* arg1 = (char*) malloc((*(int*)argLenPtr));
-	readNByte(arg1,(*(int*)argLenPtr));
-	int x1 = fromDataToInt(arg0);
-
-	
-	__addFun(x0,x1);
-  }*/
 
   else if (strcmp(funcName,"divide") == 0){
 			 readNByte(argLenPtr, sizeof(int));
