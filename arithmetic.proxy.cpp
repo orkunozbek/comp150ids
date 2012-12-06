@@ -12,6 +12,7 @@ using namespace C150NETWORK;  // for all the comp150 utilities
 
 
 int add(int x,int y){
+	printf("Hello OI\n");
 	char readBuffer[5];
 	c150debug->printf(C150RPCDEBUG,"arithmetic.proxy.cpp: invoking");
 	int functionLength = strlen("add")+1;

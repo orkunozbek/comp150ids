@@ -82,6 +82,9 @@ arithmeticclient: arithmeticclient.o rpcproxyhelper.o arithmetic.proxy.o TypeCon
 simplefunctionserver: simplefunction.stub.o rpcserver.o rpcstubhelper.o simplefunction.o  $(C150AR) $(C150IDSRPCAR)  $(INCLUDES)
 	$(CPP) -o simplefunctionserver rpcserver.o simplefunction.stub.o simplefunction.o rpcstubhelper.o $(C150AR) $(C150IDSRPCAR) 
 	
+arithmeticserver: arithmetic.stub.o rpcserver.o rpcstubhelper.o arithmetic.o TypeConverters.o $(C150AR) $(C150IDSRPCAR)  $(INCLUDES)
+	$(CPP) -o arithmeticserver rpcserver.o arithmetic.stub.o arithmetic.o rpcstubhelper.o TypeConverters.o $(C150AR) $(C150IDSRPCAR) 
+	
 
 ########################################################################
 #
