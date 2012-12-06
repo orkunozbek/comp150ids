@@ -21,7 +21,6 @@ int add(int x,int y){
 	RPCPROXYSOCKET->write((char*)&functionLength, sizeof(int));
 	RPCPROXYSOCKET->write("add", strlen("add")+1);
 	char *intData0 = (char*)convertIntToByte(x,"x", NULL);
-	printf("%d -- %d", *(int *)intData0, (int)getIntFieldSize("X"));
 	RPCPROXYSOCKET->write(intData0, *(int*)intData0);
 
 	char *intData1 = (char*)convertIntToByte(y,"y", NULL);
