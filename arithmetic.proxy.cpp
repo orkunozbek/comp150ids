@@ -15,7 +15,6 @@ void readNByte(char* buf, int i);
 
 
 int add(int x,int y){
-	cout << "Add called" << endl;
 	char readBuffer[5];
 	c150debug->printf(C150RPCDEBUG,"arithmetic.proxy.cpp: invoking");
 	int functionLength = strlen("add")+1;
@@ -28,12 +27,10 @@ int add(int x,int y){
 	char *intData1 = (char*)convertIntToByte(y,"y", NULL);
 	RPCPROXYSOCKET->write(intData1, *(int*)intData1);
 	c150debug->printf(C150RPCDEBUG,"arithmetic.proxy.cpp: returned from");
-	cout << "Waiting for DONE " << endl;
 	RPCPROXYSOCKET->read(readBuffer, sizeof(readBuffer));
 	if (strncmp(readBuffer,"DONE", sizeof(readBuffer))!=0) {
 		throw C150Exception("arithmetic.proxy.cpp: add received invalid response from the server");
 	}
-	cout << "Received DONE " << endl;
 	char* retLenPtr = (char*) malloc(sizeof(int));
 	readNByte(retLenPtr, sizeof(int));
 	char* arg0 = (char*) malloc(*(int *)retLenPtr);
@@ -42,7 +39,6 @@ int add(int x,int y){
 	arg0 += sizeof(int);
 	readNByte(arg0, (*(int*)retLenPtr) - sizeof(int));
 	int x0 = fromDataToInt(data0);
-	cout << x0 << endl;
 	c150debug->printf(C150RPCDEBUG,"arithmetic.proxy.cpp: add successful return from remote cal");
 	return x0;
 
