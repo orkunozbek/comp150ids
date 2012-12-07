@@ -39,6 +39,12 @@ string createStructConversionFunction(string str, TypeDeclaration *typep){
       else if(type == "string"){
           appendedStr.append("\tconvertStringToByte(s." + memp->getName() + ", \"" + memp->getName() + "\", tmp);\n");
           appendedStr.append("\ttmp+=*tmp;\n");
+      }else{
+          typep = memp->getType();
+          if(typep->isStruct()){
+              appendedStr.append("\tconvert" + typep->getName() + "ToByte(s." + memp->getName() + ", \"" + memp->getName() + "\", tmp);\n");
+              appendedStr.append("\ttmp+=*tmp;\n")
+          }
       }
     }
     found = str.find(size, found);
@@ -64,6 +70,13 @@ string createStructConversionFunction(string str, TypeDeclaration *typep){
            appendedStr.append("\ts->" + memberName + "= fromDataToString(tmp);\n");
            appendedStr.append("\ttmp+=*tmp;\n");
       }
+      else{
+            typep = memp->getType();
+            if(typep->isStruct()){
+                appendedStr.append("\ts->" + memberName + "= fromDataTo" + typep->getName() + "(tmp);\n");
+                appendedStr.append("\ttmp+=*tmp;\n");
+            }
+        }
     }
     found = str.find(conversions, found);
     str.replace(found, conversions.length(), appendedStr);    
