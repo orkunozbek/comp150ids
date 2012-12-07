@@ -216,11 +216,11 @@ int main(int argc, char *argv[]){
 		      conversionFunctionHeaders.append(typep->getName() +"* fromDataTo" + typep->getName() + "(char *data);\n");
 		      conversionFunctionHeaders.append("void* convert" + typep->getName() + "ToByte(" + typep->getName() + " s, string fieldName,char *data);\n");
               string structFieldSizeFunction = structSizeStr;
-              preFuncDefStr.append(createStructSizeFunction(structFieldSizeFunction, typep));
-              preFuncDefStr.append("\n\n\n");
+              conversionCode.append(createStructSizeFunction(structFieldSizeFunction, typep));
+              conversionCode.append("\n\n\n");
               string structConversionFunction = structConversionStr;
-              preFuncDefStr.append(createStructConversionFunction(structConversionFunction, typep));
-              preFuncDefStr.append("\n\n\n");
+              conversionCode.append(createStructConversionFunction(structConversionFunction, typep));
+              conversionCode.append("\n\n\n");
           }
       } 
       

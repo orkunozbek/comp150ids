@@ -12,8 +12,19 @@ void getFunctionNamefromStream();
 void readNByte(char* buf, int i); 
 
 
+size_t getRectangleFieldSize(Rectangle s, string fieldName);
+Rectangle* fromDataToRectangle(char *data);
+void* convertRectangleToByte(Rectangle s, string fieldName,char *data);
+size_t getStudentFieldSize(Student s, string fieldName);
+Student* fromDataToStudent(char *data);
+void* convertStudentToByte(Student s, string fieldName,char *data);
+size_t getVertexFieldSize(Vertex s, string fieldName);
+Vertex* fromDataToVertex(char *data);
+void* convertVertexToByte(Vertex s, string fieldName,char *data);
 size_t getRectangleFieldSize(Rectangle s, string fieldName){
 	size_t len = sizeof(int) + 1 + sizeof(int) + fieldName.length() + 1;
+	len+=getVertexFieldSize(s.corner1,"corner1");
+	len+=getVertexFieldSize(s.corner2,"corner2");
 
 	return len;
 }
@@ -31,6 +42,10 @@ void* convertRectangleToByte(Rectangle s, string fieldName,char *data=NULL){
 	memcpy(tmp, fieldName.c_str(), fieldLen);
 	tmp += fieldLen;
 	
+	convertVertexToByte(s.corner1, "corner1", tmp);
+	tmp+=*tmp;
+	convertVertexToByte(s.corner2, "corner2", tmp);
+	tmp+=*tmp;
 
 
 	memcpy(data, &len, sizeof(int));
@@ -46,6 +61,10 @@ Rectangle* fromDataToRectangle(char *data){
 	int fieldNameLen = *(int*)tmp;
 	tmp+=sizeof(int)+fieldNameLen;
 	
+	s->corner1= *fromDataToVertex(tmp);
+	tmp+=*tmp;
+	s->corner2= *fromDataToVertex(tmp);
+	tmp+=*tmp;
 
 	
 
@@ -152,12 +171,49 @@ Vertex* fromDataToVertex(char *data){
 
 
 
+
+int __VertexAddYPos(Vertex x,Vertex y){
+	char doneBuffer[5] = "DONE";
+	c150debug->printf(C150RPCDEBUG,"simplefunction.stub.cpp: invokingVertexAddYPos(x)");
+	int retval = VertexAddYPos(x,y);
+	c150debug->printf(C150RPCDEBUG,"simplefunction.stub.cpp: returned fromVertexAddYPos(x)");
+	void* bytes = convertIntToByte(retval, "retval", NULL);
+	RPCSTUBSOCKET->write(doneBuffer, strlen(doneBuffer)+1);
+	RPCSTUBSOCKET->write((char*)bytes,*(int*)bytes);
+	return retval;
+
+}
+
 int __add(int x,int y){
 	char doneBuffer[5] = "DONE";
 	c150debug->printf(C150RPCDEBUG,"simplefunction.stub.cpp: invokingadd(x)");
 	int retval = add(x,y);
 	c150debug->printf(C150RPCDEBUG,"simplefunction.stub.cpp: returned fromadd(x)");
 	void* bytes = convertIntToByte(retval, "retval", NULL);
+	RPCSTUBSOCKET->write(doneBuffer, strlen(doneBuffer)+1);
+	RPCSTUBSOCKET->write((char*)bytes,*(int*)bytes);
+	return retval;
+
+}
+
+Rectangle __createRectangle(Vertex x,Vertex y){
+	char doneBuffer[5] = "DONE";
+	c150debug->printf(C150RPCDEBUG,"simplefunction.stub.cpp: invokingcreateRectangle(x)");
+	Rectangle retval = createRectangle(x,y);
+	c150debug->printf(C150RPCDEBUG,"simplefunction.stub.cpp: returned fromcreateRectangle(x)");
+	void* bytes = convertRectangleToByte(retval, "retval", NULL);
+	RPCSTUBSOCKET->write(doneBuffer, strlen(doneBuffer)+1);
+	RPCSTUBSOCKET->write((char*)bytes,*(int*)bytes);
+	return retval;
+
+}
+
+Vertex __createVertex(int x,int y){
+	char doneBuffer[5] = "DONE";
+	c150debug->printf(C150RPCDEBUG,"simplefunction.stub.cpp: invokingcreateVertex(x)");
+	Vertex retval = createVertex(x,y);
+	c150debug->printf(C150RPCDEBUG,"simplefunction.stub.cpp: returned fromcreateVertex(x)");
+	void* bytes = convertVertexToByte(retval, "retval", NULL);
 	RPCSTUBSOCKET->write(doneBuffer, strlen(doneBuffer)+1);
 	RPCSTUBSOCKET->write((char*)bytes,*(int*)bytes);
 	return retval;
@@ -200,6 +256,30 @@ int __multiply(int x,int y){
 
 }
 
+int __rectangleAdd(Rectangle r1,Rectangle r2){
+	char doneBuffer[5] = "DONE";
+	c150debug->printf(C150RPCDEBUG,"simplefunction.stub.cpp: invokingrectangleAdd(r1r)");
+	int retval = rectangleAdd(r1,r2);
+	c150debug->printf(C150RPCDEBUG,"simplefunction.stub.cpp: returned fromrectangleAdd(r1r)");
+	void* bytes = convertIntToByte(retval, "retval", NULL);
+	RPCSTUBSOCKET->write(doneBuffer, strlen(doneBuffer)+1);
+	RPCSTUBSOCKET->write((char*)bytes,*(int*)bytes);
+	return retval;
+
+}
+
+float __rectangleCornerDistance(Rectangle r1){
+	char doneBuffer[5] = "DONE";
+	c150debug->printf(C150RPCDEBUG,"simplefunction.stub.cpp: invokingrectangleCornerDistance(r)");
+	float retval = rectangleCornerDistance(r1);
+	c150debug->printf(C150RPCDEBUG,"simplefunction.stub.cpp: returned fromrectangleCornerDistance(r)");
+	void* bytes = convertFloatToByte(retval, "retval", NULL);
+	RPCSTUBSOCKET->write(doneBuffer, strlen(doneBuffer)+1);
+	RPCSTUBSOCKET->write((char*)bytes,*(int*)bytes);
+	return retval;
+
+}
+
 int __studentAdd(Student s,Student t){
 	char doneBuffer[5] = "DONE";
 	c150debug->printf(C150RPCDEBUG,"simplefunction.stub.cpp: invokingstudentAdd(s)");
@@ -217,6 +297,18 @@ int __subtract(int x,int y){
 	c150debug->printf(C150RPCDEBUG,"simplefunction.stub.cpp: invokingsubtract(x)");
 	int retval = subtract(x,y);
 	c150debug->printf(C150RPCDEBUG,"simplefunction.stub.cpp: returned fromsubtract(x)");
+	void* bytes = convertIntToByte(retval, "retval", NULL);
+	RPCSTUBSOCKET->write(doneBuffer, strlen(doneBuffer)+1);
+	RPCSTUBSOCKET->write((char*)bytes,*(int*)bytes);
+	return retval;
+
+}
+
+int __vertexAddXPos(Vertex x,Vertex y){
+	char doneBuffer[5] = "DONE";
+	c150debug->printf(C150RPCDEBUG,"simplefunction.stub.cpp: invokingvertexAddXPos(x)");
+	int retval = vertexAddXPos(x,y);
+	c150debug->printf(C150RPCDEBUG,"simplefunction.stub.cpp: returned fromvertexAddXPos(x)");
 	void* bytes = convertIntToByte(retval, "retval", NULL);
 	RPCSTUBSOCKET->write(doneBuffer, strlen(doneBuffer)+1);
 	RPCSTUBSOCKET->write((char*)bytes,*(int*)bytes);
@@ -247,7 +339,24 @@ void dispatchFunction() {
   readNByte(funcName, funcNameLen);
   char* argLenPtr = (char*) malloc(sizeof(int));
   
-  if (strcmp(funcName,"add") == 0){
+  if (strcmp(funcName,"VertexAddYPos") == 0){
+	readNByte(argLenPtr, sizeof(int));
+	char* arg0 = (char*) malloc(*(int*)argLenPtr);
+	memcpy(arg0 , argLenPtr, sizeof(int));
+	char *data0 = arg0;
+	arg0 += sizeof(int);
+	readNByte(arg0, (*(int*)argLenPtr) - sizeof(int));
+	Vertex x0= *fromDataToVertex(data0);
+	readNByte(argLenPtr, sizeof(int));
+	char* arg1 = (char*) malloc(*(int*)argLenPtr);
+	memcpy(arg1 , argLenPtr, sizeof(int));
+	char *data1 = arg1;
+	arg1 += sizeof(int);
+	readNByte(arg1, (*(int*)argLenPtr) - sizeof(int));
+	Vertex x1= *fromDataToVertex(data1);
+	__VertexAddYPos(x0,x1);
+  }
+  else if (strcmp(funcName,"add") == 0){
 	readNByte(argLenPtr, sizeof(int));
 	char* arg0 = (char*) malloc(*(int*)argLenPtr);
 	memcpy(arg0 , argLenPtr, sizeof(int));
@@ -263,6 +372,40 @@ void dispatchFunction() {
 	readNByte(arg1, (*(int*)argLenPtr) - sizeof(int));
 	int x1= fromDataToInt(data1);
 	__add(x0,x1);
+  }
+  else if (strcmp(funcName,"createRectangle") == 0){
+	readNByte(argLenPtr, sizeof(int));
+	char* arg0 = (char*) malloc(*(int*)argLenPtr);
+	memcpy(arg0 , argLenPtr, sizeof(int));
+	char *data0 = arg0;
+	arg0 += sizeof(int);
+	readNByte(arg0, (*(int*)argLenPtr) - sizeof(int));
+	Vertex x0= *fromDataToVertex(data0);
+	readNByte(argLenPtr, sizeof(int));
+	char* arg1 = (char*) malloc(*(int*)argLenPtr);
+	memcpy(arg1 , argLenPtr, sizeof(int));
+	char *data1 = arg1;
+	arg1 += sizeof(int);
+	readNByte(arg1, (*(int*)argLenPtr) - sizeof(int));
+	Vertex x1= *fromDataToVertex(data1);
+	__createRectangle(x0,x1);
+  }
+  else if (strcmp(funcName,"createVertex") == 0){
+	readNByte(argLenPtr, sizeof(int));
+	char* arg0 = (char*) malloc(*(int*)argLenPtr);
+	memcpy(arg0 , argLenPtr, sizeof(int));
+	char *data0 = arg0;
+	arg0 += sizeof(int);
+	readNByte(arg0, (*(int*)argLenPtr) - sizeof(int));
+	int x0= fromDataToInt(data0);
+	readNByte(argLenPtr, sizeof(int));
+	char* arg1 = (char*) malloc(*(int*)argLenPtr);
+	memcpy(arg1 , argLenPtr, sizeof(int));
+	char *data1 = arg1;
+	arg1 += sizeof(int);
+	readNByte(arg1, (*(int*)argLenPtr) - sizeof(int));
+	int x1= fromDataToInt(data1);
+	__createVertex(x0,x1);
   }
   else if (strcmp(funcName,"divide") == 0){
 	readNByte(argLenPtr, sizeof(int));
@@ -308,6 +451,33 @@ void dispatchFunction() {
 	int x1= fromDataToInt(data1);
 	__multiply(x0,x1);
   }
+  else if (strcmp(funcName,"rectangleAdd") == 0){
+	readNByte(argLenPtr, sizeof(int));
+	char* arg0 = (char*) malloc(*(int*)argLenPtr);
+	memcpy(arg0 , argLenPtr, sizeof(int));
+	char *data0 = arg0;
+	arg0 += sizeof(int);
+	readNByte(arg0, (*(int*)argLenPtr) - sizeof(int));
+	Rectangle x0= *fromDataToRectangle(data0);
+	readNByte(argLenPtr, sizeof(int));
+	char* arg1 = (char*) malloc(*(int*)argLenPtr);
+	memcpy(arg1 , argLenPtr, sizeof(int));
+	char *data1 = arg1;
+	arg1 += sizeof(int);
+	readNByte(arg1, (*(int*)argLenPtr) - sizeof(int));
+	Rectangle x1= *fromDataToRectangle(data1);
+	__rectangleAdd(x0,x1);
+  }
+  else if (strcmp(funcName,"rectangleCornerDistance") == 0){
+	readNByte(argLenPtr, sizeof(int));
+	char* arg0 = (char*) malloc(*(int*)argLenPtr);
+	memcpy(arg0 , argLenPtr, sizeof(int));
+	char *data0 = arg0;
+	arg0 += sizeof(int);
+	readNByte(arg0, (*(int*)argLenPtr) - sizeof(int));
+	Rectangle x0= *fromDataToRectangle(data0);
+	__rectangleCornerDistance(x0);
+  }
   else if (strcmp(funcName,"studentAdd") == 0){
 	readNByte(argLenPtr, sizeof(int));
 	char* arg0 = (char*) malloc(*(int*)argLenPtr);
@@ -341,6 +511,23 @@ void dispatchFunction() {
 	readNByte(arg1, (*(int*)argLenPtr) - sizeof(int));
 	int x1= fromDataToInt(data1);
 	__subtract(x0,x1);
+  }
+  else if (strcmp(funcName,"vertexAddXPos") == 0){
+	readNByte(argLenPtr, sizeof(int));
+	char* arg0 = (char*) malloc(*(int*)argLenPtr);
+	memcpy(arg0 , argLenPtr, sizeof(int));
+	char *data0 = arg0;
+	arg0 += sizeof(int);
+	readNByte(arg0, (*(int*)argLenPtr) - sizeof(int));
+	Vertex x0= *fromDataToVertex(data0);
+	readNByte(argLenPtr, sizeof(int));
+	char* arg1 = (char*) malloc(*(int*)argLenPtr);
+	memcpy(arg1 , argLenPtr, sizeof(int));
+	char *data1 = arg1;
+	arg1 += sizeof(int);
+	readNByte(arg1, (*(int*)argLenPtr) - sizeof(int));
+	Vertex x1= *fromDataToVertex(data1);
+	__vertexAddXPos(x0,x1);
   }
 
   

@@ -23,3 +23,14 @@ struct Rectangle{
 	Vertex corner2;
 };
 
+int vertexAddXPos(Vertex x, Vertex y);
+int VertexAddYPos(Vertex x, Vertex y);
+Vertex createVertex(int x, int y);
+Rectangle createRectangle(Vertex x, Vertex y);
+int rectangleAdd(Rectangle r1, Rectangle r2);
+float  rectangleCornerDistance(Rectangle r1);
+
+
+
+
+

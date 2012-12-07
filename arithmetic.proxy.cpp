@@ -175,6 +175,37 @@ Vertex* fromDataToVertex(char *data){
 
 
 
+int VertexAddYPos(Vertex x,Vertex y){
+	char readBuffer[5];
+	c150debug->printf(C150RPCDEBUG,"arithmetic.proxy.cpp: invoking");
+	int functionLength = strlen("VertexAddYPos")+1;
+	RPCPROXYSOCKET->write((char*)&functionLength, sizeof(int));
+	RPCPROXYSOCKET->write("VertexAddYPos", strlen("VertexAddYPos")+1);
+	char *sData0 = (char*)convertVertexToByte(x,"x", NULL);
+	RPCPROXYSOCKET->write(sData0, *(int*)sData0);
+
+	char *sData1 = (char*)convertVertexToByte(y,"y", NULL);
+	RPCPROXYSOCKET->write(sData1, *(int*)sData1);
+
+	c150debug->printf(C150RPCDEBUG,"arithmetic.proxy.cpp: returned from");
+	RPCPROXYSOCKET->read(readBuffer, sizeof(readBuffer));
+	if (strncmp(readBuffer,"DONE", sizeof(readBuffer))!=0) {
+		throw C150Exception("arithmetic.proxy.cpp: VertexAddYPos received invalid response from the server");
+	}
+	char* retLenPtr = (char*) malloc(sizeof(int));
+	readNByte(retLenPtr, sizeof(int));
+	char* arg0 = (char*) malloc(*(int *)retLenPtr);
+	memcpy(arg0, retLenPtr, sizeof(int));
+	char *data0 = arg0;
+	arg0 += sizeof(int);
+	readNByte(arg0, (*(int*)retLenPtr) - sizeof(int));
+	int retval = fromDataToInt(data0);
+	c150debug->printf(C150RPCDEBUG,"arithmetic.proxy.cpp: VertexAddYPos successful return from remote cal");
+	return retval;
+
+
+}
+
 int add(int x,int y){
 	char readBuffer[5];
 	c150debug->printf(C150RPCDEBUG,"arithmetic.proxy.cpp: invoking");
@@ -201,6 +232,68 @@ int add(int x,int y){
 	readNByte(arg0, (*(int*)retLenPtr) - sizeof(int));
 	int retval = fromDataToInt(data0);
 	c150debug->printf(C150RPCDEBUG,"arithmetic.proxy.cpp: add successful return from remote cal");
+	return retval;
+
+
+}
+
+Rectangle createRectangle(Vertex x,Vertex y){
+	char readBuffer[5];
+	c150debug->printf(C150RPCDEBUG,"arithmetic.proxy.cpp: invoking");
+	int functionLength = strlen("createRectangle")+1;
+	RPCPROXYSOCKET->write((char*)&functionLength, sizeof(int));
+	RPCPROXYSOCKET->write("createRectangle", strlen("createRectangle")+1);
+	char *sData0 = (char*)convertVertexToByte(x,"x", NULL);
+	RPCPROXYSOCKET->write(sData0, *(int*)sData0);
+
+	char *sData1 = (char*)convertVertexToByte(y,"y", NULL);
+	RPCPROXYSOCKET->write(sData1, *(int*)sData1);
+
+	c150debug->printf(C150RPCDEBUG,"arithmetic.proxy.cpp: returned from");
+	RPCPROXYSOCKET->read(readBuffer, sizeof(readBuffer));
+	if (strncmp(readBuffer,"DONE", sizeof(readBuffer))!=0) {
+		throw C150Exception("arithmetic.proxy.cpp: createRectangle received invalid response from the server");
+	}
+	char* retLenPtr = (char*) malloc(sizeof(int));
+	readNByte(retLenPtr, sizeof(int));
+	char* arg0 = (char*) malloc(*(int *)retLenPtr);
+	memcpy(arg0, retLenPtr, sizeof(int));
+	char *data0 = arg0;
+	arg0 += sizeof(int);
+	readNByte(arg0, (*(int*)retLenPtr) - sizeof(int));
+	Rectangle retval = *fromDataToRectangle(data0);
+	c150debug->printf(C150RPCDEBUG,"arithmetic.proxy.cpp: createRectangle successful return from remote cal");
+	return retval;
+
+
+}
+
+Vertex createVertex(int x,int y){
+	char readBuffer[5];
+	c150debug->printf(C150RPCDEBUG,"arithmetic.proxy.cpp: invoking");
+	int functionLength = strlen("createVertex")+1;
+	RPCPROXYSOCKET->write((char*)&functionLength, sizeof(int));
+	RPCPROXYSOCKET->write("createVertex", strlen("createVertex")+1);
+	char *intData0 = (char*)convertIntToByte(x,"x", NULL);
+	RPCPROXYSOCKET->write(intData0, *(int*)intData0);
+
+	char *intData1 = (char*)convertIntToByte(y,"y", NULL);
+	RPCPROXYSOCKET->write(intData1, *(int*)intData1);
+
+	c150debug->printf(C150RPCDEBUG,"arithmetic.proxy.cpp: returned from");
+	RPCPROXYSOCKET->read(readBuffer, sizeof(readBuffer));
+	if (strncmp(readBuffer,"DONE", sizeof(readBuffer))!=0) {
+		throw C150Exception("arithmetic.proxy.cpp: createVertex received invalid response from the server");
+	}
+	char* retLenPtr = (char*) malloc(sizeof(int));
+	readNByte(retLenPtr, sizeof(int));
+	char* arg0 = (char*) malloc(*(int *)retLenPtr);
+	memcpy(arg0, retLenPtr, sizeof(int));
+	char *data0 = arg0;
+	arg0 += sizeof(int);
+	readNByte(arg0, (*(int*)retLenPtr) - sizeof(int));
+	Vertex retval = *fromDataToVertex(data0);
+	c150debug->printf(C150RPCDEBUG,"arithmetic.proxy.cpp: createVertex successful return from remote cal");
 	return retval;
 
 
@@ -296,6 +389,65 @@ int multiply(int x,int y){
 
 }
 
+int rectangleAdd(Rectangle r1,Rectangle r2){
+	char readBuffer[5];
+	c150debug->printf(C150RPCDEBUG,"arithmetic.proxy.cpp: invoking");
+	int functionLength = strlen("rectangleAdd")+1;
+	RPCPROXYSOCKET->write((char*)&functionLength, sizeof(int));
+	RPCPROXYSOCKET->write("rectangleAdd", strlen("rectangleAdd")+1);
+	char *sData0 = (char*)convertRectangleToByte(r1,"r1", NULL);
+	RPCPROXYSOCKET->write(sData0, *(int*)sData0);
+
+	char *sData1 = (char*)convertRectangleToByte(r2,"r2", NULL);
+	RPCPROXYSOCKET->write(sData1, *(int*)sData1);
+
+	c150debug->printf(C150RPCDEBUG,"arithmetic.proxy.cpp: returned from");
+	RPCPROXYSOCKET->read(readBuffer, sizeof(readBuffer));
+	if (strncmp(readBuffer,"DONE", sizeof(readBuffer))!=0) {
+		throw C150Exception("arithmetic.proxy.cpp: rectangleAdd received invalid response from the server");
+	}
+	char* retLenPtr = (char*) malloc(sizeof(int));
+	readNByte(retLenPtr, sizeof(int));
+	char* arg0 = (char*) malloc(*(int *)retLenPtr);
+	memcpy(arg0, retLenPtr, sizeof(int));
+	char *data0 = arg0;
+	arg0 += sizeof(int);
+	readNByte(arg0, (*(int*)retLenPtr) - sizeof(int));
+	int retval = fromDataToInt(data0);
+	c150debug->printf(C150RPCDEBUG,"arithmetic.proxy.cpp: rectangleAdd successful return from remote cal");
+	return retval;
+
+
+}
+
+float rectangleCornerDistance(Rectangle r1){
+	char readBuffer[5];
+	c150debug->printf(C150RPCDEBUG,"arithmetic.proxy.cpp: invoking");
+	int functionLength = strlen("rectangleCornerDistance")+1;
+	RPCPROXYSOCKET->write((char*)&functionLength, sizeof(int));
+	RPCPROXYSOCKET->write("rectangleCornerDistance", strlen("rectangleCornerDistance")+1);
+	char *sData0 = (char*)convertRectangleToByte(r1,"r1", NULL);
+	RPCPROXYSOCKET->write(sData0, *(int*)sData0);
+
+	c150debug->printf(C150RPCDEBUG,"arithmetic.proxy.cpp: returned from");
+	RPCPROXYSOCKET->read(readBuffer, sizeof(readBuffer));
+	if (strncmp(readBuffer,"DONE", sizeof(readBuffer))!=0) {
+		throw C150Exception("arithmetic.proxy.cpp: rectangleCornerDistance received invalid response from the server");
+	}
+	char* retLenPtr = (char*) malloc(sizeof(int));
+	readNByte(retLenPtr, sizeof(int));
+	char* arg0 = (char*) malloc(*(int *)retLenPtr);
+	memcpy(arg0, retLenPtr, sizeof(int));
+	char *data0 = arg0;
+	arg0 += sizeof(int);
+	readNByte(arg0, (*(int*)retLenPtr) - sizeof(int));
+	float retval = fromDataToFloat(data0);
+	c150debug->printf(C150RPCDEBUG,"arithmetic.proxy.cpp: rectangleCornerDistance successful return from remote cal");
+	return retval;
+
+
+}
+
 int studentAdd(Student s,Student t){
 	char readBuffer[5];
 	c150debug->printf(C150RPCDEBUG,"arithmetic.proxy.cpp: invoking");
@@ -353,6 +505,37 @@ int subtract(int x,int y){
 	readNByte(arg0, (*(int*)retLenPtr) - sizeof(int));
 	int retval = fromDataToInt(data0);
 	c150debug->printf(C150RPCDEBUG,"arithmetic.proxy.cpp: subtract successful return from remote cal");
+	return retval;
+
+
+}
+
+int vertexAddXPos(Vertex x,Vertex y){
+	char readBuffer[5];
+	c150debug->printf(C150RPCDEBUG,"arithmetic.proxy.cpp: invoking");
+	int functionLength = strlen("vertexAddXPos")+1;
+	RPCPROXYSOCKET->write((char*)&functionLength, sizeof(int));
+	RPCPROXYSOCKET->write("vertexAddXPos", strlen("vertexAddXPos")+1);
+	char *sData0 = (char*)convertVertexToByte(x,"x", NULL);
+	RPCPROXYSOCKET->write(sData0, *(int*)sData0);
+
+	char *sData1 = (char*)convertVertexToByte(y,"y", NULL);
+	RPCPROXYSOCKET->write(sData1, *(int*)sData1);
+
+	c150debug->printf(C150RPCDEBUG,"arithmetic.proxy.cpp: returned from");
+	RPCPROXYSOCKET->read(readBuffer, sizeof(readBuffer));
+	if (strncmp(readBuffer,"DONE", sizeof(readBuffer))!=0) {
+		throw C150Exception("arithmetic.proxy.cpp: vertexAddXPos received invalid response from the server");
+	}
+	char* retLenPtr = (char*) malloc(sizeof(int));
+	readNByte(retLenPtr, sizeof(int));
+	char* arg0 = (char*) malloc(*(int *)retLenPtr);
+	memcpy(arg0, retLenPtr, sizeof(int));
+	char *data0 = arg0;
+	arg0 += sizeof(int);
+	readNByte(arg0, (*(int*)retLenPtr) - sizeof(int));
+	int retval = fromDataToInt(data0);
+	c150debug->printf(C150RPCDEBUG,"arithmetic.proxy.cpp: vertexAddXPos successful return from remote cal");
 	return retval;
 
 
