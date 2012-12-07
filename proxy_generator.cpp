@@ -276,6 +276,10 @@ int main(int argc, char *argv[]){
       			proxyCodeStr.append("\tfloat retval = fromDataToFloat(data0);\n");
       		}else{
       			// Handle structs here
+      			TypeDeclaration *typep = functionp->getReturnType();
+      			if( typep->isStruct()){
+      				proxyCodeStr.append("\t" + typep->getName() + " retval = *fromDataTo" + typep->getName() + "(data0);\n");	
+      			}
       		}
       		proxyCodeStr.append("\tc150debug->printf(C150RPCDEBUG,\"" + proxyFileNameStr + ": "+ funcNameStr +" successful return from remote cal\");\n");
       		if(funcRetTypeStr != "void"){

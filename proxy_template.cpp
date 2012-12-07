@@ -8,12 +8,14 @@
 
 //INSERT_IDL_HEADERS_HERE
 
-//INSERT_IDL_SPECIFIC_CONVERSIONS_HERE
-
 using namespace C150NETWORK;  // for all the comp150 utilities 
 
 void getFunctionNamefromStream();
 void readNByte(char* buf, int i);
+
+//INSERT_IDL_SPECIFIC_CONVERSIONS_HERE
+
+
 
 //INSERT_PROXIES_HERE
 
