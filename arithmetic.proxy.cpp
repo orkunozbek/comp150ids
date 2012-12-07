@@ -16,13 +16,13 @@ void readNByte(char* buf, int i);
 
 size_t getRectangleFieldSize(Rectangle s, string fieldName);
 Rectangle* fromDataToRectangle(char *data);
-void* convertRectangleToByte(Rectangle s, string fieldName,char *data=NULL);
+void* convertRectangleToByte(Rectangle s, string fieldName,char *data);
 size_t getStudentFieldSize(Student s, string fieldName);
 Student* fromDataToStudent(char *data);
-void* convertStudentToByte(Student s, string fieldName,char *data=NULL);
+void* convertStudentToByte(Student s, string fieldName,char *data);
 size_t getVertexFieldSize(Vertex s, string fieldName);
 Vertex* fromDataToVertex(char *data);
-void* convertVertexToByte(Vertex s, string fieldName,char *data=NULL);
+void* convertVertexToByte(Vertex s, string fieldName,char *data);
 size_t getRectangleFieldSize(Rectangle s, string fieldName){
 	size_t len = sizeof(int) + 1 + sizeof(int) + fieldName.length() + 1;
 	len+=getVertexFieldSize(s.corner1,"corner1");
