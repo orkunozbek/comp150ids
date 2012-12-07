@@ -39,7 +39,7 @@ int divide(int x, int y) {
 
 Student getStudent(int id){
   Student s;
-  s.id = 100;
+  s.id = id;
   return s;
 }
 
