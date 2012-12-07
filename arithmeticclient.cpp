@@ -143,6 +143,14 @@ main(int argc, char *argv[]) {
        printf("Calling getStudent(5)\n");
        Student s = getStudent(5);
        printf("Returned from getStudent(5). Result=%d\n", s.id);
+	
+       printf("Calling getStudent(5)\n");
+       Student t = getStudent(10);
+       printf("Returned from getStudent(5). Result=%d\n", t.id);
+
+       printf("Calling studentAdd(s,t)\n");
+       result = studentAdd(s,t);
+       printf("Returned from studetnAdd(s,t). Result=%d\n", result);
 
      }
 
