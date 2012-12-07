@@ -15,13 +15,13 @@ void getFunctionNamefromStream();
 void readNByte(char* buf, int i);
 
 size_t getRectangleFieldSize(Rectangle s, string fieldName);
-Rectangle* fromDataTo${STRUCT_NAME}(char *data);
+Rectangle* fromDataToRectangle(char *data);
 void* convertRectangleToByte(Rectangle s, string fieldName,char *data=NULL);
 size_t getStudentFieldSize(Student s, string fieldName);
-Student* fromDataTo${STRUCT_NAME}(char *data);
+Student* fromDataToStudent(char *data);
 void* convertStudentToByte(Student s, string fieldName,char *data=NULL);
 size_t getVertexFieldSize(Vertex s, string fieldName);
-Vertex* fromDataTo${STRUCT_NAME}(char *data);
+Vertex* fromDataToVertex(char *data);
 void* convertVertexToByte(Vertex s, string fieldName,char *data=NULL);
 size_t getRectangleFieldSize(Rectangle s, string fieldName){
 	size_t len = sizeof(int) + 1 + sizeof(int) + fieldName.length() + 1;
