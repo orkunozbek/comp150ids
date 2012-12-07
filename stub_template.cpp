@@ -11,6 +11,8 @@ void getFunctionNamefromStream();
 void readNByte(char* buf, int i); 
 
 
+//INSERT_FUNCTION_HEADERS
+
 //INSERT_STUBS_HERE
 
 

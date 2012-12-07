@@ -8,6 +8,98 @@
 #include "typedeclaration.h"
 
 
+string createStructConversionFunction(string str, TypeDeclaration *typep){
+string name = "${STRUCT_NAME}";
+size_t found = str.find(name);
+while(found != string::npos){
+str.replace(found, name.length(), typep->getName());
+found = str.find(name, found+1);
+}
+
+vector<Arg_or_Member_Declaration *>& members = typep->getStructMembers();
+string size = "${APPEND_MEMBER_COPY}";
+string appendedStr = "";
+
+    for(size_t memberNum=0; memberNum<members.size();memberNum++) {
+      Arg_or_Member_Declaration* memp = members[memberNum];
+      //ss << endl << " " << memp->getType()->getName() << " " << memp->getName();
+      string type = memp->getType()->getName();
+      string memberName = memp->getName();
+      if (type == "int"){
+          appendedStr.append("\tconvertIntToByte(s." + memberName + ", \"" + memberName+ "\", tmp);\n");
+          appendedStr.append("\ttmp+=*tmp;\n");
+      }
+      else if(type == "float"){
+          appendedStr.append("\tconvertFloatToByte(s." + memberName + ", \"" + memberName+ "\", tmp);\n");
+          appendedStr.append("\ttmp+=*tmp;\n");
+      }
+      else if(type == "string"){
+          appendedStr.append("\tconvertStringToByte(s." + memp->getName() + ", \"" + memp->getName() + "\", tmp);\n");
+          appendedStr.append("\ttmp+=*tmp;\n");
+      }
+    }
+    found = str.find(size, found);
+    str.replace(found, size.length(), appendedStr);
+    
+    
+    string conversions = "${APPEND_MEMBER_CONVERSIONS}";
+appendedStr.clear();
+
+    for(size_t memberNum=0; memberNum<members.size();memberNum++) {
+      Arg_or_Member_Declaration* memp = members[memberNum];
+      string type = memp->getType()->getName();
+      string memberName = memp->getName();
+      if (type == "int"){
+          appendedStr.append("\ts->" + memberName + "= fromDataToInt(tmp);\n");
+          appendedStr.append("\ttmp+=*tmp;\n");
+      }
+      else if(type == "float"){
+           appendedStr.append("\ts->" + memberName + "= fromDataToFloat(tmp);\n");
+           appendedStr.append("\ttmp+=*tmp;\n");
+      }
+      else if(type == "string"){
+           appendedStr.append("\ts->" + memberName + "= fromDataToString(tmp);\n");
+           appendedStr.append("\ttmp+=*tmp;\n");
+      }
+    }
+    found = str.find(conversions, found);
+    str.replace(found, conversions.length(), appendedStr);
+
+return str;
+}
+
+
+string createStructSizeFunction(string str, TypeDeclaration *typep){
+string name = "${STRUCT_NAME}";
+size_t found = str.find(name);
+while(found != string::npos){
+str.replace(found, name.length(), typep->getName());
+found = str.find(name, found+1);
+}
+
+vector<Arg_or_Member_Declaration *>& members = typep->getStructMembers();
+string size = "${APPEND_TYPES}";
+string appendedStr = "";
+
+    for(size_t memberNum=0; memberNum<members.size();memberNum++) {
+      Arg_or_Member_Declaration* memp = members[memberNum];
+      //ss << endl << " " << memp->getType()->getName() << " " << memp->getName();
+      string type = memp->getType()->getName();
+      
+      if (type == "int")
+   appendedStr.append("\tlen+=getIntFieldSize(\"" + memp->getName() + "\");\n");
+   else if(type == "float")
+       appendedStr.append("\tlen+=getFloatFieldSize(\"" + memp->getName() + "\");\n");
+      else if(type == "string")
+     appendedStr.append("\tlen+=getStringFieldSize(\"" + memp->getName() + "\", s." + memp->getName() + ");\n");
+    }
+    found = str.find(size, found);
+    str.replace(found, size.length(), appendedStr);
+
+return str;
+}
+
+
 using namespace std;
 
 int main(int argc, char *argv[]){
@@ -22,6 +114,7 @@ int main(int argc, char *argv[]){
     string includeStr;
     string stubCodeStr;
     string dispatchCondStr;
+    string preFuncDefStr;
     
     string funcHeadStr;
     string funcCallStr;
@@ -36,6 +129,7 @@ int main(int argc, char *argv[]){
     string argStr;
     string dataStr;
     string xStr;
+    //string capitalTypeStr;
     
     string str;
     string stubFileStr;
@@ -49,12 +143,30 @@ int main(int argc, char *argv[]){
     str.assign((istreambuf_iterator<char>(t)),istreambuf_iterator<char>());
     t.close();
     
+    t.open("structsizefunction");
+    string structSizeStr;
+    t.seekg(0, ios::end);
+    structSizeStr.reserve(t.tellg());
+    t.seekg(0, ios::beg);
+    structSizeStr.assign((istreambuf_iterator<char>(t)), istreambuf_iterator<char>());
+  
+    t.close();
+    t.open("structconvertfunction");
+    string structConversionStr;
+    t.seekg(0, ios::end);
+    structConversionStr.reserve(t.tellg());
+    t.seekg(0, ios::beg);
+    structConversionStr.assign((istreambuf_iterator<char>(t)),istreambuf_iterator<char>());
+    t.close();
+    
+    
     for (argnum = 1; argnum < argc; argnum++) {
       
       stubFileStr.clear();
       stubFileStr.append(str); 
       includeStr.clear();
       stubCodeStr.clear();
+      //functionHeaderIncludeStr.clear();
       
       string idlFileNameStr(argv[argnum]);
       string stubFileNameStr = idlFileNameStr.substr(0, idlFileNameStr.find(".idl"));
@@ -67,8 +179,42 @@ int main(int argc, char *argv[]){
       includeStr.append(argv[argnum]);
       includeStr.append("\"\n");
       
+      std::map<std::string, TypeDeclaration*>::iterator iter;
+
+      TypeDeclaration *typep;
+      stringstream formattedType;
+      for (iter = parseTree.types.begin(); iter != parseTree.types.end(); ++iter) {
+      typep = iter -> second;
+      formattedType.str(""); // empty the formatting buffer
+      if(typep->isStruct()){
+      string structFieldSizeFunction = structSizeStr;
+      preFuncDefStr.append(createStructSizeFunction(structFieldSizeFunction, typep));
+      preFuncDefStr.append("\n\n\n");
+      string structConversionFunction = structConversionStr;
+      preFuncDefStr.append(createStructConversionFunction(structConversionFunction, typep));
+      preFuncDefStr.append("\n\n\n");
+}
+} 
+      
+      
+      ////
       map<string, FunctionDeclaration*>::iterator fiter;  
-      FunctionDeclaration *functionp;    
+      FunctionDeclaration *functionp;
+      
+      /*std::map<std::string, TypeDeclaration*>::iterator iter;  
+      TypeDeclaration *typep;
+      
+      for (iter = parseTree.types.begin(); iter != parseTree.types.end(); ++iter) { 
+	typep = iter -> second;
+	if (typep->isStruct()) {
+	   String structName = typep->getName();
+	   preFuncDecStr.append(structName). append(" ").append("fromDataTo");
+	   preFuncDecStr.append(structName).append("(char* data);\n\t");
+	   
+	   preFuncDecStr.append("void *convert"). append(structName).append("ToByte");
+	   preFuncDecStr.append("(string str, string fieldName, char *data=NULL);\n\t");
+	}
+      }*/
 
       for (fiter = parseTree.functions.begin(); fiter != parseTree.functions.end(); ++fiter) {
 	
@@ -152,6 +298,7 @@ int main(int argc, char *argv[]){
 		dispatchCondStr.append(argStr).append(" += sizeof(int);\n\t");
 		dispatchCondStr.append("readNByte(").append(argStr).append(", (*(int*)argLenPtr) - sizeof(int));\n\t");
 		
+		
 		if (typeNameStr.compare("int") == 0){
 		  dispatchCondStr.append("int ").append(xStr).append("= fromDataToInt(").append(dataStr);
 		  dispatchCondStr.append(");\n\t");
@@ -162,58 +309,15 @@ int main(int argc, char *argv[]){
 		  dispatchCondStr.append(");\n\t");
 		}
 		
-		//if (typeNameStr.compare("byte") == 0){
-		//  dispatchCondStr.append("byte ").append(xStr).append("= fromDataToByte(").append(dataStr);
-		//  dispatchCondStr.append(");\n\t");
-		//}
-		
 		if (typeNameStr.compare("string") == 0){
 		  dispatchCondStr.append("string ").append(xStr).append("= fromDataToString(").append(dataStr);
 		  dispatchCondStr.append(");\n\t");
 		}
-		
-		
-		
-		
-		
-		//dispatchCondStr.append("readNByte(");
-		//dispatchCondStr.append(argStr);
-		//ispatchCondStr.append(", argLen);\n\t");
-		
-		//Change Byte order of data if client and server endianness are not compatible
-		////dispatchCondStr.append("if (reverseBytes)\n\t");
-		////dispatchCondStr.append("reverseData(arg");//
-		////dispatchCondStr.append(numberStr);	  //
-		////dispatchCondStr.append(", argLen);\n\t"); //
-		
-		/*
-		if (typeNameStr == "int"){
-		  dispatchCondStr.append("int x");
-		  dispatchCondStr.append(numberStr);
-		  dispatchCondStr.append(" = fromDataToInt(arg");
-		  dispatchCondStr.append(numberStr);
-		  dispatchCondStr.append(");\n\t\n\t");		  
-		  
+
+		if (argp->getType()->isStruct()){
+		  dispatchCondStr.append(typeNameStr).append(" ").append(xStr).append("= fromDataTo").append(typeNameStr);
+		  dispatchCondStr.append("(").append(dataStr).append(");\n\t");
 		}
-		
-		else if (typeNameStr == "float"){
-		  dispatchCondStr.append("float x");
-		  dispatchCondStr.append(numberStr);
-		  dispatchCondStr.append(" = fromDataToFloat(arg");
-		  dispatchCondStr.append(numberStr);
-		  dispatchCondStr.append(");\n\t\n\t");
-		}
-		
-		else if (typeNameStr == "string"){
-		  dispatchCondStr.append("string x");
-		  dispatchCondStr.append(numberStr);
-		  dispatchCondStr.append(" = fromDataToString(arg");
-		  dispatchCondStr.append(numberStr);
-		  dispatchCondStr.append(");\n\t\n\t");
-		}
-		
-		else{}
-		*/
 		
 	}
 	
@@ -257,8 +361,8 @@ int main(int argc, char *argv[]){
 	else if (functionp->getReturnType()->getName().compare("void") == 0){
 	  stubCodeStr.append("convertVoidToByte();\n\t");
 	}
-	else{
-	  //TO BE DONE
+	else if (functionp->getReturnType()->isStruct()){
+	  stubCodeStr.append("convert").append(typeNameStr).append("ToByte(retval, \"retval\", NULL);\n\t");
 	}
 	
 	
@@ -275,6 +379,7 @@ int main(int argc, char *argv[]){
     string stubs("//INSERT_STUBS_HERE");
     string code("//INSERT_DISPATCH_CODE");
     string header("//INSERT_IDL_HEADERS_HERE");
+    string prefunction("//INSERT_FUNCTION_HEADERS");
 
     int stubsPos = stubFileStr.find(stubs);
     stubFileStr.replace(stubsPos, 0, stubCodeStr);
@@ -282,15 +387,18 @@ int main(int argc, char *argv[]){
     stubFileStr.replace(codePos, 0, dispatchCondStr);
     int headerPos = stubFileStr.find(header);
     stubFileStr.replace(headerPos, 0,  includeStr);
+    int preFuncPos = stubFileStr.find(prefunction);
+    stubFileStr.replace(preFuncPos, 0, preFuncDefStr);
     
     //Erasing Placeholder Comment Lines for Rpcgenerator.cpp
-    
     stubsPos = stubFileStr.find(stubs);
     stubFileStr.replace(stubsPos, stubs.size(),"");
     codePos  = stubFileStr.find(code);
     stubFileStr.replace(codePos,  code.size(),"");
     headerPos = stubFileStr.find(header);
     stubFileStr.replace(headerPos, header.size(),"");
+    preFuncPos = stubFileStr.find(prefunction);
+    stubFileStr.replace(preFuncPos, prefunction.size(),"");
     
     
     // Writing to stub
@@ -301,4 +409,5 @@ int main(int argc, char *argv[]){
  } 
    return 0;
 }
+
 
