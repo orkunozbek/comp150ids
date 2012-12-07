@@ -16,6 +16,8 @@ void readNByte(char* buf, int i);
 
 size_t getRectangleFieldSize(Rectangle s, string fieldName){
 	size_t len = sizeof(int) + 1 + sizeof(int) + fieldName.length() + 1;
+	len+=getVertexFieldSize(s.corner1,"corner1");
+	len+=getVertexFieldSize(s.corner2,"corner2");
 
 	return len;
 }
