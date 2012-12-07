@@ -210,7 +210,7 @@ int main(int argc, char *argv[]){
 		    if(typep->isStruct()){
 		        conversionFunctionHeaders.append("size_t get" + typep->getName() +"FieldSize(" + typep->getName() + " s, string fieldName);\n");
 		        conversionFunctionHeaders.append(typep->getName() +"* fromDataTo" + typep->getName() + "(char *data);\n");
-		        conversionFunctionHeaders.append("void* convert" + typep->getName() + "ToByte(" + typep->getName() + " s, string fieldName,char *data=NULL);\n");
+		        conversionFunctionHeaders.append("void* convert" + typep->getName() + "ToByte(" + typep->getName() + " s, string fieldName,char *data);\n");
 		    	string structFieldSizeFunction = structSizeStr;
 		    	conversionCode.append(createStructSizeFunction(structFieldSizeFunction, typep));
 		    	conversionCode.append("\n\n\n");
