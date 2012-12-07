@@ -208,7 +208,7 @@ int main(int argc, char *argv[]){
 	typep = iter -> second;
 	if (typep->isStruct()) {
 	   String structName = typep->getName();
-	   preFuncDecStr.append(structName). append(" ").append("fromDataTo");
+	   preFuncDecStr.append(structName). append(" ").append("*fromDataTo");
 	   preFuncDecStr.append(structName).append("(char* data);\n\t");
 	   
 	   preFuncDecStr.append("void *convert"). append(structName).append("ToByte");
@@ -217,31 +217,31 @@ int main(int argc, char *argv[]){
       }*/
 
       for (fiter = parseTree.functions.begin(); fiter != parseTree.functions.end(); ++fiter) {
-	
+
 	functionp = fiter -> second;
 	funcHeadStr.clear();
 	funcCallStr.clear();
 	funcCallRightStr.clear();
-	
+
 	funcRetTypeStr = functionp->getReturnType()->getName();
 	funcNameStr    = functionp->getName();
-	
+
 	funcHeadStr.append(funcRetTypeStr);
 	funcHeadStr.append(" __");
 	funcHeadStr.append(funcNameStr);
 	funcHeadStr.append("(");
-	
+
 	if (funcRetTypeStr .compare("void") != 0){
 	  funcCallStr.append(funcRetTypeStr);
 	  funcCallStr.append(" retval = ");
 	}
-	
+
 	funcCallStr.append(funcNameStr);
 	funcCallStr.append("(");
 	funcCallRightStr.append(funcNameStr);
 	funcCallRightStr.append("(");
-	
-	
+
+
 	if (iterCnt == 0){
 	  dispatchCondStr.append("  if (strcmp(funcName,\"");
 	  iterCnt = 1;
@@ -251,28 +251,28 @@ int main(int argc, char *argv[]){
 	}
 	dispatchCondStr.append(funcNameStr);
 	dispatchCondStr.append("\") == 0){\n\t");
-	
+
 	ArgumentVector& args = functionp -> getArgumentVector();
 	int argsSize = args.size();
 	funcCallRight2Str.clear();
 	funcCallRight2Str.append("__");
 	funcCallRight2Str.append(funcCallRightStr);
-	
+
 	for(argnum=0; argnum < argsSize; argnum++) {
 		string numberStr = static_cast<ostringstream*>( &(ostringstream() << argnum))->str();
-		
+
 		argStr.clear();
 		argStr.append("arg");
 		argStr.append(numberStr);
-		
+
 		dataStr.clear();
 		dataStr.append("data");
 		dataStr.append(numberStr);
-		
+
 		xStr.clear();
 		xStr.append("x");
 		xStr.append(numberStr);
-	  
+
 		Arg_or_Member_Declaration* argp = args[argnum];
 		typeNameStr = argp->getType()->getName();
 		argNameStr  = argp->getName();
@@ -280,12 +280,12 @@ int main(int argc, char *argv[]){
 		funcHeadStr.append(" ");
 		funcHeadStr.append(argNameStr);
 		funcHeadStr.append(",");
-		
+
 		funcCallStr.append(argNameStr);
 		funcCallStr.append(",");
 		funcCallRightStr.append(argNameStr);
 		funcCallRight2Str.append(xStr).append(",");
-		
+
 		dispatchCondStr.append("readNByte(argLenPtr, sizeof(int));\n\t");
 		dispatchCondStr.append("char* ");
 		dispatchCondStr.append(argStr);
@@ -297,45 +297,45 @@ int main(int argc, char *argv[]){
 		dispatchCondStr.append(argStr).append(";\n\t");
 		dispatchCondStr.append(argStr).append(" += sizeof(int);\n\t");
 		dispatchCondStr.append("readNByte(").append(argStr).append(", (*(int*)argLenPtr) - sizeof(int));\n\t");
-		
-		
+
+
 		if (typeNameStr.compare("int") == 0){
 		  dispatchCondStr.append("int ").append(xStr).append("= fromDataToInt(").append(dataStr);
 		  dispatchCondStr.append(");\n\t");
 		}
-		
+
 		if (typeNameStr.compare("float") == 0){
 		  dispatchCondStr.append("float ").append(xStr).append("= fromDataToFloat(").append(dataStr);
 		  dispatchCondStr.append(");\n\t");
 		}
-		
+
 		if (typeNameStr.compare("string") == 0){
 		  dispatchCondStr.append("string ").append(xStr).append("= fromDataToString(").append(dataStr);
 		  dispatchCondStr.append(");\n\t");
 		}
 
 		if (argp->getType()->isStruct()){
-		  dispatchCondStr.append(typeNameStr).append(" ").append(xStr).append("= fromDataTo").append(typeNameStr);
+		  dispatchCondStr.append(typeNameStr).append(" ").append(xStr).append("= *fromDataTo").append(typeNameStr);
 		  dispatchCondStr.append("(").append(dataStr).append(");\n\t");
 		}
-		
+
 	}
-	
-	
-	
+
+
+
 	if (argsSize != 0){
 	  funcHeadStr.erase(funcHeadStr.length() - 1);
 	  funcCallStr.erase(funcCallStr.length() - 1);
 	  funcCallRightStr.erase(funcCallRightStr.length() - 1);
 	  funcCallRight2Str.erase(funcCallRight2Str.length() - 1);
 	}
-	
+
 	funcHeadStr.append(")");
 	funcCallStr.append(")");
 	funcCallRightStr.append(")");
 	dispatchCondStr.append(funcCallRight2Str).append(");\n");
 	dispatchCondStr.append("  }\n");
-	
+
 	stubCodeStr.append(funcHeadStr);
 	stubCodeStr.append("{\n\t");
 	stubCodeStr.append("char doneBuffer[5] = \"DONE\";\n\t");
@@ -346,9 +346,9 @@ int main(int argc, char *argv[]){
 	stubCodeStr.append("c150debug->printf(C150RPCDEBUG,\"simplefunction.stub.cpp: returned from");
 	stubCodeStr.append(funcCallRightStr);
 	stubCodeStr.append("\");\n\t");
-	
+
 	stubCodeStr.append("void* bytes = ");
-	
+
 	if (functionp->getReturnType()->getName().compare("int") == 0){
 	  stubCodeStr.append("convertIntToByte(retval, \"retval\", NULL);\n\t");
 	}
@@ -362,13 +362,13 @@ int main(int argc, char *argv[]){
 	  stubCodeStr.append("convertVoidToByte();\n\t");
 	}
 	else if (functionp->getReturnType()->isStruct()){
-	  stubCodeStr.append("convert").append(typeNameStr).append("ToByte(retval, \"retval\", NULL);\n\t");
+	  stubCodeStr.append("convert").append(funcRetTypeStr).append("ToByte(retval, \"retval\", NULL);\n\t");
 	}
-	
-	
+
+
 	stubCodeStr.append("RPCSTUBSOCKET->write(doneBuffer, strlen(doneBuffer)+1);\n\t");
 	stubCodeStr.append("RPCSTUBSOCKET->write((char*)bytes,*(int*)bytes);\n\t");
-	
+
 	if (funcRetTypeStr.compare("void") != 0){
 	  stubCodeStr.append("return retval;\n");
 	}
@@ -409,5 +409,4 @@ int main(int argc, char *argv[]){
  } 
    return 0;
 }
-
 

@@ -39,7 +39,7 @@ CPPFLAGS = -g -Wall -Werror -I$(C150IDSRPC) -I$(C150LIB)
 LDFLAGS = 
 INCLUDES = $(C150LIB)c150streamsocket.h $(C150LIB)c150network.h $(C150LIB)c150exceptions.h $(C150LIB)c150debug.h $(C150LIB)c150utility.h $(C150LIB)c150grading.h $(C150IDSRPC)IDLToken.h $(C150IDSRPC)tokenizeddeclarations.h  $(C150IDSRPC)tokenizeddeclaration.h $(C150IDSRPC)declarations.h $(C150IDSRPC)declaration.h $(C150IDSRPC)functiondeclaration.h $(C150IDSRPC)typedeclaration.h $(C150IDSRPC)arg_or_member_declaration.h rpcproxyhelper.h rpcstubhelper.h TypeConverters.h simplefunction.idl arithmetic.idl floatarithmetic.idl 
 
-all: pingstreamclient pingstreamserver idldeclarationtst simplefunctionclient simplefunctionserver proxygenerator arithmeticclient arithmeticserver rpcgenerate floatarithmeticserver floatarithmeticclient
+all: pingstreamclient pingstreamserver idldeclarationtst simplefunctionclient simplefunctionserver proxygenerator arithmeticclient arithmeticserver rpcgenerator floatarithmeticserver floatarithmeticclient
 
 ########################################################################
 #
@@ -135,8 +135,8 @@ idldeclarationtst: idldeclarationtst.o $(C150AR) $(C150IDSRPCAR)  $(INCLUDES)
 proxygenerator: proxy_generator.o TypeConverters.o $(C150AR) $(C150IDSRPCAR)  $(INCLUDES)
 	$(CPP) -o proxygenerator proxy_generator.o TypeConverters.o $(C150AR) $(C150IDSRPCAR) 	
 	
-rpcgenerate: rpcgenerator.o $(C150AR) $(C150IDSRPCAR)  $(INCLUDES)
-	$(CPP) -o rpcgenerator rpcgenerator.o $(C150AR) $(C150IDSRPCAR) 
+rpcgenerator: rpcgenerator.o TypeConverters.o $(C150AR) $(C150IDSRPCAR)  $(INCLUDES)
+	$(CPP) -o rpcgenerator rpcgenerator.o TypeConverters.o $(C150AR) $(C150IDSRPCAR) 	
 
 ########################################################################
 #

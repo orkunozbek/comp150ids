@@ -10,3 +10,12 @@ struct Student{
 
 int studentAdd(Student s, Student t);
 Student getStudent(int id);
+
+
+struct Vertex {
+	int x;
+	int y;
+};
+
+
+

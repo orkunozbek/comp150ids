@@ -37,3 +37,13 @@ int divide(int x, int y) {
   return x/y;
 }
 
+Student getStudent(int id){
+  Student s;
+  s.id = 100;
+  return s;
+}
+
+int studentAdd(Student s, Student t){
+  return s.id + t.id;
+}
+

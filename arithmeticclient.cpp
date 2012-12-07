@@ -140,6 +140,9 @@ main(int argc, char *argv[]) {
        result = divide(10,2);                          // remote call (we hope!)
        printf("Returned from divide(10,2). Result=%d\n",result);
 
+       printf("Calling getStudent(5)\n");
+       Student s = getStudent(5);
+       printf("Returned from getStudent(5). Result=%d\n", s.id);
 
      }
 
