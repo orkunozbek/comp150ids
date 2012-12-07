@@ -98,6 +98,7 @@ string createStructSizeFunction(string str, TypeDeclaration *typep){
       else{
           TypeDeclaration *typep = memp->getType();
           if(typep->isStruct()){
+              cout << "entered struct field size" << endl;
               appendedStr.append("\tlen+=get"+ typep->getName() +"FieldSize(s." + memp->getName() + ",\"" + memp->getName() + "\");\n");
           }
       }
