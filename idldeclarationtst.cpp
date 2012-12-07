@@ -320,6 +320,27 @@ processIDLFile(const char fileName[]) {
     	cout << createStructSizeFunction(structFieldFunction, typep) << endl;
     	string structConversionFunction = convertFunctionStr;
     	cout << createStructConversionFunction(structConversionFunction, typep) << endl;
+    }else if(typep->isArray()){
+	    int i = 0;
+    	//cout <<  typep-> getArrayBound() << " " << typep->getName() << " " ;
+    	cout << "for(int i" << i << "= 0; i" << i << "< " << typep->getArrayBound() <<  "; i" << i << "++)\n";
+    	//string str = "for(int i" + i + "= 0; i" + i + "< " + typep->getArrayBound()+ "; i" + i+ "++)\n";
+	    TypeDeclaration *arrayType = typep->getArrayMemberType();
+	    
+    	while(arrayType){
+    		i++;
+    		
+    		if(arrayType->isArray()){
+    		    //cout <<  arrayType-> getArrayBound() << " " << arrayType->getName() <<  " " ;
+    		    cout << "for(int i" << i << "= 0; i" << i << "< " << arrayType->getArrayBound() <<  "; i" << i << "++)\n";	
+    			arrayType = arrayType->getArrayMemberType();
+    		}
+    		else{
+    			cout << "convertTo" <<arrayType->getName() << "(),tmp+=*tmp";
+    			arrayType = NULL;
+    		}
+    	}
+    	cout << endl;
     }
 
     typep->to_string_stream(formattedType);   // format the type info into the buffer

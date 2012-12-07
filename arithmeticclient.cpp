@@ -152,6 +152,47 @@ main(int argc, char *argv[]) {
        result = studentAdd(s,t);
        printf("Returned from studetnAdd(s,t). Result=%d\n", result);
        
+       
+       Vertex k1;
+       k1.x = 5;
+       k1.y = 10;
+       
+       Vertex k2;
+       k2.x = 50;
+       k2.y = 100;
+       
+       
+       
+       
+       printf("Calling vertexADDXPos(k1,k2)\n");
+       result = vertexAddXPos(k1,k2); // remote call (we hope!)
+       printf("Returned from vertexADDXPos(k1,k2). Result=%d\n",result);
+       
+       printf("Calling vertexADDYPos(k1,k2)\n");
+       result = vertexAddYPos(k2,k1); // remote call (we hope!)
+       printf("Returned from vertexADDYPos(k1,k1). Result=%d\n",result);
+       
+       printf("Calling createVertex(6,36)\n");
+       Vertex v = createVertex(6,36);
+       printf("Returning createVertex(6,36) v1.x = %d v1.y = %d\n",v.x, v.y);
+       
+       printf("Calling createRectange(k1,k2)\n");
+       Rectangle a = createRectangle(k1,k2);
+       printf("Returning createRectange(k1,k2) corner1.x = %d corner1.y = %d \tcorner2.x = %d corner2.y = %d\n",a.corner1.x, a.corner1.y, a.corner2.x, a.corner2.y);
+    
+       printf("Calling createRectange(v,r)\n");
+       Rectangle r = createRectangle(k2,k1);
+       printf("Returning createRectange(k1,k2) corner1.x = %d corner1.y = %d \tcorner2.x = %d corner2.y = %d\n",r.corner1.x, r.corner1.y, r.corner2.x, r.corner2.y);
+
+       printf("Calling rectangleAdd(a,r)\n");
+       int d =rectangleAdd(a,r);
+       printf("Returning rectangleAdd(a,r). Result: %d\n", d);
+
+       
+       
+       printf("Calling rectangleCornerDistance(v,r)\n");
+       float abc = rectangleCornerDistance(r);
+       printf("Returned from rectangleCornerDistance(v,r). Result=%f\n",abc);
 
      }
 

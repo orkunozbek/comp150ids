@@ -19,6 +19,9 @@
 
 #include "arithmetic.idl"
 #include <math.h>
+#include <iostream>
+#include <string>
+using namespace std;
 
 
 int add(int x, int y) {
@@ -86,7 +89,7 @@ float rectangleCornerDistance(Rectangle r1){
 }
 
 int rectangleAdd(Rectangle r1, Rectangle r2){
-	return r1.corner1.x + r2.corner1.x + r1.corner1.y + r1.corner1.y + r1.corner2.x + r2.corner2.x + r1.corner2.y + r2.corner2.y;
+	return r1.corner1.x + r2.corner1.x + r1.corner1.y + r1.corner2.y + r1.corner2.x + r2.corner2.x + r1.corner2.y + r2.corner2.y;
 }
 
 

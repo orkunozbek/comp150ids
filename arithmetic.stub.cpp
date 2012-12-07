@@ -30,9 +30,10 @@ size_t getRectangleFieldSize(Rectangle s, string fieldName){
 }
 
 
-void* convertRectangleToByte(Rectangle s, string fieldName,char *data=NULL){
+void* convertRectangleToByte(Rectangle s, string fieldName,char *data){
 	size_t len = getRectangleFieldSize(s, fieldName);
-	data = (char*)malloc(len);
+	if (data== NULL)
+		data = (char*)malloc(len);
 	char *tmp = data;
 	tmp+= sizeof(int);
 	*tmp++ = 5;
@@ -80,9 +81,10 @@ size_t getStudentFieldSize(Student s, string fieldName){
 }
 
 
-void* convertStudentToByte(Student s, string fieldName,char *data=NULL){
+void* convertStudentToByte(Student s, string fieldName,char *data){
 	size_t len = getStudentFieldSize(s, fieldName);
-	data = (char*)malloc(len);
+	if (data== NULL)
+		data = (char*)malloc(len);
 	char *tmp = data;
 	tmp+= sizeof(int);
 	*tmp++ = 5;
@@ -127,9 +129,10 @@ size_t getVertexFieldSize(Vertex s, string fieldName){
 }
 
 
-void* convertVertexToByte(Vertex s, string fieldName,char *data=NULL){
+void* convertVertexToByte(Vertex s, string fieldName,char *data){
 	size_t len = getVertexFieldSize(s, fieldName);
-	data = (char*)malloc(len);
+	if (data== NULL)
+		data = (char*)malloc(len);
 	char *tmp = data;
 	tmp+= sizeof(int);
 	*tmp++ = 5;

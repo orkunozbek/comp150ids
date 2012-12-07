@@ -1,6 +1,7 @@
-void* convert${STRUCT_NAME}ToByte(${STRUCT_NAME} s, string fieldName,char *data=NULL){
+void* convert${STRUCT_NAME}ToByte(${STRUCT_NAME} s, string fieldName,char *data){
 	size_t len = get${STRUCT_NAME}FieldSize(s, fieldName);
-	data = (char*)malloc(len);
+	if (data== NULL)
+		data = (char*)malloc(len);
 	char *tmp = data;
 	tmp+= sizeof(int);
 	*tmp++ = 5;

@@ -80,25 +80,19 @@ int fromDataToInt(char* data){
 
 float fromDataToFloat(char *data){
 	char* tmp = data;
-	printf("FLOAT ");
-	printf("%d ",*((int*)tmp));
 	tmp+=sizeof(int);
 	tmp++;
 	int fieldLen =  *(int *)tmp;
 	tmp+=sizeof(int) +fieldLen;
-	printf("%f\n",*((float*)tmp));
 	return *((float*)tmp);
 }
 
 char * fromDataToString(char *data){
 	char* tmp = data;
-	printf("STRING ");
-	printf("%d ",*((int*)tmp));
 	tmp+=sizeof(int);
 	tmp++;
 	int fieldLen =  *(int *)tmp;
 	tmp+=sizeof(int) +fieldLen;
-	printf("%i ",*((int*)tmp));
 	tmp+= sizeof(int);
 	return tmp;
 }
