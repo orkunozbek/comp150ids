@@ -172,18 +172,6 @@ Vertex* fromDataToVertex(char *data){
 
 
 
-int __VertexAddYPos(Vertex x,Vertex y){
-	char doneBuffer[5] = "DONE";
-	c150debug->printf(C150RPCDEBUG,"simplefunction.stub.cpp: invokingVertexAddYPos(x)");
-	int retval = VertexAddYPos(x,y);
-	c150debug->printf(C150RPCDEBUG,"simplefunction.stub.cpp: returned fromVertexAddYPos(x)");
-	void* bytes = convertIntToByte(retval, "retval", NULL);
-	RPCSTUBSOCKET->write(doneBuffer, strlen(doneBuffer)+1);
-	RPCSTUBSOCKET->write((char*)bytes,*(int*)bytes);
-	return retval;
-
-}
-
 int __add(int x,int y){
 	char doneBuffer[5] = "DONE";
 	c150debug->printf(C150RPCDEBUG,"simplefunction.stub.cpp: invokingadd(x)");
@@ -316,6 +304,18 @@ int __vertexAddXPos(Vertex x,Vertex y){
 
 }
 
+int __vertexAddYPos(Vertex x,Vertex y){
+	char doneBuffer[5] = "DONE";
+	c150debug->printf(C150RPCDEBUG,"simplefunction.stub.cpp: invokingvertexAddYPos(x)");
+	int retval = vertexAddYPos(x,y);
+	c150debug->printf(C150RPCDEBUG,"simplefunction.stub.cpp: returned fromvertexAddYPos(x)");
+	void* bytes = convertIntToByte(retval, "retval", NULL);
+	RPCSTUBSOCKET->write(doneBuffer, strlen(doneBuffer)+1);
+	RPCSTUBSOCKET->write((char*)bytes,*(int*)bytes);
+	return retval;
+
+}
+
 
 
 
@@ -339,24 +339,7 @@ void dispatchFunction() {
   readNByte(funcName, funcNameLen);
   char* argLenPtr = (char*) malloc(sizeof(int));
   
-  if (strcmp(funcName,"VertexAddYPos") == 0){
-	readNByte(argLenPtr, sizeof(int));
-	char* arg0 = (char*) malloc(*(int*)argLenPtr);
-	memcpy(arg0 , argLenPtr, sizeof(int));
-	char *data0 = arg0;
-	arg0 += sizeof(int);
-	readNByte(arg0, (*(int*)argLenPtr) - sizeof(int));
-	Vertex x0= *fromDataToVertex(data0);
-	readNByte(argLenPtr, sizeof(int));
-	char* arg1 = (char*) malloc(*(int*)argLenPtr);
-	memcpy(arg1 , argLenPtr, sizeof(int));
-	char *data1 = arg1;
-	arg1 += sizeof(int);
-	readNByte(arg1, (*(int*)argLenPtr) - sizeof(int));
-	Vertex x1= *fromDataToVertex(data1);
-	__VertexAddYPos(x0,x1);
-  }
-  else if (strcmp(funcName,"add") == 0){
+  if (strcmp(funcName,"add") == 0){
 	readNByte(argLenPtr, sizeof(int));
 	char* arg0 = (char*) malloc(*(int*)argLenPtr);
 	memcpy(arg0 , argLenPtr, sizeof(int));
@@ -528,6 +511,23 @@ void dispatchFunction() {
 	readNByte(arg1, (*(int*)argLenPtr) - sizeof(int));
 	Vertex x1= *fromDataToVertex(data1);
 	__vertexAddXPos(x0,x1);
+  }
+  else if (strcmp(funcName,"vertexAddYPos") == 0){
+	readNByte(argLenPtr, sizeof(int));
+	char* arg0 = (char*) malloc(*(int*)argLenPtr);
+	memcpy(arg0 , argLenPtr, sizeof(int));
+	char *data0 = arg0;
+	arg0 += sizeof(int);
+	readNByte(arg0, (*(int*)argLenPtr) - sizeof(int));
+	Vertex x0= *fromDataToVertex(data0);
+	readNByte(argLenPtr, sizeof(int));
+	char* arg1 = (char*) malloc(*(int*)argLenPtr);
+	memcpy(arg1 , argLenPtr, sizeof(int));
+	char *data1 = arg1;
+	arg1 += sizeof(int);
+	readNByte(arg1, (*(int*)argLenPtr) - sizeof(int));
+	Vertex x1= *fromDataToVertex(data1);
+	__vertexAddYPos(x0,x1);
   }
 
   
