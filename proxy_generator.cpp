@@ -43,7 +43,7 @@ string createStructConversionFunction(string str, TypeDeclaration *typep){
           typep = memp->getType();
           if(typep->isStruct()){
               appendedStr.append("\tconvert" + typep->getName() + "ToByte(s." + memp->getName() + ", \"" + memp->getName() + "\", tmp);\n");
-              appendedStr.append("\ttmp+=*tmp;\n")
+              appendedStr.append("\ttmp+=*tmp;\n");
           }
       }
     }

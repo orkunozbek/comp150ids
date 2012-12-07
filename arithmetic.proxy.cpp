@@ -35,6 +35,10 @@ void* convertRectangleToByte(Rectangle s, string fieldName,char *data=NULL){
 	memcpy(tmp, fieldName.c_str(), fieldLen);
 	tmp += fieldLen;
 	
+	convertVertexToByte(s.corner1, "corner1", tmp);
+	tmp+=*tmp;
+	convertVertexToByte(s.corner2, "corner2", tmp);
+	tmp+=*tmp;
 
 
 	memcpy(data, &len, sizeof(int));
@@ -50,6 +54,10 @@ Rectangle* fromDataToRectangle(char *data){
 	int fieldNameLen = *(int*)tmp;
 	tmp+=sizeof(int)+fieldNameLen;
 	
+	s->corner1= fromDataToVertex(tmp);
+	tmp+=*tmp;
+	s->corner2= fromDataToVertex(tmp);
+	tmp+=*tmp;
 
 	
 
