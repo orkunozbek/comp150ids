@@ -15,13 +15,11 @@ Student getStudent(int id);
 struct Vertex {
 	int x;
 	int y;
-	Vertex(int x1, int y1) : x(x1), y(y1) {}
 };
 
 
 struct Rectangle{
 	Vertex corner1;
 	Vertex corner2;
-	Rectangle(Vertex x, Vertex y): corner1(x), corner2(y) {}
-}
+};
 

@@ -12,6 +12,47 @@ void getFunctionNamefromStream();
 void readNByte(char* buf, int i); 
 
 
+size_t getRectangleFieldSize(Rectangle s, string fieldName){
+	size_t len = sizeof(int) + 1 + sizeof(int) + fieldName.length() + 1;
+
+	return len;
+}
+
+
+void* convertRectangleToByte(Rectangle s, string fieldName,char *data=NULL){
+	size_t len = getRectangleFieldSize(s, fieldName);
+	data = (char*)malloc(len);
+	char *tmp = data;
+	tmp+= sizeof(int);
+	*tmp++ = 5;
+	int fieldLen = fieldName.length()+1;
+	memcpy(tmp, &fieldLen, sizeof(int) );
+	tmp+=sizeof(int);
+	memcpy(tmp, fieldName.c_str(), fieldLen);
+	tmp += fieldLen;
+	
+
+
+	memcpy(data, &len, sizeof(int));
+	return data;
+}
+
+Rectangle* fromDataToRectangle(char *data){
+	Rectangle *s = new Rectangle();
+	char *tmp = data;
+	//int len = *(int*)tmp;
+	tmp+=sizeof(int);
+	tmp++;
+	int fieldNameLen = *(int*)tmp;
+	tmp+=sizeof(int)+fieldNameLen;
+	
+
+	
+
+	return s;
+}
+
+
 size_t getStudentFieldSize(Student s, string fieldName){
 	size_t len = sizeof(int) + 1 + sizeof(int) + fieldName.length() + 1;
 	len+=getIntFieldSize("id");
