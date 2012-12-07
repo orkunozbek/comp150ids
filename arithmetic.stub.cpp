@@ -249,6 +249,7 @@ void dispatchFunction() {
 	arg0 += sizeof(int);
 	readNByte(arg0, (*(int*)argLenPtr) - sizeof(int));
 	int x0= fromDataToInt(data0);
+    cout << "Int is " << x0 << endl;
 	__getStudent(x0);
   }
   else if (strcmp(funcName,"multiply") == 0){
