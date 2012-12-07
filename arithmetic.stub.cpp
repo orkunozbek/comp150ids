@@ -242,14 +242,12 @@ void dispatchFunction() {
   }
   else if (strcmp(funcName,"getStudent") == 0){
 	readNByte(argLenPtr, sizeof(int));
-	cout << *(int*)argLenPtr << endl;
 	char* arg0 = (char*) malloc(*(int*)argLenPtr);
 	memcpy(arg0 , argLenPtr, sizeof(int));
 	char *data0 = arg0;
 	arg0 += sizeof(int);
 	readNByte(arg0, (*(int*)argLenPtr) - sizeof(int));
 	int x0= fromDataToInt(data0);
-    cout << "Int is " << x0 << endl;
 	__getStudent(x0);
   }
   else if (strcmp(funcName,"multiply") == 0){
