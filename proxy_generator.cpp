@@ -95,6 +95,12 @@ string createStructSizeFunction(string str, TypeDeclaration *typep){
       	appendedStr.append("\tlen+=getFloatFieldSize(\"" + memp->getName() + "\");\n");
       else if(type == "string")
     	appendedStr.append("\tlen+=getStringFieldSize(\"" + memp->getName() + "\", s." + memp->getName() + ");\n");
+      else{
+          TypeDeclaration *typep = memp->getType();
+          if(typep->isStruct()){
+              appendedStr.append("\tlen+=get"+ typep->getName() +"FieldSize(s." + memp->getName() + ",\"" + memp->getName() + "\");\n");
+          }
+      }
     }
     found = str.find(size, found);
     str.replace(found, size.length(), appendedStr);
