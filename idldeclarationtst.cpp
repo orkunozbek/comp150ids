@@ -214,13 +214,10 @@ processIDLFile(const char fileName[]) {
   unsigned int argnum;
   ifstream t("structsizefunction");
   string str;
-
   t.seekg(0, ios::end);   
   str.reserve(t.tellg());
   t.seekg(0, ios::beg);
-
-  str.assign((istreambuf_iterator<char>(t)),
-        istreambuf_iterator<char>());
+  str.assign((istreambuf_iterator<char>(t)), istreambuf_iterator<char>());
   printf("%s\n", str.c_str());
   
   t.close();
@@ -231,6 +228,7 @@ processIDLFile(const char fileName[]) {
   t.seekg(0, ios::beg);
   convertFunctionStr.assign((istreambuf_iterator<char>(t)),istreambuf_iterator<char>());
   printf("%s\n", convertFunctionStr.c_str());
+  t.close();
 
   //
   // Open the file

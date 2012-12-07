@@ -5,14 +5,62 @@
 #include "c150debug.h"
 #include "TypeConverters.h"
 
+
 #include "arithmetic.idl"
-//INSERT_IDL_HEADERS_HERE
+
+
+size_t getStudentFieldSize(Student s, string fieldName){
+	size_t len = sizeof(int) + 1 + sizeof(int) + fieldName.length() + 1;
+	len+=getIntFieldSize("id");
+
+	return len;
+}
+
+
+void* convertStudentToByte(Student s, string fieldName){
+	size_t len = getStudentFieldSize(s, fieldName);
+	char *data = (char*)malloc(len);
+	char *tmp = data;
+	tmp+= sizeof(int);
+	*tmp++ = 5;
+	int fieldLen = fieldName.length()+1;
+	memcpy(tmp, &fieldLen, sizeof(int) );
+	tmp+=sizeof(int);
+	memcpy(tmp, fieldName.c_str(), fieldLen);
+	tmp += fieldLen;
+	
+	convertIntToByte(s.id, "id", tmp);
+	tmp+=*tmp;
+
+
+	memcpy(data, &len, sizeof(int));
+	return data;
+}
+
+Student* fromDataToStudent(char *data){
+	Student *s = new Student();
+	char *tmp = data;
+	//int len = *(int*)tmp;
+	tmp+=sizeof(int);
+	tmp++;
+	int fieldNameLen = *(int*)tmp;
+	tmp+=sizeof(int)+fieldNameLen;
+	
+	s->id= fromDataToInt(tmp);
+	tmp+=*tmp;
+
+	
+
+	return s;
+}
+
+
+
 
 using namespace C150NETWORK;  // for all the comp150 utilities 
 
 void getFunctionNamefromStream();
 void readNByte(char* buf, int i);
-
 
 int add(int x,int y){
 	char readBuffer[5];
@@ -25,6 +73,7 @@ int add(int x,int y){
 
 	char *intData1 = (char*)convertIntToByte(y,"y", NULL);
 	RPCPROXYSOCKET->write(intData1, *(int*)intData1);
+
 	c150debug->printf(C150RPCDEBUG,"arithmetic.proxy.cpp: returned from");
 	RPCPROXYSOCKET->read(readBuffer, sizeof(readBuffer));
 	if (strncmp(readBuffer,"DONE", sizeof(readBuffer))!=0) {
@@ -37,9 +86,10 @@ int add(int x,int y){
 	char *data0 = arg0;
 	arg0 += sizeof(int);
 	readNByte(arg0, (*(int*)retLenPtr) - sizeof(int));
-	int x0 = fromDataToInt(data0);
+	int retval = fromDataToInt(data0);
 	c150debug->printf(C150RPCDEBUG,"arithmetic.proxy.cpp: add successful return from remote cal");
-	return x0;
+	return retval;
+
 
 }
 
@@ -60,9 +110,18 @@ int divide(int x,int y){
 	if (strncmp(readBuffer,"DONE", sizeof(readBuffer))!=0) {
 		throw C150Exception("arithmetic.proxy.cpp: divide received invalid response from the server");
 	}
+	char* retLenPtr = (char*) malloc(sizeof(int));
+	readNByte(retLenPtr, sizeof(int));
+	char* arg0 = (char*) malloc(*(int *)retLenPtr);
+	memcpy(arg0, retLenPtr, sizeof(int));
+	char *data0 = arg0;
+	arg0 += sizeof(int);
+	readNByte(arg0, (*(int*)retLenPtr) - sizeof(int));
+	int retval = fromDataToInt(data0);
 	c150debug->printf(C150RPCDEBUG,"arithmetic.proxy.cpp: divide successful return from remote cal");
+	return retval;
 
-	return 5;
+
 }
 
 int multiply(int x,int y){
@@ -82,9 +141,18 @@ int multiply(int x,int y){
 	if (strncmp(readBuffer,"DONE", sizeof(readBuffer))!=0) {
 		throw C150Exception("arithmetic.proxy.cpp: multiply received invalid response from the server");
 	}
+	char* retLenPtr = (char*) malloc(sizeof(int));
+	readNByte(retLenPtr, sizeof(int));
+	char* arg0 = (char*) malloc(*(int *)retLenPtr);
+	memcpy(arg0, retLenPtr, sizeof(int));
+	char *data0 = arg0;
+	arg0 += sizeof(int);
+	readNByte(arg0, (*(int*)retLenPtr) - sizeof(int));
+	int retval = fromDataToInt(data0);
 	c150debug->printf(C150RPCDEBUG,"arithmetic.proxy.cpp: multiply successful return from remote cal");
+	return retval;
 
-	return 5;
+
 }
 
 int subtract(int x,int y){
@@ -104,14 +172,24 @@ int subtract(int x,int y){
 	if (strncmp(readBuffer,"DONE", sizeof(readBuffer))!=0) {
 		throw C150Exception("arithmetic.proxy.cpp: subtract received invalid response from the server");
 	}
+	char* retLenPtr = (char*) malloc(sizeof(int));
+	readNByte(retLenPtr, sizeof(int));
+	char* arg0 = (char*) malloc(*(int *)retLenPtr);
+	memcpy(arg0, retLenPtr, sizeof(int));
+	char *data0 = arg0;
+	arg0 += sizeof(int);
+	readNByte(arg0, (*(int*)retLenPtr) - sizeof(int));
+	int retval = fromDataToInt(data0);
 	c150debug->printf(C150RPCDEBUG,"arithmetic.proxy.cpp: subtract successful return from remote cal");
+	return retval;
 
-	return 5;
+
 }
 
-//INSERT_PROXIES_HERE
 
 
+
+// Networking codes
 void readNByte(char* buf, int n){
   int readlen = 0;
   int readSoFar = 0;
