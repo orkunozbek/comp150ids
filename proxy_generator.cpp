@@ -111,7 +111,6 @@ string createStructSizeFunction(string str, TypeDeclaration *typep){
       else{
           TypeDeclaration *typep = memp->getType();
           if(typep->isStruct()){
-              cout << "entered struct field size" << endl;
               appendedStr.append("\tlen+=get"+ typep->getName() +"FieldSize(s." + memp->getName() + ",\"" + memp->getName() + "\");\n");
           }
       }
@@ -148,6 +147,7 @@ int main(int argc, char *argv[]){
     
     string argumentConversions;
     string conversionCode;
+    string conversionFunctionHeaders;
     
     // Read the contents of proxy template
     ifstream t("proxy_template.cpp");
@@ -185,6 +185,7 @@ int main(int argc, char *argv[]){
 		includeStr.clear();
 		proxyCodeStr.clear();
 		conversionCode.clear();
+        conversionFunctionHeaders.clear();
 		
       	
       	string idlFileNameStr(argv[argnum]);
@@ -263,7 +264,8 @@ int main(int argc, char *argv[]){
       			funcHeadStr.erase(funcHeadStr.length() - 1);
       		}
       		funcHeadStr.append(")");
-      	
+            conversionFunctionHeaders.append(funcHeadStr + ";\n");
+      	    
       		proxyCodeStr.append(funcHeadStr);
 			proxyCodeStr.append("{\n");
 			proxyCodeStr.append("\tchar readBuffer[5];\n");
@@ -310,6 +312,8 @@ int main(int argc, char *argv[]){
       		//printf("4\n");		
 
       	}
+      	
+        conversionCode.insert(0, conversionFunctionHeaders);
 	    string proxies("//INSERT_PROXIES_HERE");
 		string header("//INSERT_IDL_HEADERS_HERE");
 		string conversions("//INSERT_IDL_SPECIFIC_CONVERSIONS_HERE");
