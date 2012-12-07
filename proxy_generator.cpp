@@ -156,7 +156,7 @@ int main(int argc, char *argv[]){
   	structConversionStr.assign((istreambuf_iterator<char>(t)),istreambuf_iterator<char>());
   	t.close();
 	
-	printf("1\n");
+	//printf("1\n");
 	
 	
 	for (argnum = 1; argnum < argc; argnum++) {
@@ -171,7 +171,7 @@ int main(int argc, char *argv[]){
       	string proxyFileNameStr = idlFileNameStr.substr(0, idlFileNameStr.find(".idl"));
       	proxyFileNameStr.append(".proxy.cpp");
       	ifstream idlFile(idlFileNameStr.c_str());
-      	
+      	//printf("2\n");      	
       	Declarations parseTree(idlFile);
       	includeStr.append("#include \"");
       	includeStr.append(argv[argnum]);
@@ -180,7 +180,7 @@ int main(int argc, char *argv[]){
       	// Build IDL specific Conversions
       	
       	std::map<std::string, TypeDeclaration*>::iterator iter;  
-
+      	//printf("3\n");
 		TypeDeclaration *typep;
 		stringstream formattedType;
 		for (iter = parseTree.types.begin(); iter != parseTree.types.end(); ++iter) {
@@ -195,7 +195,7 @@ int main(int argc, char *argv[]){
 		    	conversionCode.append("\n\n\n");
 		    }
 		} 
-      	
+      	//printf("3\n");
       	map<string, FunctionDeclaration*>::iterator fiter;
       	FunctionDeclaration *functionp;
       	for (fiter = parseTree.functions.begin(); fiter != parseTree.functions.end(); ++fiter) {
@@ -231,6 +231,11 @@ int main(int argc, char *argv[]){
 	      			argumentConversions.append("\tRPCPROXYSOCKET->write(stringData" + strNum + ", *(int*)stringData" + strNum + ");\n");
 	  			}else{
 	  				// handle struct and arrays here
+	  				TypeDeclaration *typep = argp->getType();
+	  				if(typep->isStruct()){
+	  					argumentConversions.append("\tchar *sData" + strNum + " = (char*)convert" + typep->getName() + "ToByte(" + argNameStr + ",\"" + argNameStr + "\", NULL);\n");
+	  					argumentConversions.append("\tRPCPROXYSOCKET->write(sData" + strNum + ", *(int*)sData" + strNum + ");\n");
+	  				}
 	  			}
 	  			argumentConversions.append("\n");
       		}
@@ -278,7 +283,7 @@ int main(int argc, char *argv[]){
       		}
       		proxyCodeStr.append("\n\n}\n\n");		
       		
-      		printf("4\n");		
+      		//printf("4\n");		
 
       	}
 	    string proxies("//INSERT_PROXIES_HERE");

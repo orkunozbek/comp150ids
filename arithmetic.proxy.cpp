@@ -17,9 +17,9 @@ size_t getStudentFieldSize(Student s, string fieldName){
 }
 
 
-void* convertStudentToByte(Student s, string fieldName){
+void* convertStudentToByte(Student s, string fieldName,char *data=NULL){
 	size_t len = getStudentFieldSize(s, fieldName);
-	char *data = (char*)malloc(len);
+	data = (char*)malloc(len);
 	char *tmp = data;
 	tmp+= sizeof(int);
 	*tmp++ = 5;
@@ -150,6 +150,37 @@ int multiply(int x,int y){
 	readNByte(arg0, (*(int*)retLenPtr) - sizeof(int));
 	int retval = fromDataToInt(data0);
 	c150debug->printf(C150RPCDEBUG,"arithmetic.proxy.cpp: multiply successful return from remote cal");
+	return retval;
+
+
+}
+
+int studentAdd(Student s,Student t){
+	char readBuffer[5];
+	c150debug->printf(C150RPCDEBUG,"arithmetic.proxy.cpp: invoking");
+	int functionLength = strlen("studentAdd")+1;
+	RPCPROXYSOCKET->write((char*)&functionLength, sizeof(int));
+	RPCPROXYSOCKET->write("studentAdd", strlen("studentAdd")+1);
+	char *sData0 = (char*)convertStudentToByte(s,"s", NULL);
+	RPCPROXYSOCKET->write(sData0, *(int*)sData0);
+
+	char *sData1 = (char*)convertStudentToByte(t,"t", NULL);
+	RPCPROXYSOCKET->write(sData1, *(int*)sData1);
+
+	c150debug->printf(C150RPCDEBUG,"arithmetic.proxy.cpp: returned from");
+	RPCPROXYSOCKET->read(readBuffer, sizeof(readBuffer));
+	if (strncmp(readBuffer,"DONE", sizeof(readBuffer))!=0) {
+		throw C150Exception("arithmetic.proxy.cpp: studentAdd received invalid response from the server");
+	}
+	char* retLenPtr = (char*) malloc(sizeof(int));
+	readNByte(retLenPtr, sizeof(int));
+	char* arg0 = (char*) malloc(*(int *)retLenPtr);
+	memcpy(arg0, retLenPtr, sizeof(int));
+	char *data0 = arg0;
+	arg0 += sizeof(int);
+	readNByte(arg0, (*(int*)retLenPtr) - sizeof(int));
+	int retval = fromDataToInt(data0);
+	c150debug->printf(C150RPCDEBUG,"arithmetic.proxy.cpp: studentAdd successful return from remote cal");
 	return retval;
 
 

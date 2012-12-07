@@ -8,3 +8,4 @@ struct Student{
 	int id;
 };
 
+int studentAdd(Student s, Student t);
