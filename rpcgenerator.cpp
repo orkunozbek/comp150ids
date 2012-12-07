@@ -119,35 +119,6 @@ string createStructSizeFunction(string str, TypeDeclaration *typep){
 }
 
 
-string createStructSizeFunction(string str, TypeDeclaration *typep){
-string name = "${STRUCT_NAME}";
-size_t found = str.find(name);
-while(found != string::npos){
-str.replace(found, name.length(), typep->getName());
-found = str.find(name, found+1);
-}
-
-vector<Arg_or_Member_Declaration *>& members = typep->getStructMembers();
-string size = "${APPEND_TYPES}";
-string appendedStr = "";
-
-    for(size_t memberNum=0; memberNum<members.size();memberNum++) {
-      Arg_or_Member_Declaration* memp = members[memberNum];
-      //ss << endl << " " << memp->getType()->getName() << " " << memp->getName();
-      string type = memp->getType()->getName();
-      
-      if (type == "int")
-   appendedStr.append("\tlen+=getIntFieldSize(\"" + memp->getName() + "\");\n");
-   else if(type == "float")
-       appendedStr.append("\tlen+=getFloatFieldSize(\"" + memp->getName() + "\");\n");
-      else if(type == "string")
-     appendedStr.append("\tlen+=getStringFieldSize(\"" + memp->getName() + "\", s." + memp->getName() + ");\n");
-    }
-    found = str.find(size, found);
-    str.replace(found, size.length(), appendedStr);
-
-return str;
-}
 
 
 using namespace std;
