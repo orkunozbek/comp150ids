@@ -73,7 +73,7 @@ string createStructConversionFunction(string str, TypeDeclaration *typep){
       else{
             typep = memp->getType();
             if(typep->isStruct()){
-                appendedStr.append("\ts->" + memberName + "= fromDataTo" + typep->getName() + "(tmp);\n");
+                appendedStr.append("\ts->" + memberName + "= *fromDataTo" + typep->getName() + "(tmp);\n");
                 appendedStr.append("\ttmp+=*tmp;\n");
             }
         }

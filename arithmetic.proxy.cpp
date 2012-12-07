@@ -63,9 +63,9 @@ Rectangle* fromDataToRectangle(char *data){
 	int fieldNameLen = *(int*)tmp;
 	tmp+=sizeof(int)+fieldNameLen;
 	
-	s->corner1= fromDataToVertex(tmp);
+	s->corner1= *fromDataToVertex(tmp);
 	tmp+=*tmp;
-	s->corner2= fromDataToVertex(tmp);
+	s->corner2= *fromDataToVertex(tmp);
 	tmp+=*tmp;
 
 	
