@@ -14,12 +14,15 @@ using namespace C150NETWORK;  // for all the comp150 utilities
 void getFunctionNamefromStream();
 void readNByte(char* buf, int i);
 
-int add(int x,int y);
-int divide(int x,int y);
-Student getStudent(int id);
-int multiply(int x,int y);
-int studentAdd(Student s,Student t);
-int subtract(int x,int y);
+size_t getRectangleFieldSize(Rectangle s, string fieldName);
+Rectangle* fromDataTo${STRUCT_NAME}(char *data);
+void* convertRectangleToByte(Rectangle s, string fieldName,char *data=NULL);
+size_t getStudentFieldSize(Student s, string fieldName);
+Student* fromDataTo${STRUCT_NAME}(char *data);
+void* convertStudentToByte(Student s, string fieldName,char *data=NULL);
+size_t getVertexFieldSize(Vertex s, string fieldName);
+Vertex* fromDataTo${STRUCT_NAME}(char *data);
+void* convertVertexToByte(Vertex s, string fieldName,char *data=NULL);
 size_t getRectangleFieldSize(Rectangle s, string fieldName){
 	size_t len = sizeof(int) + 1 + sizeof(int) + fieldName.length() + 1;
 	len+=getVertexFieldSize(s.corner1,"corner1");
