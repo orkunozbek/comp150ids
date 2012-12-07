@@ -48,11 +48,11 @@ int studentAdd(Student s, Student t){
 }
 
 
-int VertexAddXPos(Vertex x, Vertex y){
+int vertexAddXPos(Vertex x, Vertex y){
 	return x.x + y.x;
 }
 
-int VertexAddYPos(Vertex x, Vertex y){
+int vertexAddYPos(Vertex x, Vertex y){
 	return x.y + y.y;
 }
 
@@ -85,7 +85,7 @@ float rectangleCornerDistance(Rectangle r1){
 	return sqrt(pow((r1.corner1.x - r1.corner2.x),2) + pow((r1.corner1.y - r1.corner2.y),2));
 }
 
-int retangleAdd(Rectangle r1, Rectangle r2){
+int rectangleAdd(Rectangle r1, Rectangle r2){
 	return r1.corner1.x + r2.corner1.x + r1.corner1.y + r1.corner1.y + r1.corner2.x + r2.corner2.x + r1.corner2.y + r2.corner2.y;
 }
 
