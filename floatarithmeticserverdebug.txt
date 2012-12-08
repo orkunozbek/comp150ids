@@ -1,50 +1,62 @@
-12/06/2012 20:25:03.696569 ./floatarithmeticserver: rpcstubinitialize: Creating C150StreamSocket
-12/06/2012 20:25:04.012021 ./floatarithmeticserver: rpcserver.cpp: calling C150StreamSocket::accept
-12/06/2012 20:25:12.805591 ./floatarithmeticserver: C150StreamSocket::read: successful read with len=4 |....|
-12/06/2012 20:25:12.806056 ./floatarithmeticserver: C150StreamSocket::read: successful read with len=4 |add.|
-12/06/2012 20:25:12.806091 ./floatarithmeticserver: C150StreamSocket::read: successful read with len=4 |....|
-12/06/2012 20:25:12.806124 ./floatarithmeticserver: C150StreamSocket::read: successful read with len=11 |.....x... A|
-12/06/2012 20:25:12.806382 ./floatarithmeticserver: C150StreamSocket::read: successful read with len=4 |....|
-12/06/2012 20:25:12.806416 ./floatarithmeticserver: C150StreamSocket::read: successful read with len=11 |.....y...`@|
-12/06/2012 20:25:12.806450 ./floatarithmeticserver: simplefunction.stub.cpp: invokingadd(x)
-12/06/2012 20:25:12.806479 ./floatarithmeticserver: simplefunction.stub.cpp: returned fromadd(x)
-12/06/2012 20:25:12.806512 ./floatarithmeticserver: C150StreamSocket::write: attempting to send packet with len=5 |DONE.|
-12/06/2012 20:25:12.806560 ./floatarithmeticserver: C150StreamSocket::write: Success writing packet with len=5 |DONE.|
-12/06/2012 20:25:12.806592 ./floatarithmeticserver: C150StreamSocket::write: attempting to send packet with len=20 |.........retval...XA|
-12/06/2012 20:25:12.806625 ./floatarithmeticserver: C150StreamSocket::write: Success writing packet with len=20 |.........retval...XA|
-12/06/2012 20:25:12.809604 ./floatarithmeticserver: C150StreamSocket::read: successful read with len=4 |....|
-12/06/2012 20:25:12.850889 ./floatarithmeticserver: C150StreamSocket::read: successful read with len=9 |subtract.|
-12/06/2012 20:25:12.850929 ./floatarithmeticserver: C150StreamSocket::read: successful read with len=4 |....|
-12/06/2012 20:25:12.850962 ./floatarithmeticserver: C150StreamSocket::read: successful read with len=11 |.....x... A|
-12/06/2012 20:25:12.851019 ./floatarithmeticserver: C150StreamSocket::read: successful read with len=4 |....|
-12/06/2012 20:25:12.851059 ./floatarithmeticserver: C150StreamSocket::read: successful read with len=11 |.....y...`@|
-12/06/2012 20:25:12.851093 ./floatarithmeticserver: simplefunction.stub.cpp: invokingsubtract(x)
-12/06/2012 20:25:12.851122 ./floatarithmeticserver: simplefunction.stub.cpp: returned fromsubtract(x)
-12/06/2012 20:25:12.851282 ./floatarithmeticserver: C150StreamSocket::write: attempting to send packet with len=5 |DONE.|
-12/06/2012 20:25:12.851331 ./floatarithmeticserver: C150StreamSocket::write: Success writing packet with len=5 |DONE.|
-12/06/2012 20:25:12.851363 ./floatarithmeticserver: C150StreamSocket::write: attempting to send packet with len=20 |.........retval....@|
-12/06/2012 20:25:12.851395 ./floatarithmeticserver: C150StreamSocket::write: Success writing packet with len=20 |.........retval....@|
-12/06/2012 20:25:12.894604 ./floatarithmeticserver: C150StreamSocket::read: successful read with len=4 |....|
-12/06/2012 20:25:12.936095 ./floatarithmeticserver: C150StreamSocket::read: successful read with len=9 |multiply.|
-12/06/2012 20:25:12.936137 ./floatarithmeticserver: C150StreamSocket::read: successful read with len=4 |....|
-12/06/2012 20:25:12.936250 ./floatarithmeticserver: C150StreamSocket::read: successful read with len=11 |.....x... A|
-12/06/2012 20:25:12.936317 ./floatarithmeticserver: C150StreamSocket::read: successful read with len=4 |....|
-12/06/2012 20:25:12.936358 ./floatarithmeticserver: C150StreamSocket::read: successful read with len=11 |.....y...`@|
-12/06/2012 20:25:12.936392 ./floatarithmeticserver: simplefunction.stub.cpp: invokingmultiply(x)
-12/06/2012 20:25:12.936422 ./floatarithmeticserver: simplefunction.stub.cpp: returned frommultiply(x)
-12/06/2012 20:25:12.936456 ./floatarithmeticserver: C150StreamSocket::write: attempting to send packet with len=5 |DONE.|
-12/06/2012 20:25:12.936499 ./floatarithmeticserver: C150StreamSocket::write: Success writing packet with len=5 |DONE.|
-12/06/2012 20:25:12.936557 ./floatarithmeticserver: C150StreamSocket::write: attempting to send packet with len=20 |.........retval....B|
-12/06/2012 20:25:12.936590 ./floatarithmeticserver: C150StreamSocket::write: Success writing packet with len=20 |.........retval....B|
-12/06/2012 20:25:12.978460 ./floatarithmeticserver: C150StreamSocket::read: successful read with len=4 |....|
-12/06/2012 20:25:13.020233 ./floatarithmeticserver: C150StreamSocket::read: successful read with len=7 |divide.|
-12/06/2012 20:25:13.020272 ./floatarithmeticserver: C150StreamSocket::read: successful read with len=4 |....|
-12/06/2012 20:25:13.020305 ./floatarithmeticserver: C150StreamSocket::read: successful read with len=11 |.....x... A|
-12/06/2012 20:25:13.020362 ./floatarithmeticserver: C150StreamSocket::read: successful read with len=4 |....|
-12/06/2012 20:25:13.020403 ./floatarithmeticserver: C150StreamSocket::read: successful read with len=11 |.....y...`@|
-12/06/2012 20:25:13.020437 ./floatarithmeticserver: simplefunction.stub.cpp: invokingdivide(x)
-12/06/2012 20:25:13.020467 ./floatarithmeticserver: simplefunction.stub.cpp: returned fromdivide(x)
-12/06/2012 20:25:13.020501 ./floatarithmeticserver: C150StreamSocket::write: attempting to send packet with len=5 |DONE.|
-12/06/2012 20:25:13.020544 ./floatarithmeticserver: C150StreamSocket::write: Success writing packet with len=5 |DONE.|
-12/06/2012 20:25:13.020576 ./floatarithmeticserver: C150StreamSocket::write: attempting to send packet with len=20 |.........retval.n.6@|
-12/06/2012 20:25:13.020608 ./floatarithmeticserver: C150StreamSocket::write: Success writing packet with len=20 |.........retval.n.6@|
+12/08/2012 01:09:20.130080 ./floatarithmeticserver: rpcstubinitialize: Creating C150StreamSocket
+12/08/2012 01:09:20.133085 ./floatarithmeticserver: rpcserver.cpp: calling C150StreamSocket::accept
+12/08/2012 01:09:22.708961 ./floatarithmeticserver: C150StreamSocket::read: successful read with len=4 |....|
+12/08/2012 01:09:22.709247 ./floatarithmeticserver: C150StreamSocket::read: successful read with len=4 |add.|
+12/08/2012 01:09:22.709280 ./floatarithmeticserver: C150StreamSocket::read: successful read with len=4 |....|
+12/08/2012 01:09:22.709314 ./floatarithmeticserver: C150StreamSocket::read: successful read with len=11 |.....x... A|
+12/08/2012 01:09:22.709353 ./floatarithmeticserver: C150StreamSocket::read: successful read with len=4 |....|
+12/08/2012 01:09:22.709387 ./floatarithmeticserver: C150StreamSocket::read: successful read with len=11 |.....y...`@|
+12/08/2012 01:09:22.709416 ./floatarithmeticserver: simplefunction.stub.cpp: invokingadd(x)
+12/08/2012 01:09:22.709445 ./floatarithmeticserver: simplefunction.stub.cpp: returned fromadd(x)
+12/08/2012 01:09:22.709479 ./floatarithmeticserver: C150StreamSocket::write: attempting to send packet with len=5 |DONE.|
+12/08/2012 01:09:22.709526 ./floatarithmeticserver: C150StreamSocket::write: Success writing packet with len=5 |DONE.|
+12/08/2012 01:09:22.709558 ./floatarithmeticserver: C150StreamSocket::write: attempting to send packet with len=20 |.........retval...XA|
+12/08/2012 01:09:22.709590 ./floatarithmeticserver: C150StreamSocket::write: Success writing packet with len=20 |.........retval...XA|
+12/08/2012 01:09:22.712287 ./floatarithmeticserver: C150StreamSocket::read: successful read with len=4 |....|
+12/08/2012 01:09:22.753576 ./floatarithmeticserver: C150StreamSocket::read: successful read with len=9 |subtract.|
+12/08/2012 01:09:22.753617 ./floatarithmeticserver: C150StreamSocket::read: successful read with len=4 |....|
+12/08/2012 01:09:22.753650 ./floatarithmeticserver: C150StreamSocket::read: successful read with len=11 |.....x... A|
+12/08/2012 01:09:22.753685 ./floatarithmeticserver: C150StreamSocket::read: successful read with len=4 |....|
+12/08/2012 01:09:22.753725 ./floatarithmeticserver: C150StreamSocket::read: successful read with len=11 |.....y...`@|
+12/08/2012 01:09:22.753754 ./floatarithmeticserver: simplefunction.stub.cpp: invokingsubtract(x)
+12/08/2012 01:09:22.753782 ./floatarithmeticserver: simplefunction.stub.cpp: returned fromsubtract(x)
+12/08/2012 01:09:22.753857 ./floatarithmeticserver: C150StreamSocket::write: attempting to send packet with len=5 |DONE.|
+12/08/2012 01:09:22.753901 ./floatarithmeticserver: C150StreamSocket::write: Success writing packet with len=5 |DONE.|
+12/08/2012 01:09:22.753933 ./floatarithmeticserver: C150StreamSocket::write: attempting to send packet with len=20 |.........retval....@|
+12/08/2012 01:09:22.753965 ./floatarithmeticserver: C150StreamSocket::write: Success writing packet with len=20 |.........retval....@|
+12/08/2012 01:09:22.796229 ./floatarithmeticserver: C150StreamSocket::read: successful read with len=4 |....|
+12/08/2012 01:09:22.837662 ./floatarithmeticserver: C150StreamSocket::read: successful read with len=9 |multiply.|
+12/08/2012 01:09:22.837700 ./floatarithmeticserver: C150StreamSocket::read: successful read with len=4 |....|
+12/08/2012 01:09:22.837732 ./floatarithmeticserver: C150StreamSocket::read: successful read with len=11 |.....x... A|
+12/08/2012 01:09:22.837772 ./floatarithmeticserver: C150StreamSocket::read: successful read with len=4 |....|
+12/08/2012 01:09:22.837834 ./floatarithmeticserver: C150StreamSocket::read: successful read with len=11 |.....y...`@|
+12/08/2012 01:09:22.837863 ./floatarithmeticserver: simplefunction.stub.cpp: invokingmultiply(x)
+12/08/2012 01:09:22.837891 ./floatarithmeticserver: simplefunction.stub.cpp: returned frommultiply(x)
+12/08/2012 01:09:22.837924 ./floatarithmeticserver: C150StreamSocket::write: attempting to send packet with len=5 |DONE.|
+12/08/2012 01:09:22.837965 ./floatarithmeticserver: C150StreamSocket::write: Success writing packet with len=5 |DONE.|
+12/08/2012 01:09:22.838008 ./floatarithmeticserver: C150StreamSocket::write: attempting to send packet with len=20 |.........retval....B|
+12/08/2012 01:09:22.838041 ./floatarithmeticserver: C150StreamSocket::write: Success writing packet with len=20 |.........retval....B|
+12/08/2012 01:09:22.880646 ./floatarithmeticserver: C150StreamSocket::read: successful read with len=4 |....|
+12/08/2012 01:09:22.921363 ./floatarithmeticserver: C150StreamSocket::read: successful read with len=7 |divide.|
+12/08/2012 01:09:22.921401 ./floatarithmeticserver: C150StreamSocket::read: successful read with len=4 |....|
+12/08/2012 01:09:22.921434 ./floatarithmeticserver: C150StreamSocket::read: successful read with len=11 |.....x... A|
+12/08/2012 01:09:22.921474 ./floatarithmeticserver: C150StreamSocket::read: successful read with len=4 |....|
+12/08/2012 01:09:22.921514 ./floatarithmeticserver: C150StreamSocket::read: successful read with len=11 |.....y...`@|
+12/08/2012 01:09:22.921543 ./floatarithmeticserver: simplefunction.stub.cpp: invokingdivide(x)
+12/08/2012 01:09:22.921572 ./floatarithmeticserver: simplefunction.stub.cpp: returned fromdivide(x)
+12/08/2012 01:09:22.921605 ./floatarithmeticserver: C150StreamSocket::write: attempting to send packet with len=5 |DONE.|
+12/08/2012 01:09:22.921648 ./floatarithmeticserver: C150StreamSocket::write: Success writing packet with len=5 |DONE.|
+12/08/2012 01:09:22.921680 ./floatarithmeticserver: C150StreamSocket::write: attempting to send packet with len=20 |.........retval.n.6@|
+12/08/2012 01:09:22.921712 ./floatarithmeticserver: C150StreamSocket::write: Success writing packet with len=20 |.........retval.n.6@|
+12/08/2012 01:09:22.963304 ./floatarithmeticserver: C150StreamSocket::read: successful read with len=4 |....|
+12/08/2012 01:09:23.004318 ./floatarithmeticserver: C150StreamSocket::read: successful read with len=9 |addArray.|
+12/08/2012 01:09:23.004395 ./floatarithmeticserver: C150StreamSocket::read: successful read with len=4 |....|
+12/08/2012 01:09:23.004432 ./floatarithmeticserver: C150StreamSocket::read: successful read with len=226 |..............x............................?.............@............@@.............@.............@|
+12/08/2012 01:09:23.004468 ./floatarithmeticserver: C150StreamSocket::read: successful read with len=4 |....|
+12/08/2012 01:09:23.004506 ./floatarithmeticserver: C150StreamSocket::read: successful read with len=226 |..............y.............pA.............A.............A.............A.............A.............A|
+12/08/2012 01:09:23.004535 ./floatarithmeticserver: simplefunction.stub.cpp: invokingaddArray(x)
+12/08/2012 01:09:23.004565 ./floatarithmeticserver: simplefunction.stub.cpp: returned fromaddArray(x)
+12/08/2012 01:09:23.004598 ./floatarithmeticserver: C150StreamSocket::write: attempting to send packet with len=5 |DONE.|
+12/08/2012 01:09:23.004640 ./floatarithmeticserver: C150StreamSocket::write: Success writing packet with len=5 |DONE.|
+12/08/2012 01:09:23.004672 ./floatarithmeticserver: C150StreamSocket::write: attempting to send packet with len=20 |.........retval....C|
+12/08/2012 01:09:23.004704 ./floatarithmeticserver: C150StreamSocket::write: Success writing packet with len=20 |.........retval....C|

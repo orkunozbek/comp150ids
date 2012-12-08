@@ -11,7 +11,6 @@ struct Student{
 int studentAdd(Student s, Student t);
 Student getStudent(int id);
 
-
 struct Vertex {
 	int x;
 	int y;
@@ -30,7 +29,7 @@ Rectangle createRectangle(Vertex x, Vertex y);
 int rectangleAdd(Rectangle r1, Rectangle r2);
 float  rectangleCornerDistance(Rectangle r1);
 
-
-
+float addArray(float x[15], float y[15]);
+int vertexSum(Vertex x[2]);
 
 

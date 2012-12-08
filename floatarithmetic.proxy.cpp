@@ -127,10 +127,10 @@ float addArray(float x[15],float y[15]){
 	int functionLength = strlen("addArray")+1;
 	RPCPROXYSOCKET->write((char*)&functionLength, sizeof(int));
 	RPCPROXYSOCKET->write("addArray", strlen("addArray")+1);
-	float arrayData0 = (char*)convert__float_15_ToByte(x,"x", NULL);
+	char* arrayData0 = (char*)convert__float_15_ToByte(x,"x", NULL);
 	RPCPROXYSOCKET->write(arrayData0, *(int*)arrayData0);
 
-	float arrayData1 = (char*)convert__float_15_ToByte(y,"y", NULL);
+	char* arrayData1 = (char*)convert__float_15_ToByte(y,"y", NULL);
 	RPCPROXYSOCKET->write(arrayData1, *(int*)arrayData1);
 
 	c150debug->printf(C150RPCDEBUG,"floatarithmetic.proxy.cpp: returned from");

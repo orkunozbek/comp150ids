@@ -139,6 +139,15 @@ main(int argc, char *argv[]) {
        printf("Calling divide(10.0,3.5)\n");
        result = divide(10.0,3.5);                          // remote call (we hope!)
        printf("Returned from divide(10.0,3.5). Result=%f\n",result);
+       
+       float x[15], y[15];
+       for(int i = 0; i <15; i++){
+       		x[i] = i;
+       		y[i] = 15+i;
+       }
+       printf("Calling addArray(x,y)\n");
+       result = addArray(x,y);                          // remote call (we hope!)
+       printf("Returned from addArray(x,y). Result=%f\n",result);
 
 
      }

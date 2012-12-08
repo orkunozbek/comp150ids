@@ -1,277 +1,315 @@
-12/07/2012 20:14:33.403621 ./arithmeticclient: rpcproxyinitialize: Creating C150StreamSocket
-12/07/2012 20:14:33.409490 ./arithmeticclient: C150StreamSocket::C150StreamSocket: user port is 7034
-12/07/2012 20:14:33.409526 ./arithmeticclient: C150StreamSocket::connect(COMP150IDS-01) called
-12/07/2012 20:14:33.416295 ./arithmeticclient: arithmetic.proxy.cpp: invoking
-12/07/2012 20:14:33.416342 ./arithmeticclient: C150StreamSocket::write: attempting to send packet with len=4 |....|
-12/07/2012 20:14:33.416385 ./arithmeticclient: C150StreamSocket::write: Success writing packet with len=4 |....|
-12/07/2012 20:14:33.416416 ./arithmeticclient: C150StreamSocket::write: attempting to send packet with len=4 |add.|
-12/07/2012 20:14:33.416447 ./arithmeticclient: C150StreamSocket::write: Success writing packet with len=4 |add.|
-12/07/2012 20:14:33.416480 ./arithmeticclient: C150StreamSocket::write: attempting to send packet with len=15 |.........x.....|
-12/07/2012 20:14:33.416510 ./arithmeticclient: C150StreamSocket::write: Success writing packet with len=15 |.........x.....|
-12/07/2012 20:14:33.416540 ./arithmeticclient: C150StreamSocket::write: attempting to send packet with len=15 |.........y.....|
-12/07/2012 20:14:33.416570 ./arithmeticclient: C150StreamSocket::write: Success writing packet with len=15 |.........y.....|
-12/07/2012 20:14:33.416598 ./arithmeticclient: arithmetic.proxy.cpp: returned from
-12/07/2012 20:14:33.416632 ./arithmeticclient: C150StreamSocket::read: Ready to read data
-12/07/2012 20:14:33.419076 ./arithmeticclient: C150StreamSocket::read: Dropped through read with len=5
-12/07/2012 20:14:33.419105 ./arithmeticclient: C150StreamSocket::read: successful read with len=5 |DONE.|
-12/07/2012 20:14:33.419134 ./arithmeticclient: C150StreamSocket::read: Ready to read data
-12/07/2012 20:14:33.420080 ./arithmeticclient: C150StreamSocket::read: Dropped through read with len=4
-12/07/2012 20:14:33.420110 ./arithmeticclient: C150StreamSocket::read: successful read with len=4 |....|
-12/07/2012 20:14:33.420149 ./arithmeticclient: C150StreamSocket::read: Ready to read data
-12/07/2012 20:14:33.420180 ./arithmeticclient: C150StreamSocket::read: Dropped through read with len=16
-12/07/2012 20:14:33.420209 ./arithmeticclient: C150StreamSocket::read: successful read with len=16 |.....retval.....|
-12/07/2012 20:14:33.420238 ./arithmeticclient: arithmetic.proxy.cpp: add successful return from remote cal
-12/07/2012 20:14:33.420279 ./arithmeticclient: arithmetic.proxy.cpp: invoking
-12/07/2012 20:14:33.420310 ./arithmeticclient: C150StreamSocket::write: attempting to send packet with len=4 |....|
-12/07/2012 20:14:33.420347 ./arithmeticclient: C150StreamSocket::write: Success writing packet with len=4 |....|
-12/07/2012 20:14:33.420378 ./arithmeticclient: C150StreamSocket::write: attempting to send packet with len=9 |subtract.|
-12/07/2012 20:14:33.420408 ./arithmeticclient: C150StreamSocket::write: Success writing packet with len=9 |subtract.|
-12/07/2012 20:14:33.420439 ./arithmeticclient: C150StreamSocket::write: attempting to send packet with len=15 |.........x.....|
-12/07/2012 20:14:33.420469 ./arithmeticclient: C150StreamSocket::write: Success writing packet with len=15 |.........x.....|
-12/07/2012 20:14:33.420500 ./arithmeticclient: C150StreamSocket::write: attempting to send packet with len=15 |.........y.....|
-12/07/2012 20:14:33.420530 ./arithmeticclient: C150StreamSocket::write: Success writing packet with len=15 |.........y.....|
-12/07/2012 20:14:33.420558 ./arithmeticclient: arithmetic.proxy.cpp: returned from
-12/07/2012 20:14:33.420586 ./arithmeticclient: C150StreamSocket::read: Ready to read data
-12/07/2012 20:14:33.463335 ./arithmeticclient: C150StreamSocket::read: Dropped through read with len=5
-12/07/2012 20:14:33.463371 ./arithmeticclient: C150StreamSocket::read: successful read with len=5 |DONE.|
-12/07/2012 20:14:33.463400 ./arithmeticclient: C150StreamSocket::read: Ready to read data
-12/07/2012 20:14:33.504024 ./arithmeticclient: C150StreamSocket::read: Dropped through read with len=4
-12/07/2012 20:14:33.504059 ./arithmeticclient: C150StreamSocket::read: successful read with len=4 |....|
-12/07/2012 20:14:33.504100 ./arithmeticclient: C150StreamSocket::read: Ready to read data
-12/07/2012 20:14:33.504140 ./arithmeticclient: C150StreamSocket::read: Dropped through read with len=16
-12/07/2012 20:14:33.504170 ./arithmeticclient: C150StreamSocket::read: successful read with len=16 |.....retval.....|
-12/07/2012 20:14:33.504199 ./arithmeticclient: arithmetic.proxy.cpp: subtract successful return from remote cal
-12/07/2012 20:14:33.504244 ./arithmeticclient: arithmetic.proxy.cpp: invoking
-12/07/2012 20:14:33.504278 ./arithmeticclient: C150StreamSocket::write: attempting to send packet with len=4 |....|
-12/07/2012 20:14:33.504318 ./arithmeticclient: C150StreamSocket::write: Success writing packet with len=4 |....|
-12/07/2012 20:14:33.504350 ./arithmeticclient: C150StreamSocket::write: attempting to send packet with len=9 |multiply.|
-12/07/2012 20:14:33.504380 ./arithmeticclient: C150StreamSocket::write: Success writing packet with len=9 |multiply.|
-12/07/2012 20:14:33.504411 ./arithmeticclient: C150StreamSocket::write: attempting to send packet with len=15 |.........x.....|
-12/07/2012 20:14:33.504442 ./arithmeticclient: C150StreamSocket::write: Success writing packet with len=15 |.........x.....|
-12/07/2012 20:14:33.504472 ./arithmeticclient: C150StreamSocket::write: attempting to send packet with len=15 |.........y.....|
-12/07/2012 20:14:33.504502 ./arithmeticclient: C150StreamSocket::write: Success writing packet with len=15 |.........y.....|
-12/07/2012 20:14:33.504530 ./arithmeticclient: arithmetic.proxy.cpp: returned from
-12/07/2012 20:14:33.504558 ./arithmeticclient: C150StreamSocket::read: Ready to read data
-12/07/2012 20:14:33.547259 ./arithmeticclient: C150StreamSocket::read: Dropped through read with len=5
-12/07/2012 20:14:33.547295 ./arithmeticclient: C150StreamSocket::read: successful read with len=5 |DONE.|
-12/07/2012 20:14:33.547325 ./arithmeticclient: C150StreamSocket::read: Ready to read data
-12/07/2012 20:14:33.588149 ./arithmeticclient: C150StreamSocket::read: Dropped through read with len=4
-12/07/2012 20:14:33.588184 ./arithmeticclient: C150StreamSocket::read: successful read with len=4 |....|
-12/07/2012 20:14:33.588213 ./arithmeticclient: C150StreamSocket::read: Ready to read data
-12/07/2012 20:14:33.588252 ./arithmeticclient: C150StreamSocket::read: Dropped through read with len=16
-12/07/2012 20:14:33.588282 ./arithmeticclient: C150StreamSocket::read: successful read with len=16 |.....retval.....|
-12/07/2012 20:14:33.588311 ./arithmeticclient: arithmetic.proxy.cpp: multiply successful return from remote cal
-12/07/2012 20:14:33.588355 ./arithmeticclient: arithmetic.proxy.cpp: invoking
-12/07/2012 20:14:33.588389 ./arithmeticclient: C150StreamSocket::write: attempting to send packet with len=4 |....|
-12/07/2012 20:14:33.588430 ./arithmeticclient: C150StreamSocket::write: Success writing packet with len=4 |....|
-12/07/2012 20:14:33.588461 ./arithmeticclient: C150StreamSocket::write: attempting to send packet with len=7 |divide.|
-12/07/2012 20:14:33.588492 ./arithmeticclient: C150StreamSocket::write: Success writing packet with len=7 |divide.|
-12/07/2012 20:14:33.588523 ./arithmeticclient: C150StreamSocket::write: attempting to send packet with len=15 |.........x.....|
-12/07/2012 20:14:33.588553 ./arithmeticclient: C150StreamSocket::write: Success writing packet with len=15 |.........x.....|
-12/07/2012 20:14:33.588583 ./arithmeticclient: C150StreamSocket::write: attempting to send packet with len=15 |.........y.....|
-12/07/2012 20:14:33.588613 ./arithmeticclient: C150StreamSocket::write: Success writing packet with len=15 |.........y.....|
-12/07/2012 20:14:33.588641 ./arithmeticclient: arithmetic.proxy.cpp: returned from
-12/07/2012 20:14:33.588669 ./arithmeticclient: C150StreamSocket::read: Ready to read data
-12/07/2012 20:14:33.632121 ./arithmeticclient: C150StreamSocket::read: Dropped through read with len=5
-12/07/2012 20:14:33.632157 ./arithmeticclient: C150StreamSocket::read: successful read with len=5 |DONE.|
-12/07/2012 20:14:33.632186 ./arithmeticclient: C150StreamSocket::read: Ready to read data
-12/07/2012 20:14:33.673025 ./arithmeticclient: C150StreamSocket::read: Dropped through read with len=4
-12/07/2012 20:14:33.673067 ./arithmeticclient: C150StreamSocket::read: successful read with len=4 |....|
-12/07/2012 20:14:33.673098 ./arithmeticclient: C150StreamSocket::read: Ready to read data
-12/07/2012 20:14:33.673138 ./arithmeticclient: C150StreamSocket::read: Dropped through read with len=16
-12/07/2012 20:14:33.673168 ./arithmeticclient: C150StreamSocket::read: successful read with len=16 |.....retval.....|
-12/07/2012 20:14:33.673196 ./arithmeticclient: arithmetic.proxy.cpp: divide successful return from remote cal
-12/07/2012 20:14:33.673241 ./arithmeticclient: arithmetic.proxy.cpp: invoking
-12/07/2012 20:14:33.673276 ./arithmeticclient: C150StreamSocket::write: attempting to send packet with len=4 |....|
-12/07/2012 20:14:33.673316 ./arithmeticclient: C150StreamSocket::write: Success writing packet with len=4 |....|
-12/07/2012 20:14:33.673347 ./arithmeticclient: C150StreamSocket::write: attempting to send packet with len=11 |getStudent.|
-12/07/2012 20:14:33.673378 ./arithmeticclient: C150StreamSocket::write: Success writing packet with len=11 |getStudent.|
-12/07/2012 20:14:33.673409 ./arithmeticclient: C150StreamSocket::write: attempting to send packet with len=16 |.........id.....|
-12/07/2012 20:14:33.673439 ./arithmeticclient: C150StreamSocket::write: Success writing packet with len=16 |.........id.....|
-12/07/2012 20:14:33.673468 ./arithmeticclient: arithmetic.proxy.cpp: returned from
-12/07/2012 20:14:33.673495 ./arithmeticclient: C150StreamSocket::read: Ready to read data
-12/07/2012 20:14:33.716989 ./arithmeticclient: C150StreamSocket::read: Dropped through read with len=5
-12/07/2012 20:14:33.717025 ./arithmeticclient: C150StreamSocket::read: successful read with len=5 |DONE.|
-12/07/2012 20:14:33.717053 ./arithmeticclient: C150StreamSocket::read: Ready to read data
-12/07/2012 20:14:33.758179 ./arithmeticclient: C150StreamSocket::read: Dropped through read with len=4
-12/07/2012 20:14:33.758214 ./arithmeticclient: C150StreamSocket::read: successful read with len=4 | ...|
-12/07/2012 20:14:33.758243 ./arithmeticclient: C150StreamSocket::read: Ready to read data
-12/07/2012 20:14:33.758283 ./arithmeticclient: C150StreamSocket::read: Dropped through read with len=28
-12/07/2012 20:14:33.758312 ./arithmeticclient: C150StreamSocket::read: successful read with len=28 |.....retval..........id.....|
-12/07/2012 20:14:33.758341 ./arithmeticclient: arithmetic.proxy.cpp: getStudent successful return from remote cal
-12/07/2012 20:14:33.758385 ./arithmeticclient: arithmetic.proxy.cpp: invoking
-12/07/2012 20:14:33.758420 ./arithmeticclient: C150StreamSocket::write: attempting to send packet with len=4 |....|
-12/07/2012 20:14:33.758459 ./arithmeticclient: C150StreamSocket::write: Success writing packet with len=4 |....|
-12/07/2012 20:14:33.758491 ./arithmeticclient: C150StreamSocket::write: attempting to send packet with len=11 |getStudent.|
-12/07/2012 20:14:33.758522 ./arithmeticclient: C150StreamSocket::write: Success writing packet with len=11 |getStudent.|
-12/07/2012 20:14:33.758553 ./arithmeticclient: C150StreamSocket::write: attempting to send packet with len=16 |.........id.....|
-12/07/2012 20:14:33.758583 ./arithmeticclient: C150StreamSocket::write: Success writing packet with len=16 |.........id.....|
-12/07/2012 20:14:33.758611 ./arithmeticclient: arithmetic.proxy.cpp: returned from
-12/07/2012 20:14:33.758639 ./arithmeticclient: C150StreamSocket::read: Ready to read data
-12/07/2012 20:14:33.802172 ./arithmeticclient: C150StreamSocket::read: Dropped through read with len=5
-12/07/2012 20:14:33.802208 ./arithmeticclient: C150StreamSocket::read: successful read with len=5 |DONE.|
-12/07/2012 20:14:33.802238 ./arithmeticclient: C150StreamSocket::read: Ready to read data
-12/07/2012 20:14:33.843161 ./arithmeticclient: C150StreamSocket::read: Dropped through read with len=4
-12/07/2012 20:14:33.843197 ./arithmeticclient: C150StreamSocket::read: successful read with len=4 | ...|
-12/07/2012 20:14:33.843236 ./arithmeticclient: C150StreamSocket::read: Ready to read data
-12/07/2012 20:14:33.843276 ./arithmeticclient: C150StreamSocket::read: Dropped through read with len=28
-12/07/2012 20:14:33.843306 ./arithmeticclient: C150StreamSocket::read: successful read with len=28 |.....retval..........id.....|
-12/07/2012 20:14:33.843334 ./arithmeticclient: arithmetic.proxy.cpp: getStudent successful return from remote cal
-12/07/2012 20:14:33.843380 ./arithmeticclient: arithmetic.proxy.cpp: invoking
-12/07/2012 20:14:33.843414 ./arithmeticclient: C150StreamSocket::write: attempting to send packet with len=4 |....|
-12/07/2012 20:14:33.843455 ./arithmeticclient: C150StreamSocket::write: Success writing packet with len=4 |....|
-12/07/2012 20:14:33.843486 ./arithmeticclient: C150StreamSocket::write: attempting to send packet with len=11 |studentAdd.|
-12/07/2012 20:14:33.843517 ./arithmeticclient: C150StreamSocket::write: Success writing packet with len=11 |studentAdd.|
-12/07/2012 20:14:33.843549 ./arithmeticclient: C150StreamSocket::write: attempting to send packet with len=27 |.........s..........id.....|
-12/07/2012 20:14:33.843579 ./arithmeticclient: C150StreamSocket::write: Success writing packet with len=27 |.........s..........id.....|
-12/07/2012 20:14:33.843610 ./arithmeticclient: C150StreamSocket::write: attempting to send packet with len=27 |.........t..........id.....|
-12/07/2012 20:14:33.843640 ./arithmeticclient: C150StreamSocket::write: Success writing packet with len=27 |.........t..........id.....|
-12/07/2012 20:14:33.843668 ./arithmeticclient: arithmetic.proxy.cpp: returned from
-12/07/2012 20:14:33.843754 ./arithmeticclient: C150StreamSocket::read: Ready to read data
-12/07/2012 20:14:33.887116 ./arithmeticclient: C150StreamSocket::read: Dropped through read with len=5
-12/07/2012 20:14:33.887151 ./arithmeticclient: C150StreamSocket::read: successful read with len=5 |DONE.|
-12/07/2012 20:14:33.887181 ./arithmeticclient: C150StreamSocket::read: Ready to read data
-12/07/2012 20:14:33.928085 ./arithmeticclient: C150StreamSocket::read: Dropped through read with len=4
-12/07/2012 20:14:33.928121 ./arithmeticclient: C150StreamSocket::read: successful read with len=4 |....|
-12/07/2012 20:14:33.928150 ./arithmeticclient: C150StreamSocket::read: Ready to read data
-12/07/2012 20:14:33.928190 ./arithmeticclient: C150StreamSocket::read: Dropped through read with len=16
-12/07/2012 20:14:33.928220 ./arithmeticclient: C150StreamSocket::read: successful read with len=16 |.....retval.....|
-12/07/2012 20:14:33.928248 ./arithmeticclient: arithmetic.proxy.cpp: studentAdd successful return from remote cal
-12/07/2012 20:14:33.928313 ./arithmeticclient: arithmetic.proxy.cpp: invoking
-12/07/2012 20:14:33.928348 ./arithmeticclient: C150StreamSocket::write: attempting to send packet with len=4 |....|
-12/07/2012 20:14:33.928388 ./arithmeticclient: C150StreamSocket::write: Success writing packet with len=4 |....|
-12/07/2012 20:14:33.928420 ./arithmeticclient: C150StreamSocket::write: attempting to send packet with len=14 |vertexAddXPos.|
-12/07/2012 20:14:33.928451 ./arithmeticclient: C150StreamSocket::write: Success writing packet with len=14 |vertexAddXPos.|
-12/07/2012 20:14:33.928484 ./arithmeticclient: C150StreamSocket::write: attempting to send packet with len=41 |)........x..........x..............y.....|
-12/07/2012 20:14:33.928515 ./arithmeticclient: C150StreamSocket::write: Success writing packet with len=41 |)........x..........x..............y.....|
-12/07/2012 20:14:33.928547 ./arithmeticclient: C150StreamSocket::write: attempting to send packet with len=41 |)........y..........x.2............y.d...|
-12/07/2012 20:14:33.928577 ./arithmeticclient: C150StreamSocket::write: Success writing packet with len=41 |)........y..........x.2............y.d...|
-12/07/2012 20:14:33.928605 ./arithmeticclient: arithmetic.proxy.cpp: returned from
-12/07/2012 20:14:33.928633 ./arithmeticclient: C150StreamSocket::read: Ready to read data
-12/07/2012 20:14:33.972076 ./arithmeticclient: C150StreamSocket::read: Dropped through read with len=5
-12/07/2012 20:14:33.972120 ./arithmeticclient: C150StreamSocket::read: successful read with len=5 |DONE.|
-12/07/2012 20:14:33.972149 ./arithmeticclient: C150StreamSocket::read: Ready to read data
-12/07/2012 20:14:34.013037 ./arithmeticclient: C150StreamSocket::read: Dropped through read with len=4
-12/07/2012 20:14:34.013081 ./arithmeticclient: C150StreamSocket::read: successful read with len=4 |....|
-12/07/2012 20:14:34.013111 ./arithmeticclient: C150StreamSocket::read: Ready to read data
-12/07/2012 20:14:34.013152 ./arithmeticclient: C150StreamSocket::read: Dropped through read with len=16
-12/07/2012 20:14:34.013182 ./arithmeticclient: C150StreamSocket::read: successful read with len=16 |.....retval.7...|
-12/07/2012 20:14:34.013210 ./arithmeticclient: arithmetic.proxy.cpp: vertexAddXPos successful return from remote cal
-12/07/2012 20:14:34.013255 ./arithmeticclient: arithmetic.proxy.cpp: invoking
-12/07/2012 20:14:34.013289 ./arithmeticclient: C150StreamSocket::write: attempting to send packet with len=4 |....|
-12/07/2012 20:14:34.013330 ./arithmeticclient: C150StreamSocket::write: Success writing packet with len=4 |....|
-12/07/2012 20:14:34.013361 ./arithmeticclient: C150StreamSocket::write: attempting to send packet with len=14 |vertexAddYPos.|
-12/07/2012 20:14:34.013392 ./arithmeticclient: C150StreamSocket::write: Success writing packet with len=14 |vertexAddYPos.|
-12/07/2012 20:14:34.013425 ./arithmeticclient: C150StreamSocket::write: attempting to send packet with len=41 |)........x..........x.2............y.d...|
-12/07/2012 20:14:34.013456 ./arithmeticclient: C150StreamSocket::write: Success writing packet with len=41 |)........x..........x.2............y.d...|
-12/07/2012 20:14:34.013488 ./arithmeticclient: C150StreamSocket::write: attempting to send packet with len=41 |)........y..........x..............y.....|
-12/07/2012 20:14:34.013518 ./arithmeticclient: C150StreamSocket::write: Success writing packet with len=41 |)........y..........x..............y.....|
-12/07/2012 20:14:34.013546 ./arithmeticclient: arithmetic.proxy.cpp: returned from
-12/07/2012 20:14:34.013574 ./arithmeticclient: C150StreamSocket::read: Ready to read data
-12/07/2012 20:14:34.057038 ./arithmeticclient: C150StreamSocket::read: Dropped through read with len=5
-12/07/2012 20:14:34.057074 ./arithmeticclient: C150StreamSocket::read: successful read with len=5 |DONE.|
-12/07/2012 20:14:34.057103 ./arithmeticclient: C150StreamSocket::read: Ready to read data
-12/07/2012 20:14:34.097989 ./arithmeticclient: C150StreamSocket::read: Dropped through read with len=4
-12/07/2012 20:14:34.098025 ./arithmeticclient: C150StreamSocket::read: successful read with len=4 |....|
-12/07/2012 20:14:34.098054 ./arithmeticclient: C150StreamSocket::read: Ready to read data
-12/07/2012 20:14:34.098094 ./arithmeticclient: C150StreamSocket::read: Dropped through read with len=16
-12/07/2012 20:14:34.098124 ./arithmeticclient: C150StreamSocket::read: successful read with len=16 |.....retval.n...|
-12/07/2012 20:14:34.098152 ./arithmeticclient: arithmetic.proxy.cpp: vertexAddYPos successful return from remote cal
-12/07/2012 20:14:34.098197 ./arithmeticclient: arithmetic.proxy.cpp: invoking
-12/07/2012 20:14:34.098231 ./arithmeticclient: C150StreamSocket::write: attempting to send packet with len=4 |....|
-12/07/2012 20:14:34.098271 ./arithmeticclient: C150StreamSocket::write: Success writing packet with len=4 |....|
-12/07/2012 20:14:34.098303 ./arithmeticclient: C150StreamSocket::write: attempting to send packet with len=13 |createVertex.|
-12/07/2012 20:14:34.098333 ./arithmeticclient: C150StreamSocket::write: Success writing packet with len=13 |createVertex.|
-12/07/2012 20:14:34.098364 ./arithmeticclient: C150StreamSocket::write: attempting to send packet with len=15 |.........x.....|
-12/07/2012 20:14:34.098395 ./arithmeticclient: C150StreamSocket::write: Success writing packet with len=15 |.........x.....|
-12/07/2012 20:14:34.098425 ./arithmeticclient: C150StreamSocket::write: attempting to send packet with len=15 |.........y.$...|
-12/07/2012 20:14:34.098455 ./arithmeticclient: C150StreamSocket::write: Success writing packet with len=15 |.........y.$...|
-12/07/2012 20:14:34.098492 ./arithmeticclient: arithmetic.proxy.cpp: returned from
-12/07/2012 20:14:34.098520 ./arithmeticclient: C150StreamSocket::read: Ready to read data
-12/07/2012 20:14:34.145012 ./arithmeticclient: C150StreamSocket::read: Dropped through read with len=5
-12/07/2012 20:14:34.145048 ./arithmeticclient: C150StreamSocket::read: successful read with len=5 |DONE.|
-12/07/2012 20:14:34.145077 ./arithmeticclient: C150StreamSocket::read: Ready to read data
-12/07/2012 20:14:34.185953 ./arithmeticclient: C150StreamSocket::read: Dropped through read with len=4
-12/07/2012 20:14:34.185989 ./arithmeticclient: C150StreamSocket::read: successful read with len=4 |....|
-12/07/2012 20:14:34.186018 ./arithmeticclient: C150StreamSocket::read: Ready to read data
-12/07/2012 20:14:34.186057 ./arithmeticclient: C150StreamSocket::read: Dropped through read with len=42
-12/07/2012 20:14:34.186088 ./arithmeticclient: C150StreamSocket::read: successful read with len=42 |.....retval..........x..............y.$...|
-12/07/2012 20:14:34.186117 ./arithmeticclient: arithmetic.proxy.cpp: createVertex successful return from remote cal
-12/07/2012 20:14:34.186162 ./arithmeticclient: arithmetic.proxy.cpp: invoking
-12/07/2012 20:14:34.186196 ./arithmeticclient: C150StreamSocket::write: attempting to send packet with len=4 |....|
-12/07/2012 20:14:34.186236 ./arithmeticclient: C150StreamSocket::write: Success writing packet with len=4 |....|
-12/07/2012 20:14:34.186268 ./arithmeticclient: C150StreamSocket::write: attempting to send packet with len=16 |createRectangle.|
-12/07/2012 20:14:34.186299 ./arithmeticclient: C150StreamSocket::write: Success writing packet with len=16 |createRectangle.|
-12/07/2012 20:14:34.186332 ./arithmeticclient: C150StreamSocket::write: attempting to send packet with len=41 |)........x..........x..............y.....|
-12/07/2012 20:14:34.186362 ./arithmeticclient: C150StreamSocket::write: Success writing packet with len=41 |)........x..........x..............y.....|
-12/07/2012 20:14:34.186395 ./arithmeticclient: C150StreamSocket::write: attempting to send packet with len=41 |)........y..........x.2............y.d...|
-12/07/2012 20:14:34.186425 ./arithmeticclient: C150StreamSocket::write: Success writing packet with len=41 |)........y..........x.2............y.d...|
-12/07/2012 20:14:34.186453 ./arithmeticclient: arithmetic.proxy.cpp: returned from
-12/07/2012 20:14:34.186481 ./arithmeticclient: C150StreamSocket::read: Ready to read data
-12/07/2012 20:14:34.229965 ./arithmeticclient: C150StreamSocket::read: Dropped through read with len=5
-12/07/2012 20:14:34.230000 ./arithmeticclient: C150StreamSocket::read: successful read with len=5 |DONE.|
-12/07/2012 20:14:34.230031 ./arithmeticclient: C150StreamSocket::read: Ready to read data
-12/07/2012 20:14:34.282111 ./arithmeticclient: C150StreamSocket::read: Dropped through read with len=4
-12/07/2012 20:14:34.282147 ./arithmeticclient: C150StreamSocket::read: successful read with len=4 |n...|
-12/07/2012 20:14:34.282177 ./arithmeticclient: C150StreamSocket::read: Ready to read data
-12/07/2012 20:14:34.282215 ./arithmeticclient: C150StreamSocket::read: Dropped through read with len=106
-12/07/2012 20:14:34.282248 ./arithmeticclient: C150StreamSocket::read: successful read with len=106 |.....retval./........corner1..........x..............y...../........corner2..........x.2............|
-12/07/2012 20:14:34.282278 ./arithmeticclient: arithmetic.proxy.cpp: createRectangle successful return from remote cal
-12/07/2012 20:14:34.282324 ./arithmeticclient: arithmetic.proxy.cpp: invoking
-12/07/2012 20:14:34.282359 ./arithmeticclient: C150StreamSocket::write: attempting to send packet with len=4 |....|
-12/07/2012 20:14:34.282399 ./arithmeticclient: C150StreamSocket::write: Success writing packet with len=4 |....|
-12/07/2012 20:14:34.282431 ./arithmeticclient: C150StreamSocket::write: attempting to send packet with len=16 |createRectangle.|
-12/07/2012 20:14:34.282462 ./arithmeticclient: C150StreamSocket::write: Success writing packet with len=16 |createRectangle.|
-12/07/2012 20:14:34.282505 ./arithmeticclient: C150StreamSocket::write: attempting to send packet with len=41 |)........x..........x.2............y.d...|
-12/07/2012 20:14:34.282535 ./arithmeticclient: C150StreamSocket::write: Success writing packet with len=41 |)........x..........x.2............y.d...|
-12/07/2012 20:14:34.282568 ./arithmeticclient: C150StreamSocket::write: attempting to send packet with len=41 |)........y..........x..............y.....|
-12/07/2012 20:14:34.282598 ./arithmeticclient: C150StreamSocket::write: Success writing packet with len=41 |)........y..........x..............y.....|
-12/07/2012 20:14:34.282672 ./arithmeticclient: arithmetic.proxy.cpp: returned from
-12/07/2012 20:14:34.282702 ./arithmeticclient: C150StreamSocket::read: Ready to read data
-12/07/2012 20:14:34.325073 ./arithmeticclient: C150StreamSocket::read: Dropped through read with len=5
-12/07/2012 20:14:34.325109 ./arithmeticclient: C150StreamSocket::read: successful read with len=5 |DONE.|
-12/07/2012 20:14:34.325139 ./arithmeticclient: C150StreamSocket::read: Ready to read data
-12/07/2012 20:14:34.366014 ./arithmeticclient: C150StreamSocket::read: Dropped through read with len=4
-12/07/2012 20:14:34.366050 ./arithmeticclient: C150StreamSocket::read: successful read with len=4 |n...|
-12/07/2012 20:14:34.366080 ./arithmeticclient: C150StreamSocket::read: Ready to read data
-12/07/2012 20:14:34.366118 ./arithmeticclient: C150StreamSocket::read: Dropped through read with len=106
-12/07/2012 20:14:34.366188 ./arithmeticclient: C150StreamSocket::read: successful read with len=106 |.....retval./........corner1..........x.2............y.d.../........corner2..........x..............|
-12/07/2012 20:14:34.366218 ./arithmeticclient: arithmetic.proxy.cpp: createRectangle successful return from remote cal
-12/07/2012 20:14:34.366264 ./arithmeticclient: arithmetic.proxy.cpp: invoking
-12/07/2012 20:14:34.366299 ./arithmeticclient: C150StreamSocket::write: attempting to send packet with len=4 |....|
-12/07/2012 20:14:34.366340 ./arithmeticclient: C150StreamSocket::write: Success writing packet with len=4 |....|
-12/07/2012 20:14:34.366371 ./arithmeticclient: C150StreamSocket::write: attempting to send packet with len=13 |rectangleAdd.|
-12/07/2012 20:14:34.366402 ./arithmeticclient: C150StreamSocket::write: Success writing packet with len=13 |rectangleAdd.|
-12/07/2012 20:14:34.366440 ./arithmeticclient: C150StreamSocket::write: attempting to send packet with len=106 |j........r1./........corner1..........x..............y...../........corner2..........x.2............|
-12/07/2012 20:14:34.366471 ./arithmeticclient: C150StreamSocket::write: Success writing packet with len=106 |j........r1./........corner1..........x..............y...../........corner2..........x.2............|
-12/07/2012 20:14:34.366507 ./arithmeticclient: C150StreamSocket::write: attempting to send packet with len=106 |j........r2./........corner1..........x.2............y.d.../........corner2..........x..............|
-12/07/2012 20:14:34.366537 ./arithmeticclient: C150StreamSocket::write: Success writing packet with len=106 |j........r2./........corner1..........x.2............y.d.../........corner2..........x..............|
-12/07/2012 20:14:34.366566 ./arithmeticclient: arithmetic.proxy.cpp: returned from
-12/07/2012 20:14:34.366593 ./arithmeticclient: C150StreamSocket::read: Ready to read data
-12/07/2012 20:14:34.408975 ./arithmeticclient: C150StreamSocket::read: Dropped through read with len=5
-12/07/2012 20:14:34.409010 ./arithmeticclient: C150StreamSocket::read: successful read with len=5 |DONE.|
-12/07/2012 20:14:34.409039 ./arithmeticclient: C150StreamSocket::read: Ready to read data
-12/07/2012 20:14:34.449943 ./arithmeticclient: C150StreamSocket::read: Dropped through read with len=4
-12/07/2012 20:14:34.449979 ./arithmeticclient: C150StreamSocket::read: successful read with len=4 |....|
-12/07/2012 20:14:34.450008 ./arithmeticclient: C150StreamSocket::read: Ready to read data
-12/07/2012 20:14:34.450048 ./arithmeticclient: C150StreamSocket::read: Dropped through read with len=16
-12/07/2012 20:14:34.450087 ./arithmeticclient: C150StreamSocket::read: successful read with len=16 |.....retval.J...|
-12/07/2012 20:14:34.450115 ./arithmeticclient: arithmetic.proxy.cpp: rectangleAdd successful return from remote cal
-12/07/2012 20:14:34.450159 ./arithmeticclient: arithmetic.proxy.cpp: invoking
-12/07/2012 20:14:34.450194 ./arithmeticclient: C150StreamSocket::write: attempting to send packet with len=4 |....|
-12/07/2012 20:14:34.450234 ./arithmeticclient: C150StreamSocket::write: Success writing packet with len=4 |....|
-12/07/2012 20:14:34.450266 ./arithmeticclient: C150StreamSocket::write: attempting to send packet with len=24 |rectangleCornerDistance.|
-12/07/2012 20:14:34.450297 ./arithmeticclient: C150StreamSocket::write: Success writing packet with len=24 |rectangleCornerDistance.|
-12/07/2012 20:14:34.450335 ./arithmeticclient: C150StreamSocket::write: attempting to send packet with len=106 |j........r1./........corner1..........x.2............y.d.../........corner2..........x..............|
-12/07/2012 20:14:34.450366 ./arithmeticclient: C150StreamSocket::write: Success writing packet with len=106 |j........r1./........corner1..........x.2............y.d.../........corner2..........x..............|
-12/07/2012 20:14:34.450394 ./arithmeticclient: arithmetic.proxy.cpp: returned from
-12/07/2012 20:14:34.450422 ./arithmeticclient: C150StreamSocket::read: Ready to read data
-12/07/2012 20:14:34.493450 ./arithmeticclient: C150StreamSocket::read: Dropped through read with len=5
-12/07/2012 20:14:34.493485 ./arithmeticclient: C150StreamSocket::read: successful read with len=5 |DONE.|
-12/07/2012 20:14:34.493515 ./arithmeticclient: C150StreamSocket::read: Ready to read data
-12/07/2012 20:14:34.533564 ./arithmeticclient: C150StreamSocket::read: Dropped through read with len=4
-12/07/2012 20:14:34.533640 ./arithmeticclient: C150StreamSocket::read: successful read with len=4 |....|
-12/07/2012 20:14:34.533672 ./arithmeticclient: C150StreamSocket::read: Ready to read data
-12/07/2012 20:14:34.533711 ./arithmeticclient: C150StreamSocket::read: Dropped through read with len=16
-12/07/2012 20:14:34.533741 ./arithmeticclient: C150StreamSocket::read: successful read with len=16 |.....retval..?.B|
-12/07/2012 20:14:34.533774 ./arithmeticclient: arithmetic.proxy.cpp: rectangleCornerDistance successful return from remote cal
+12/08/2012 02:09:01.693500 ./arithmeticclient: rpcproxyinitialize: Creating C150StreamSocket
+12/08/2012 02:09:01.696438 ./arithmeticclient: C150StreamSocket::C150StreamSocket: user port is 7034
+12/08/2012 02:09:01.696474 ./arithmeticclient: C150StreamSocket::connect(COMP150IDS-01) called
+12/08/2012 02:09:01.703657 ./arithmeticclient: arithmetic.proxy.cpp: invoking
+12/08/2012 02:09:01.703702 ./arithmeticclient: C150StreamSocket::write: attempting to send packet with len=4 |....|
+12/08/2012 02:09:01.703743 ./arithmeticclient: C150StreamSocket::write: Success writing packet with len=4 |....|
+12/08/2012 02:09:01.703774 ./arithmeticclient: C150StreamSocket::write: attempting to send packet with len=4 |add.|
+12/08/2012 02:09:01.703833 ./arithmeticclient: C150StreamSocket::write: Success writing packet with len=4 |add.|
+12/08/2012 02:09:01.703866 ./arithmeticclient: C150StreamSocket::write: attempting to send packet with len=15 |.........x.....|
+12/08/2012 02:09:01.703897 ./arithmeticclient: C150StreamSocket::write: Success writing packet with len=15 |.........x.....|
+12/08/2012 02:09:01.703927 ./arithmeticclient: C150StreamSocket::write: attempting to send packet with len=15 |.........y.....|
+12/08/2012 02:09:01.703957 ./arithmeticclient: C150StreamSocket::write: Success writing packet with len=15 |.........y.....|
+12/08/2012 02:09:01.703985 ./arithmeticclient: arithmetic.proxy.cpp: returned from
+12/08/2012 02:09:01.704020 ./arithmeticclient: C150StreamSocket::read: Ready to read data
+12/08/2012 02:09:01.706607 ./arithmeticclient: C150StreamSocket::read: Dropped through read with len=5
+12/08/2012 02:09:01.706637 ./arithmeticclient: C150StreamSocket::read: successful read with len=5 |DONE.|
+12/08/2012 02:09:01.706671 ./arithmeticclient: C150StreamSocket::read: Ready to read data
+12/08/2012 02:09:01.708386 ./arithmeticclient: C150StreamSocket::read: Dropped through read with len=4
+12/08/2012 02:09:01.708415 ./arithmeticclient: C150StreamSocket::read: successful read with len=4 |....|
+12/08/2012 02:09:01.708442 ./arithmeticclient: C150StreamSocket::read: Ready to read data
+12/08/2012 02:09:01.708472 ./arithmeticclient: C150StreamSocket::read: Dropped through read with len=16
+12/08/2012 02:09:01.708501 ./arithmeticclient: C150StreamSocket::read: successful read with len=16 |.....retval.....|
+12/08/2012 02:09:01.708528 ./arithmeticclient: arithmetic.proxy.cpp: add successful return from remote cal
+12/08/2012 02:09:01.708657 ./arithmeticclient: arithmetic.proxy.cpp: invoking
+12/08/2012 02:09:01.708688 ./arithmeticclient: C150StreamSocket::write: attempting to send packet with len=4 |....|
+12/08/2012 02:09:01.708725 ./arithmeticclient: C150StreamSocket::write: Success writing packet with len=4 |....|
+12/08/2012 02:09:01.708755 ./arithmeticclient: C150StreamSocket::write: attempting to send packet with len=9 |subtract.|
+12/08/2012 02:09:01.708850 ./arithmeticclient: C150StreamSocket::write: Success writing packet with len=9 |subtract.|
+12/08/2012 02:09:01.708881 ./arithmeticclient: C150StreamSocket::write: attempting to send packet with len=15 |.........x.....|
+12/08/2012 02:09:01.708912 ./arithmeticclient: C150StreamSocket::write: Success writing packet with len=15 |.........x.....|
+12/08/2012 02:09:01.708942 ./arithmeticclient: C150StreamSocket::write: attempting to send packet with len=15 |.........y.....|
+12/08/2012 02:09:01.708972 ./arithmeticclient: C150StreamSocket::write: Success writing packet with len=15 |.........y.....|
+12/08/2012 02:09:01.709000 ./arithmeticclient: arithmetic.proxy.cpp: returned from
+12/08/2012 02:09:01.709027 ./arithmeticclient: C150StreamSocket::read: Ready to read data
+12/08/2012 02:09:01.751513 ./arithmeticclient: C150StreamSocket::read: Dropped through read with len=5
+12/08/2012 02:09:01.751548 ./arithmeticclient: C150StreamSocket::read: successful read with len=5 |DONE.|
+12/08/2012 02:09:01.751577 ./arithmeticclient: C150StreamSocket::read: Ready to read data
+12/08/2012 02:09:01.792568 ./arithmeticclient: C150StreamSocket::read: Dropped through read with len=4
+12/08/2012 02:09:01.792603 ./arithmeticclient: C150StreamSocket::read: successful read with len=4 |....|
+12/08/2012 02:09:01.792674 ./arithmeticclient: C150StreamSocket::read: Ready to read data
+12/08/2012 02:09:01.792713 ./arithmeticclient: C150StreamSocket::read: Dropped through read with len=16
+12/08/2012 02:09:01.792743 ./arithmeticclient: C150StreamSocket::read: successful read with len=16 |.....retval.....|
+12/08/2012 02:09:01.792771 ./arithmeticclient: arithmetic.proxy.cpp: subtract successful return from remote cal
+12/08/2012 02:09:01.792912 ./arithmeticclient: arithmetic.proxy.cpp: invoking
+12/08/2012 02:09:01.792947 ./arithmeticclient: C150StreamSocket::write: attempting to send packet with len=4 |....|
+12/08/2012 02:09:01.792985 ./arithmeticclient: C150StreamSocket::write: Success writing packet with len=4 |....|
+12/08/2012 02:09:01.793016 ./arithmeticclient: C150StreamSocket::write: attempting to send packet with len=9 |multiply.|
+12/08/2012 02:09:01.793047 ./arithmeticclient: C150StreamSocket::write: Success writing packet with len=9 |multiply.|
+12/08/2012 02:09:01.793077 ./arithmeticclient: C150StreamSocket::write: attempting to send packet with len=15 |.........x.....|
+12/08/2012 02:09:01.793199 ./arithmeticclient: C150StreamSocket::write: Success writing packet with len=15 |.........x.....|
+12/08/2012 02:09:01.793235 ./arithmeticclient: C150StreamSocket::write: attempting to send packet with len=15 |.........y.....|
+12/08/2012 02:09:01.793266 ./arithmeticclient: C150StreamSocket::write: Success writing packet with len=15 |.........y.....|
+12/08/2012 02:09:01.793294 ./arithmeticclient: arithmetic.proxy.cpp: returned from
+12/08/2012 02:09:01.793323 ./arithmeticclient: C150StreamSocket::read: Ready to read data
+12/08/2012 02:09:01.835531 ./arithmeticclient: C150StreamSocket::read: Dropped through read with len=5
+12/08/2012 02:09:01.835567 ./arithmeticclient: C150StreamSocket::read: successful read with len=5 |DONE.|
+12/08/2012 02:09:01.835596 ./arithmeticclient: C150StreamSocket::read: Ready to read data
+12/08/2012 02:09:01.876474 ./arithmeticclient: C150StreamSocket::read: Dropped through read with len=4
+12/08/2012 02:09:01.876509 ./arithmeticclient: C150StreamSocket::read: successful read with len=4 |....|
+12/08/2012 02:09:01.876537 ./arithmeticclient: C150StreamSocket::read: Ready to read data
+12/08/2012 02:09:01.876575 ./arithmeticclient: C150StreamSocket::read: Dropped through read with len=16
+12/08/2012 02:09:01.876604 ./arithmeticclient: C150StreamSocket::read: successful read with len=16 |.....retval.....|
+12/08/2012 02:09:01.876631 ./arithmeticclient: arithmetic.proxy.cpp: multiply successful return from remote cal
+12/08/2012 02:09:01.876674 ./arithmeticclient: arithmetic.proxy.cpp: invoking
+12/08/2012 02:09:01.876708 ./arithmeticclient: C150StreamSocket::write: attempting to send packet with len=4 |....|
+12/08/2012 02:09:01.876747 ./arithmeticclient: C150StreamSocket::write: Success writing packet with len=4 |....|
+12/08/2012 02:09:01.876778 ./arithmeticclient: C150StreamSocket::write: attempting to send packet with len=7 |divide.|
+12/08/2012 02:09:01.876809 ./arithmeticclient: C150StreamSocket::write: Success writing packet with len=7 |divide.|
+12/08/2012 02:09:01.876839 ./arithmeticclient: C150StreamSocket::write: attempting to send packet with len=15 |.........x.....|
+12/08/2012 02:09:01.876869 ./arithmeticclient: C150StreamSocket::write: Success writing packet with len=15 |.........x.....|
+12/08/2012 02:09:01.876899 ./arithmeticclient: C150StreamSocket::write: attempting to send packet with len=15 |.........y.....|
+12/08/2012 02:09:01.876930 ./arithmeticclient: C150StreamSocket::write: Success writing packet with len=15 |.........y.....|
+12/08/2012 02:09:01.876958 ./arithmeticclient: arithmetic.proxy.cpp: returned from
+12/08/2012 02:09:01.876985 ./arithmeticclient: C150StreamSocket::read: Ready to read data
+12/08/2012 02:09:01.920440 ./arithmeticclient: C150StreamSocket::read: Dropped through read with len=5
+12/08/2012 02:09:01.920476 ./arithmeticclient: C150StreamSocket::read: successful read with len=5 |DONE.|
+12/08/2012 02:09:01.920505 ./arithmeticclient: C150StreamSocket::read: Ready to read data
+12/08/2012 02:09:01.961424 ./arithmeticclient: C150StreamSocket::read: Dropped through read with len=4
+12/08/2012 02:09:01.961459 ./arithmeticclient: C150StreamSocket::read: successful read with len=4 |....|
+12/08/2012 02:09:01.961488 ./arithmeticclient: C150StreamSocket::read: Ready to read data
+12/08/2012 02:09:01.961527 ./arithmeticclient: C150StreamSocket::read: Dropped through read with len=16
+12/08/2012 02:09:01.961556 ./arithmeticclient: C150StreamSocket::read: successful read with len=16 |.....retval.....|
+12/08/2012 02:09:01.961583 ./arithmeticclient: arithmetic.proxy.cpp: divide successful return from remote cal
+12/08/2012 02:09:01.961627 ./arithmeticclient: arithmetic.proxy.cpp: invoking
+12/08/2012 02:09:01.961661 ./arithmeticclient: C150StreamSocket::write: attempting to send packet with len=4 |....|
+12/08/2012 02:09:01.961701 ./arithmeticclient: C150StreamSocket::write: Success writing packet with len=4 |....|
+12/08/2012 02:09:01.961732 ./arithmeticclient: C150StreamSocket::write: attempting to send packet with len=11 |getStudent.|
+12/08/2012 02:09:01.961763 ./arithmeticclient: C150StreamSocket::write: Success writing packet with len=11 |getStudent.|
+12/08/2012 02:09:01.961793 ./arithmeticclient: C150StreamSocket::write: attempting to send packet with len=16 |.........id.....|
+12/08/2012 02:09:01.961824 ./arithmeticclient: C150StreamSocket::write: Success writing packet with len=16 |.........id.....|
+12/08/2012 02:09:01.961852 ./arithmeticclient: arithmetic.proxy.cpp: returned from
+12/08/2012 02:09:01.961900 ./arithmeticclient: C150StreamSocket::read: Ready to read data
+12/08/2012 02:09:02.004395 ./arithmeticclient: C150StreamSocket::read: Dropped through read with len=5
+12/08/2012 02:09:02.004431 ./arithmeticclient: C150StreamSocket::read: successful read with len=5 |DONE.|
+12/08/2012 02:09:02.004460 ./arithmeticclient: C150StreamSocket::read: Ready to read data
+12/08/2012 02:09:02.045572 ./arithmeticclient: C150StreamSocket::read: Dropped through read with len=4
+12/08/2012 02:09:02.045608 ./arithmeticclient: C150StreamSocket::read: successful read with len=4 | ...|
+12/08/2012 02:09:02.045637 ./arithmeticclient: C150StreamSocket::read: Ready to read data
+12/08/2012 02:09:02.045675 ./arithmeticclient: C150StreamSocket::read: Dropped through read with len=28
+12/08/2012 02:09:02.045704 ./arithmeticclient: C150StreamSocket::read: successful read with len=28 |.....retval..........id.....|
+12/08/2012 02:09:02.045732 ./arithmeticclient: arithmetic.proxy.cpp: getStudent successful return from remote cal
+12/08/2012 02:09:02.045775 ./arithmeticclient: arithmetic.proxy.cpp: invoking
+12/08/2012 02:09:02.045809 ./arithmeticclient: C150StreamSocket::write: attempting to send packet with len=4 |....|
+12/08/2012 02:09:02.045849 ./arithmeticclient: C150StreamSocket::write: Success writing packet with len=4 |....|
+12/08/2012 02:09:02.045880 ./arithmeticclient: C150StreamSocket::write: attempting to send packet with len=11 |getStudent.|
+12/08/2012 02:09:02.045911 ./arithmeticclient: C150StreamSocket::write: Success writing packet with len=11 |getStudent.|
+12/08/2012 02:09:02.045942 ./arithmeticclient: C150StreamSocket::write: attempting to send packet with len=16 |.........id.....|
+12/08/2012 02:09:02.045972 ./arithmeticclient: C150StreamSocket::write: Success writing packet with len=16 |.........id.....|
+12/08/2012 02:09:02.046001 ./arithmeticclient: arithmetic.proxy.cpp: returned from
+12/08/2012 02:09:02.046028 ./arithmeticclient: C150StreamSocket::read: Ready to read data
+12/08/2012 02:09:02.089539 ./arithmeticclient: C150StreamSocket::read: Dropped through read with len=5
+12/08/2012 02:09:02.089574 ./arithmeticclient: C150StreamSocket::read: successful read with len=5 |DONE.|
+12/08/2012 02:09:02.089603 ./arithmeticclient: C150StreamSocket::read: Ready to read data
+12/08/2012 02:09:02.130466 ./arithmeticclient: C150StreamSocket::read: Dropped through read with len=4
+12/08/2012 02:09:02.130500 ./arithmeticclient: C150StreamSocket::read: successful read with len=4 | ...|
+12/08/2012 02:09:02.130539 ./arithmeticclient: C150StreamSocket::read: Ready to read data
+12/08/2012 02:09:02.130580 ./arithmeticclient: C150StreamSocket::read: Dropped through read with len=28
+12/08/2012 02:09:02.130610 ./arithmeticclient: C150StreamSocket::read: successful read with len=28 |.....retval..........id.....|
+12/08/2012 02:09:02.130639 ./arithmeticclient: arithmetic.proxy.cpp: getStudent successful return from remote cal
+12/08/2012 02:09:02.130681 ./arithmeticclient: arithmetic.proxy.cpp: invoking
+12/08/2012 02:09:02.130714 ./arithmeticclient: C150StreamSocket::write: attempting to send packet with len=4 |....|
+12/08/2012 02:09:02.130754 ./arithmeticclient: C150StreamSocket::write: Success writing packet with len=4 |....|
+12/08/2012 02:09:02.130785 ./arithmeticclient: C150StreamSocket::write: attempting to send packet with len=11 |studentAdd.|
+12/08/2012 02:09:02.130815 ./arithmeticclient: C150StreamSocket::write: Success writing packet with len=11 |studentAdd.|
+12/08/2012 02:09:02.130848 ./arithmeticclient: C150StreamSocket::write: attempting to send packet with len=27 |.........s..........id.....|
+12/08/2012 02:09:02.130878 ./arithmeticclient: C150StreamSocket::write: Success writing packet with len=27 |.........s..........id.....|
+12/08/2012 02:09:02.130909 ./arithmeticclient: C150StreamSocket::write: attempting to send packet with len=27 |.........t..........id.....|
+12/08/2012 02:09:02.130940 ./arithmeticclient: C150StreamSocket::write: Success writing packet with len=27 |.........t..........id.....|
+12/08/2012 02:09:02.130968 ./arithmeticclient: arithmetic.proxy.cpp: returned from
+12/08/2012 02:09:02.130996 ./arithmeticclient: C150StreamSocket::read: Ready to read data
+12/08/2012 02:09:02.173441 ./arithmeticclient: C150StreamSocket::read: Dropped through read with len=5
+12/08/2012 02:09:02.173476 ./arithmeticclient: C150StreamSocket::read: successful read with len=5 |DONE.|
+12/08/2012 02:09:02.173506 ./arithmeticclient: C150StreamSocket::read: Ready to read data
+12/08/2012 02:09:02.214362 ./arithmeticclient: C150StreamSocket::read: Dropped through read with len=4
+12/08/2012 02:09:02.214398 ./arithmeticclient: C150StreamSocket::read: successful read with len=4 |....|
+12/08/2012 02:09:02.214427 ./arithmeticclient: C150StreamSocket::read: Ready to read data
+12/08/2012 02:09:02.214465 ./arithmeticclient: C150StreamSocket::read: Dropped through read with len=16
+12/08/2012 02:09:02.214494 ./arithmeticclient: C150StreamSocket::read: successful read with len=16 |.....retval.....|
+12/08/2012 02:09:02.214521 ./arithmeticclient: arithmetic.proxy.cpp: studentAdd successful return from remote cal
+12/08/2012 02:09:02.214564 ./arithmeticclient: arithmetic.proxy.cpp: invoking
+12/08/2012 02:09:02.214598 ./arithmeticclient: C150StreamSocket::write: attempting to send packet with len=4 |....|
+12/08/2012 02:09:02.214638 ./arithmeticclient: C150StreamSocket::write: Success writing packet with len=4 |....|
+12/08/2012 02:09:02.214669 ./arithmeticclient: C150StreamSocket::write: attempting to send packet with len=14 |vertexAddXPos.|
+12/08/2012 02:09:02.214700 ./arithmeticclient: C150StreamSocket::write: Success writing packet with len=14 |vertexAddXPos.|
+12/08/2012 02:09:02.214733 ./arithmeticclient: C150StreamSocket::write: attempting to send packet with len=41 |)........x..........x..............y.....|
+12/08/2012 02:09:02.214763 ./arithmeticclient: C150StreamSocket::write: Success writing packet with len=41 |)........x..........x..............y.....|
+12/08/2012 02:09:02.214795 ./arithmeticclient: C150StreamSocket::write: attempting to send packet with len=41 |)........y..........x.2............y.d...|
+12/08/2012 02:09:02.214826 ./arithmeticclient: C150StreamSocket::write: Success writing packet with len=41 |)........y..........x.2............y.d...|
+12/08/2012 02:09:02.214854 ./arithmeticclient: arithmetic.proxy.cpp: returned from
+12/08/2012 02:09:02.214882 ./arithmeticclient: C150StreamSocket::read: Ready to read data
+12/08/2012 02:09:02.258338 ./arithmeticclient: C150StreamSocket::read: Dropped through read with len=5
+12/08/2012 02:09:02.258383 ./arithmeticclient: C150StreamSocket::read: successful read with len=5 |DONE.|
+12/08/2012 02:09:02.258413 ./arithmeticclient: C150StreamSocket::read: Ready to read data
+12/08/2012 02:09:02.299527 ./arithmeticclient: C150StreamSocket::read: Dropped through read with len=4
+12/08/2012 02:09:02.299563 ./arithmeticclient: C150StreamSocket::read: successful read with len=4 |....|
+12/08/2012 02:09:02.299593 ./arithmeticclient: C150StreamSocket::read: Ready to read data
+12/08/2012 02:09:02.299631 ./arithmeticclient: C150StreamSocket::read: Dropped through read with len=16
+12/08/2012 02:09:02.299660 ./arithmeticclient: C150StreamSocket::read: successful read with len=16 |.....retval.7...|
+12/08/2012 02:09:02.299688 ./arithmeticclient: arithmetic.proxy.cpp: vertexAddXPos successful return from remote cal
+12/08/2012 02:09:02.299730 ./arithmeticclient: arithmetic.proxy.cpp: invoking
+12/08/2012 02:09:02.299764 ./arithmeticclient: C150StreamSocket::write: attempting to send packet with len=4 |....|
+12/08/2012 02:09:02.299804 ./arithmeticclient: C150StreamSocket::write: Success writing packet with len=4 |....|
+12/08/2012 02:09:02.299835 ./arithmeticclient: C150StreamSocket::write: attempting to send packet with len=14 |vertexAddYPos.|
+12/08/2012 02:09:02.299865 ./arithmeticclient: C150StreamSocket::write: Success writing packet with len=14 |vertexAddYPos.|
+12/08/2012 02:09:02.299898 ./arithmeticclient: C150StreamSocket::write: attempting to send packet with len=41 |)........x..........x.2............y.d...|
+12/08/2012 02:09:02.299929 ./arithmeticclient: C150StreamSocket::write: Success writing packet with len=41 |)........x..........x.2............y.d...|
+12/08/2012 02:09:02.299961 ./arithmeticclient: C150StreamSocket::write: attempting to send packet with len=41 |)........y..........x..............y.....|
+12/08/2012 02:09:02.299991 ./arithmeticclient: C150StreamSocket::write: Success writing packet with len=41 |)........y..........x..............y.....|
+12/08/2012 02:09:02.300019 ./arithmeticclient: arithmetic.proxy.cpp: returned from
+12/08/2012 02:09:02.300136 ./arithmeticclient: C150StreamSocket::read: Ready to read data
+12/08/2012 02:09:02.343288 ./arithmeticclient: C150StreamSocket::read: Dropped through read with len=5
+12/08/2012 02:09:02.343323 ./arithmeticclient: C150StreamSocket::read: successful read with len=5 |DONE.|
+12/08/2012 02:09:02.343353 ./arithmeticclient: C150StreamSocket::read: Ready to read data
+12/08/2012 02:09:02.384462 ./arithmeticclient: C150StreamSocket::read: Dropped through read with len=4
+12/08/2012 02:09:02.384497 ./arithmeticclient: C150StreamSocket::read: successful read with len=4 |....|
+12/08/2012 02:09:02.384527 ./arithmeticclient: C150StreamSocket::read: Ready to read data
+12/08/2012 02:09:02.384565 ./arithmeticclient: C150StreamSocket::read: Dropped through read with len=16
+12/08/2012 02:09:02.384594 ./arithmeticclient: C150StreamSocket::read: successful read with len=16 |.....retval.n...|
+12/08/2012 02:09:02.384622 ./arithmeticclient: arithmetic.proxy.cpp: vertexAddYPos successful return from remote cal
+12/08/2012 02:09:02.384664 ./arithmeticclient: arithmetic.proxy.cpp: invoking
+12/08/2012 02:09:02.384698 ./arithmeticclient: C150StreamSocket::write: attempting to send packet with len=4 |....|
+12/08/2012 02:09:02.384738 ./arithmeticclient: C150StreamSocket::write: Success writing packet with len=4 |....|
+12/08/2012 02:09:02.384769 ./arithmeticclient: C150StreamSocket::write: attempting to send packet with len=13 |createVertex.|
+12/08/2012 02:09:02.384800 ./arithmeticclient: C150StreamSocket::write: Success writing packet with len=13 |createVertex.|
+12/08/2012 02:09:02.384831 ./arithmeticclient: C150StreamSocket::write: attempting to send packet with len=15 |.........x.....|
+12/08/2012 02:09:02.384861 ./arithmeticclient: C150StreamSocket::write: Success writing packet with len=15 |.........x.....|
+12/08/2012 02:09:02.384891 ./arithmeticclient: C150StreamSocket::write: attempting to send packet with len=15 |.........y.$...|
+12/08/2012 02:09:02.384921 ./arithmeticclient: C150StreamSocket::write: Success writing packet with len=15 |.........y.$...|
+12/08/2012 02:09:02.384959 ./arithmeticclient: arithmetic.proxy.cpp: returned from
+12/08/2012 02:09:02.384987 ./arithmeticclient: C150StreamSocket::read: Ready to read data
+12/08/2012 02:09:02.428437 ./arithmeticclient: C150StreamSocket::read: Dropped through read with len=5
+12/08/2012 02:09:02.428472 ./arithmeticclient: C150StreamSocket::read: successful read with len=5 |DONE.|
+12/08/2012 02:09:02.428502 ./arithmeticclient: C150StreamSocket::read: Ready to read data
+12/08/2012 02:09:02.469396 ./arithmeticclient: C150StreamSocket::read: Dropped through read with len=4
+12/08/2012 02:09:02.469431 ./arithmeticclient: C150StreamSocket::read: successful read with len=4 |....|
+12/08/2012 02:09:02.469460 ./arithmeticclient: C150StreamSocket::read: Ready to read data
+12/08/2012 02:09:02.469499 ./arithmeticclient: C150StreamSocket::read: Dropped through read with len=42
+12/08/2012 02:09:02.469529 ./arithmeticclient: C150StreamSocket::read: successful read with len=42 |.....retval..........x..............y.$...|
+12/08/2012 02:09:02.469559 ./arithmeticclient: arithmetic.proxy.cpp: createVertex successful return from remote cal
+12/08/2012 02:09:02.469601 ./arithmeticclient: arithmetic.proxy.cpp: invoking
+12/08/2012 02:09:02.469661 ./arithmeticclient: C150StreamSocket::write: attempting to send packet with len=4 |....|
+12/08/2012 02:09:02.469701 ./arithmeticclient: C150StreamSocket::write: Success writing packet with len=4 |....|
+12/08/2012 02:09:02.469733 ./arithmeticclient: C150StreamSocket::write: attempting to send packet with len=16 |createRectangle.|
+12/08/2012 02:09:02.469764 ./arithmeticclient: C150StreamSocket::write: Success writing packet with len=16 |createRectangle.|
+12/08/2012 02:09:02.469797 ./arithmeticclient: C150StreamSocket::write: attempting to send packet with len=41 |)........x..........x..............y.....|
+12/08/2012 02:09:02.469828 ./arithmeticclient: C150StreamSocket::write: Success writing packet with len=41 |)........x..........x..............y.....|
+12/08/2012 02:09:02.469861 ./arithmeticclient: C150StreamSocket::write: attempting to send packet with len=41 |)........y..........x.2............y.d...|
+12/08/2012 02:09:02.469891 ./arithmeticclient: C150StreamSocket::write: Success writing packet with len=41 |)........y..........x.2............y.d...|
+12/08/2012 02:09:02.469920 ./arithmeticclient: arithmetic.proxy.cpp: returned from
+12/08/2012 02:09:02.469948 ./arithmeticclient: C150StreamSocket::read: Ready to read data
+12/08/2012 02:09:02.513414 ./arithmeticclient: C150StreamSocket::read: Dropped through read with len=5
+12/08/2012 02:09:02.513450 ./arithmeticclient: C150StreamSocket::read: successful read with len=5 |DONE.|
+12/08/2012 02:09:02.513480 ./arithmeticclient: C150StreamSocket::read: Ready to read data
+12/08/2012 02:09:02.554355 ./arithmeticclient: C150StreamSocket::read: Dropped through read with len=4
+12/08/2012 02:09:02.554390 ./arithmeticclient: C150StreamSocket::read: successful read with len=4 |n...|
+12/08/2012 02:09:02.554420 ./arithmeticclient: C150StreamSocket::read: Ready to read data
+12/08/2012 02:09:02.554458 ./arithmeticclient: C150StreamSocket::read: Dropped through read with len=106
+12/08/2012 02:09:02.554491 ./arithmeticclient: C150StreamSocket::read: successful read with len=106 |.....retval./........corner1..........x..............y...../........corner2..........x.2............|
+12/08/2012 02:09:02.554521 ./arithmeticclient: arithmetic.proxy.cpp: createRectangle successful return from remote cal
+12/08/2012 02:09:02.554601 ./arithmeticclient: arithmetic.proxy.cpp: invoking
+12/08/2012 02:09:02.554636 ./arithmeticclient: C150StreamSocket::write: attempting to send packet with len=4 |....|
+12/08/2012 02:09:02.554677 ./arithmeticclient: C150StreamSocket::write: Success writing packet with len=4 |....|
+12/08/2012 02:09:02.554708 ./arithmeticclient: C150StreamSocket::write: attempting to send packet with len=16 |createRectangle.|
+12/08/2012 02:09:02.554739 ./arithmeticclient: C150StreamSocket::write: Success writing packet with len=16 |createRectangle.|
+12/08/2012 02:09:02.554782 ./arithmeticclient: C150StreamSocket::write: attempting to send packet with len=41 |)........x..........x.2............y.d...|
+12/08/2012 02:09:02.554813 ./arithmeticclient: C150StreamSocket::write: Success writing packet with len=41 |)........x..........x.2............y.d...|
+12/08/2012 02:09:02.554845 ./arithmeticclient: C150StreamSocket::write: attempting to send packet with len=41 |)........y..........x..............y.....|
+12/08/2012 02:09:02.554876 ./arithmeticclient: C150StreamSocket::write: Success writing packet with len=41 |)........y..........x..............y.....|
+12/08/2012 02:09:02.554904 ./arithmeticclient: arithmetic.proxy.cpp: returned from
+12/08/2012 02:09:02.554932 ./arithmeticclient: C150StreamSocket::read: Ready to read data
+12/08/2012 02:09:02.597320 ./arithmeticclient: C150StreamSocket::read: Dropped through read with len=5
+12/08/2012 02:09:02.597356 ./arithmeticclient: C150StreamSocket::read: successful read with len=5 |DONE.|
+12/08/2012 02:09:02.597386 ./arithmeticclient: C150StreamSocket::read: Ready to read data
+12/08/2012 02:09:02.637758 ./arithmeticclient: C150StreamSocket::read: Dropped through read with len=4
+12/08/2012 02:09:02.637796 ./arithmeticclient: C150StreamSocket::read: successful read with len=4 |n...|
+12/08/2012 02:09:02.637825 ./arithmeticclient: C150StreamSocket::read: Ready to read data
+12/08/2012 02:09:02.637864 ./arithmeticclient: C150StreamSocket::read: Dropped through read with len=106
+12/08/2012 02:09:02.637928 ./arithmeticclient: C150StreamSocket::read: successful read with len=106 |.....retval./........corner1..........x.2............y.d.../........corner2..........x..............|
+12/08/2012 02:09:02.637957 ./arithmeticclient: arithmetic.proxy.cpp: createRectangle successful return from remote cal
+12/08/2012 02:09:02.638047 ./arithmeticclient: arithmetic.proxy.cpp: invoking
+12/08/2012 02:09:02.638082 ./arithmeticclient: C150StreamSocket::write: attempting to send packet with len=4 |....|
+12/08/2012 02:09:02.638122 ./arithmeticclient: C150StreamSocket::write: Success writing packet with len=4 |....|
+12/08/2012 02:09:02.638154 ./arithmeticclient: C150StreamSocket::write: attempting to send packet with len=13 |rectangleAdd.|
+12/08/2012 02:09:02.638185 ./arithmeticclient: C150StreamSocket::write: Success writing packet with len=13 |rectangleAdd.|
+12/08/2012 02:09:02.638223 ./arithmeticclient: C150StreamSocket::write: attempting to send packet with len=106 |j........r1./........corner1..........x..............y...../........corner2..........x.2............|
+12/08/2012 02:09:02.638254 ./arithmeticclient: C150StreamSocket::write: Success writing packet with len=106 |j........r1./........corner1..........x..............y...../........corner2..........x.2............|
+12/08/2012 02:09:02.638290 ./arithmeticclient: C150StreamSocket::write: attempting to send packet with len=106 |j........r2./........corner1..........x.2............y.d.../........corner2..........x..............|
+12/08/2012 02:09:02.638321 ./arithmeticclient: C150StreamSocket::write: Success writing packet with len=106 |j........r2./........corner1..........x.2............y.d.../........corner2..........x..............|
+12/08/2012 02:09:02.638350 ./arithmeticclient: arithmetic.proxy.cpp: returned from
+12/08/2012 02:09:02.638378 ./arithmeticclient: C150StreamSocket::read: Ready to read data
+12/08/2012 02:09:02.681229 ./arithmeticclient: C150StreamSocket::read: Dropped through read with len=5
+12/08/2012 02:09:02.681266 ./arithmeticclient: C150StreamSocket::read: successful read with len=5 |DONE.|
+12/08/2012 02:09:02.681296 ./arithmeticclient: C150StreamSocket::read: Ready to read data
+12/08/2012 02:09:02.722403 ./arithmeticclient: C150StreamSocket::read: Dropped through read with len=4
+12/08/2012 02:09:02.722440 ./arithmeticclient: C150StreamSocket::read: successful read with len=4 |....|
+12/08/2012 02:09:02.722470 ./arithmeticclient: C150StreamSocket::read: Ready to read data
+12/08/2012 02:09:02.722507 ./arithmeticclient: C150StreamSocket::read: Dropped through read with len=16
+12/08/2012 02:09:02.722546 ./arithmeticclient: C150StreamSocket::read: successful read with len=16 |.....retval.J...|
+12/08/2012 02:09:02.722575 ./arithmeticclient: arithmetic.proxy.cpp: rectangleAdd successful return from remote cal
+12/08/2012 02:09:02.722619 ./arithmeticclient: arithmetic.proxy.cpp: invoking
+12/08/2012 02:09:02.722653 ./arithmeticclient: C150StreamSocket::write: attempting to send packet with len=4 |....|
+12/08/2012 02:09:02.722693 ./arithmeticclient: C150StreamSocket::write: Success writing packet with len=4 |....|
+12/08/2012 02:09:02.722725 ./arithmeticclient: C150StreamSocket::write: attempting to send packet with len=24 |rectangleCornerDistance.|
+12/08/2012 02:09:02.722757 ./arithmeticclient: C150StreamSocket::write: Success writing packet with len=24 |rectangleCornerDistance.|
+12/08/2012 02:09:02.722794 ./arithmeticclient: C150StreamSocket::write: attempting to send packet with len=106 |j........r1./........corner1..........x.2............y.d.../........corner2..........x..............|
+12/08/2012 02:09:02.722864 ./arithmeticclient: C150StreamSocket::write: Success writing packet with len=106 |j........r1./........corner1..........x.2............y.d.../........corner2..........x..............|
+12/08/2012 02:09:02.722896 ./arithmeticclient: arithmetic.proxy.cpp: returned from
+12/08/2012 02:09:02.722925 ./arithmeticclient: C150StreamSocket::read: Ready to read data
+12/08/2012 02:09:02.766399 ./arithmeticclient: C150StreamSocket::read: Dropped through read with len=5
+12/08/2012 02:09:02.766435 ./arithmeticclient: C150StreamSocket::read: successful read with len=5 |DONE.|
+12/08/2012 02:09:02.766465 ./arithmeticclient: C150StreamSocket::read: Ready to read data
+12/08/2012 02:09:02.807357 ./arithmeticclient: C150StreamSocket::read: Dropped through read with len=4
+12/08/2012 02:09:02.807392 ./arithmeticclient: C150StreamSocket::read: successful read with len=4 |....|
+12/08/2012 02:09:02.807422 ./arithmeticclient: C150StreamSocket::read: Ready to read data
+12/08/2012 02:09:02.807460 ./arithmeticclient: C150StreamSocket::read: Dropped through read with len=16
+12/08/2012 02:09:02.807490 ./arithmeticclient: C150StreamSocket::read: successful read with len=16 |.....retval..?.B|
+12/08/2012 02:09:02.807522 ./arithmeticclient: arithmetic.proxy.cpp: rectangleCornerDistance successful return from remote cal
+12/08/2012 02:09:02.807689 ./arithmeticclient: arithmetic.proxy.cpp: invoking
+12/08/2012 02:09:02.807724 ./arithmeticclient: C150StreamSocket::write: attempting to send packet with len=4 |....|
+12/08/2012 02:09:02.807765 ./arithmeticclient: C150StreamSocket::write: Success writing packet with len=4 |....|
+12/08/2012 02:09:02.807796 ./arithmeticclient: C150StreamSocket::write: attempting to send packet with len=9 |addArray.|
+12/08/2012 02:09:02.807827 ./arithmeticclient: C150StreamSocket::write: Success writing packet with len=9 |addArray.|
+12/08/2012 02:09:02.807863 ./arithmeticclient: C150StreamSocket::write: attempting to send packet with len=230 |..................x............................?.............@............@@.............@..........|
+12/08/2012 02:09:02.807895 ./arithmeticclient: C150StreamSocket::write: Success writing packet with len=230 |..................x............................?.............@............@@.............@..........|
+12/08/2012 02:09:02.807930 ./arithmeticclient: C150StreamSocket::write: attempting to send packet with len=230 |..................y.............pA.............A.............A.............A.............A..........|
+12/08/2012 02:09:02.808000 ./arithmeticclient: C150StreamSocket::write: Success writing packet with len=230 |..................y.............pA.............A.............A.............A.............A..........|
+12/08/2012 02:09:02.808030 ./arithmeticclient: arithmetic.proxy.cpp: returned from
+12/08/2012 02:09:02.808059 ./arithmeticclient: C150StreamSocket::read: Ready to read data
+12/08/2012 02:09:02.851303 ./arithmeticclient: C150StreamSocket::read: Dropped through read with len=5
+12/08/2012 02:09:02.851348 ./arithmeticclient: C150StreamSocket::read: successful read with len=5 |DONE.|
+12/08/2012 02:09:02.851378 ./arithmeticclient: C150StreamSocket::read: Ready to read data
+12/08/2012 02:09:02.892266 ./arithmeticclient: C150StreamSocket::read: Dropped through read with len=4
+12/08/2012 02:09:02.892300 ./arithmeticclient: C150StreamSocket::read: successful read with len=4 |....|
+12/08/2012 02:09:02.892330 ./arithmeticclient: C150StreamSocket::read: Ready to read data
+12/08/2012 02:09:02.892369 ./arithmeticclient: C150StreamSocket::read: Dropped through read with len=16
+12/08/2012 02:09:02.892399 ./arithmeticclient: C150StreamSocket::read: successful read with len=16 |.....retval....C|
+12/08/2012 02:09:02.892430 ./arithmeticclient: arithmetic.proxy.cpp: addArray successful return from remote cal
+12/08/2012 02:09:02.892481 ./arithmeticclient: arithmetic.proxy.cpp: invoking
+12/08/2012 02:09:02.892515 ./arithmeticclient: C150StreamSocket::write: attempting to send packet with len=4 |....|
+12/08/2012 02:09:02.892555 ./arithmeticclient: C150StreamSocket::write: Success writing packet with len=4 |....|
+12/08/2012 02:09:02.892586 ./arithmeticclient: C150StreamSocket::write: attempting to send packet with len=10 |vertexSum.|
+12/08/2012 02:09:02.892618 ./arithmeticclient: C150StreamSocket::write: Success writing packet with len=10 |vertexSum.|
+12/08/2012 02:09:02.892655 ./arithmeticclient: C150StreamSocket::write: attempting to send packet with len=100 |d.................x.(..................x..............y.....(..................x.2............y.d...|
+12/08/2012 02:09:02.892685 ./arithmeticclient: C150StreamSocket::write: Success writing packet with len=100 |d.................x.(..................x..............y.....(..................x.2............y.d...|
+12/08/2012 02:09:02.892713 ./arithmeticclient: arithmetic.proxy.cpp: returned from
+12/08/2012 02:09:02.892741 ./arithmeticclient: C150StreamSocket::read: Ready to read data
+12/08/2012 02:09:02.935227 ./arithmeticclient: C150StreamSocket::read: Dropped through read with len=5
+12/08/2012 02:09:02.935263 ./arithmeticclient: C150StreamSocket::read: successful read with len=5 |DONE.|
+12/08/2012 02:09:02.935292 ./arithmeticclient: C150StreamSocket::read: Ready to read data
+12/08/2012 02:09:02.976440 ./arithmeticclient: C150StreamSocket::read: Dropped through read with len=4
+12/08/2012 02:09:02.976476 ./arithmeticclient: C150StreamSocket::read: successful read with len=4 |....|
+12/08/2012 02:09:02.976505 ./arithmeticclient: C150StreamSocket::read: Ready to read data
+12/08/2012 02:09:02.976545 ./arithmeticclient: C150StreamSocket::read: Dropped through read with len=16
+12/08/2012 02:09:02.976575 ./arithmeticclient: C150StreamSocket::read: successful read with len=16 |.....retval.....|
+12/08/2012 02:09:02.976602 ./arithmeticclient: arithmetic.proxy.cpp: vertexSum successful return from remote cal

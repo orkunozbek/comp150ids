@@ -51,6 +51,7 @@ int studentAdd(Student s, Student t){
 }
 
 
+
 int vertexAddXPos(Vertex x, Vertex y){
 	return x.x + y.x;
 }
@@ -93,5 +94,19 @@ int rectangleAdd(Rectangle r1, Rectangle r2){
 }
 
 
+float addArray(float x[15], float y[15]){
+	float sum = 0.0;
+	for(int i =0; i< 15; i++){
+		sum += x[i] + y[i];
+	}
+	return sum;
+}
 
+int vertexSum(Vertex x[2]){
+	int sum = 0;
+	for(int i = 0; i < 2; i++){
+		sum+=x[i].x + x[i].y;
+	}
+	return sum;
+}
 

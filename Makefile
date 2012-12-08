@@ -20,8 +20,8 @@
 CPP = g++
 
 # change following line if your rpgenerate is not in current directory
-RPCGEN = ./rpcgenerate
-
+RPCSTUBGEN = ./stubgenerator
+RPCPROXYGEN = ./proxygenerator
 # Where the COMP 150 shared utilities live, including c150ids.a and userports.csv
 # Note that environment variable COMP150IDS must be set for this to work!
 
@@ -39,111 +39,32 @@ CPPFLAGS = -g -Wall -Werror -I$(C150IDSRPC) -I$(C150LIB)
 LDFLAGS = 
 INCLUDES = $(C150LIB)c150streamsocket.h $(C150LIB)c150network.h $(C150LIB)c150exceptions.h $(C150LIB)c150debug.h $(C150LIB)c150utility.h $(C150LIB)c150grading.h $(C150IDSRPC)IDLToken.h $(C150IDSRPC)tokenizeddeclarations.h  $(C150IDSRPC)tokenizeddeclaration.h $(C150IDSRPC)declarations.h $(C150IDSRPC)declaration.h $(C150IDSRPC)functiondeclaration.h $(C150IDSRPC)typedeclaration.h $(C150IDSRPC)arg_or_member_declaration.h rpcproxyhelper.h rpcstubhelper.h TypeConverters.h simplefunction.idl arithmetic.idl floatarithmetic.idl 
 
-all: pingstreamclient pingstreamserver idldeclarationtst simplefunctionclient simplefunctionserver proxygenerator arithmeticclient arithmeticserver rpcgenerator floatarithmeticserver floatarithmeticclient
+all:  stubgenerator proxygenerator 
 
-########################################################################
-#
-#     Adaptations of pingclient and pingserver to illustrate
-#     use of COMP 150-IDS dgmstreamsocket class (which supports
-#     TCP streams as opposed to UDP datagrams)
-#
-########################################################################
-
-pingstreamclient: pingstreamclient.o  $(C150AR) $(C150IDSRPCAR) $(INCLUDES)
-	$(CPP) -o pingstreamclient pingstreamclient.o $(C150AR) $(C150IDSRPCAR) 
-
-
-pingstreamserver: pingstreamserver.o  $(C150AR) $(C150IDSRPCAR)  $(INCLUDES)
-	$(CPP) -o pingstreamserver pingstreamserver.o $(C150AR) $(C150IDSRPCAR) 
-
-
-########################################################################
-#
-#          Sample RPC client and server applications
-#
-#     Demonstrating remote calls to functions as declared in simplefunctions.idl
-#
-#     The proxies and stubs used here are hand generated, but eventually
-#     your rpcgen program will (should) generate them automatically
-#     from any idl
-#
-########################################################################
-
-simplefunctionclient: arithmeticclient.o rpcproxyhelper.o arithmetic.proxy.o TypeConverters.o  $(C150AR) $(C150IDSRPCAR)  $(INCLUDES)
-	$(CPP) -o simplefunctionclient arithmeticclient.o rpcproxyhelper.o arithmetic.proxy.o TypeConverters.o  $(C150AR) $(C150IDSRPCAR) 
+stubgenerator: stubgenerator.o TypeConverters.o $(C150AR) $(C150IDSRPCAR)  $(INCLUDES)
+	$(CPP) -o stubgenerator stubgenerator.o TypeConverters.o $(C150AR) $(C150IDSRPCAR)
 	
-
-# The following is NOT a mistake. The main program for any of the rpc servers
-# is rpcserver.o.  This way, we can make a different one for each set 
-# of functions, by linking the right specific stugs (in this case
-# simplefunction.stub.o)
-simplefunctionserver: simplefunction.stub.o rpcserver.o rpcstubhelper.o simplefunction.o  $(C150AR) $(C150IDSRPCAR)  $(INCLUDES)
-	$(CPP) -o simplefunctionserver rpcserver.o simplefunction.stub.o simplefunction.o rpcstubhelper.o $(C150AR) $(C150IDSRPCAR) 
+proxygenerator: proxygenerator.o TypeConverters.o $(C150AR) $(C150IDSRPCAR)  $(INCLUDES)
+	$(CPP) -o proxygenerator proxygenerator.o TypeConverters.o $(C150AR) $(C150IDSRPCAR)	
 
 
-arithmeticclient: arithmeticclient.o rpcproxyhelper.o arithmetic.proxy.o TypeConverters.o  $(C150AR) $(C150IDSRPCAR)  $(INCLUDES)
-	$(CPP) -o arithmeticclient arithmeticclient.o rpcproxyhelper.o arithmetic.proxy.o TypeConverters.o  $(C150AR) $(C150IDSRPCAR) 
+
 
 	
-arithmeticserver: arithmetic.stub.o rpcserver.o rpcstubhelper.o arithmetic.o TypeConverters.o $(C150AR) $(C150IDSRPCAR)  $(INCLUDES)
-	$(CPP) -o arithmeticserver rpcserver.o arithmetic.stub.o arithmetic.o rpcstubhelper.o TypeConverters.o $(C150AR) $(C150IDSRPCAR) 
-	
-	
-floatarithmeticclient: floatarithmeticclient.o rpcproxyhelper.o floatarithmetic.proxy.o TypeConverters.o  $(C150AR) $(C150IDSRPCAR)  $(INCLUDES)
-	$(CPP) -o floatarithmeticclient floatarithmeticclient.o rpcproxyhelper.o floatarithmetic.proxy.o TypeConverters.o  $(C150AR) $(C150IDSRPCAR) 
+#floatarithmeticclient: floatarithmeticclient.o rpcproxyhelper.o floatarithmetic.proxy.o TypeConverters.o  $(C150AR) $(C150IDSRPCAR)  $(INCLUDES)
+#	$(CPP) -o floatarithmeticclient floatarithmeticclient.o rpcproxyhelper.o floatarithmetic.proxy.o TypeConverters.o  $(C150AR) $(C150IDSRPCAR) 
 
 	
-floatarithmeticserver: floatarithmetic.stub.o rpcserver.o rpcstubhelper.o arithmetic.o TypeConverters.o $(C150AR) $(C150IDSRPCAR)  $(INCLUDES)
-	$(CPP) -o floatarithmeticserver rpcserver.o floatarithmetic.stub.o floatarithmetic.o rpcstubhelper.o TypeConverters.o $(C150AR) $(C150IDSRPCAR) 	
+#floatarithmeticserver: floatarithmetic.stub.o rpcserver.o rpcstubhelper.o arithmetic.o TypeConverters.o $(C150AR) $(C150IDSRPCAR)  $(INCLUDES)
+#	$(CPP) -o floatarithmeticserver rpcserver.o floatarithmetic.stub.o floatarithmetic.o rpcstubhelper.o TypeConverters.o $(C150AR) $(C150IDSRPCAR) 	
+	
 	
 
-########################################################################
-#
-#          Generate C++ source from IDL files
-#
-#     Once you have written an rpcgenerate program, you can uncomment
-#     the following two lines to have .cpp generated automatically from idl.
-#     (but be sure not to have other .cpp files with the same base name
-#     as the idl, e.g. the ones with your functions!)
-#
-#     The proxies and stubs used here are hand generated, but eventually
-#     your rpcgen program will (should) generate them automatically
-#     from any idl
-#
-#     WARNING! this may cause your rpcgenerate program to attempt to
-#     rebuild supplied samples like simplefunction.proxy.cpp and 
-#     simplefunction.stub.cpp. You may want to save backups for comparison.
-#
-########################################################################
-
-# %.proxy.cpp %.stub.cpp:%.idl $(RPCGEN)
-#	$(RPCGEN) $<
-
-########################################################################
-#
-#                   idldeclarationtst
-#
-#     When you write rpcgenerator, you'll want to use the idl
-#     parser that's provided for you. This is a demo program
-#     you can read and try to see how the parser works.
-#
-########################################################################
-
-idldeclarationtst: idldeclarationtst.o $(C150AR) $(C150IDSRPCAR)  $(INCLUDES)
-	$(CPP) -o idldeclarationtst idldeclarationtst.o $(C150AR) $(C150IDSRPCAR) 
+%.stub.cpp: %.idl $(RPCSTUBGEN)
+	$(RPCSTUBGEN) $<
 	
-proxygenerator: proxy_generator.o TypeConverters.o $(C150AR) $(C150IDSRPCAR)  $(INCLUDES)
-	$(CPP) -o proxygenerator proxy_generator.o TypeConverters.o $(C150AR) $(C150IDSRPCAR) 	
-	
-rpcgenerator: rpcgenerator.o TypeConverters.o $(C150AR) $(C150IDSRPCAR)  $(INCLUDES)
-	$(CPP) -o rpcgenerator rpcgenerator.o TypeConverters.o $(C150AR) $(C150IDSRPCAR) 	
-
-########################################################################
-#
-#                   Housekeeping
-#
-########################################################################
-
+%.proxy.cpp: %.idl $(RPCPROXYGEN)
+	$(RPCPROXYGEN) $<
 
 # make .o from .cpp
 
