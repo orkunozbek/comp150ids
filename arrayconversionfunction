@@ -1,4 +1,4 @@
-void *convert${ARRAY_TYPE_S}ToByte(${ARRAY_TYPE} arr, string fieldName, char *data){
+void *convert${ARRAY_TYPE_S}ToByte(${ARRAY_TYPE}, string fieldName, char *data){
 	size_t len = get${ARRAY_TYPE_S}FieldSize(arr,fieldName);
 	
 	if (data== NULL)

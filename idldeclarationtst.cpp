@@ -225,6 +225,102 @@ string createArraySizeFunction(string str, TypeDeclaration *typep){
 }
 
 
+string createArrayConversionFunction(string str, TypeDeclaration *typep){
+    string typeNameStr = typep->getName();
+    replace(typeNameStr.begin(),typeNameStr.end(), '[', '_');
+	replace(typeNameStr.begin(),typeNameStr.end(), ']', '_');
+    cout << "TYPEEEE NAME STRR" << typeNameStr <<  endl;
+    // Replace the type name
+    string typeNameStrTag = "${ARRAY_TYPE_S}";
+    size_t found = str.find(typeNameStrTag);
+    if(found!=string::npos){
+        str.replace(found, typeNameStrTag.length(), typeNameStr);
+    }
+    
+    
+    // Append the dim data representation length
+    // Keep a vector of array dimensions
+    string dimsToBytes = "";
+    string dataFieldSizeStr = "";
+    string dimsStr = "";
+    string argStr = "";
+    TypeDeclaration *arrayType = typep->getArrayMemberType();
+    int i = 0;
+    dataFieldSizeStr.append("\tfor(int i" + intToString(i) + "= 0; i" + intToString(i) + "< " + intToString(typep->getArrayBound()) +  "; i" + intToString(i) + "++)\n");
+    dimsStr.append("[i" + intToString(i) + "]");
+    argStr.append("[" + intToString(typep->getArrayBound())+ "]");
+    dimsToBytes.append("\tint bound = " + intToString(typep->getArrayBound()) + ";\n");
+    dimsToBytes.append("\tmemcpy(tmp, &bound, sizeof(int));\n");
+    dimsToBytes.append("\ttmp+=sizeof(int);\n");
+    while(arrayType){
+        i++;
+        if(arrayType->isArray()){
+        	argStr.append("[" + intToString(arrayType->getArrayBound())+ "]");
+		    dataFieldSizeStr.append("\tfor(int i" + intToString(i) + "= 0; i" + intToString(i) + "< " + intToString(arrayType->getArrayBound()) +  "; i" + intToString(i) + "++)\n");
+		    dimsStr.append("[i" + intToString(i) + "]");
+		    dimsToBytes.append("\tbound = " + intToString(typep->getArrayBound()) + ";\n");
+            dimsToBytes.append("\tmemcpy(tmp, &bound, sizeof(int));\n");
+            dimsToBytes.append("\ttmp+=sizeof(int);\n");
+			arrayType = arrayType->getArrayMemberType();
+		}
+		else{
+		    dimsToBytes.insert(0,"\tint numDims = " + i + ";\n");
+            dimsToBytes.append("\tmemcpy(tmp, &numDims, sizeof(int));\n");
+            dimsToBytes.append("\ttmp+=sizeof(int);\n");
+            string typeName =arrayType->getName();
+            
+		    if (typeName == "int"){
+          		dataFieldSizeStr.append("\tconvertIntToByte(arr" + dimsStr + ", \"\", tmp);\n");
+          		dataFieldSizeStr.append("\ttmp+=*tmp;\n")
+          		argStr.insert(0, "int arr");
+                dimsToBytes.append("\t*tmp++ = 1;\n");
+          	}
+          	else if(typeName == "float"){
+              	dataFieldSizeStr.append("\tconvertFloatToByte(arr" + dimsStr + ", \"\", tmp);\n");
+          		dataFieldSizeStr.append("\ttmp+=*tmp;\n")
+              	argStr.insert(0, "float arr");
+              	dimsToBytes.append("\t*tmp++ = 2;\n");
+            }	
+            else if(typeName == "string"){
+            	dataFieldSizeStr.append("\tconvertStringToByte(arr" + dimsStr + ", \"\", tmp);\n");
+            	dataFieldSizeStr.append("\ttmp+=*tmp;\n")
+            	argStr.insert(0, "string arr");
+            	dimsToBytes.append("\t*tmp++ = 4;\n");
+            }
+			else{
+                dataFieldSizeStr.append("\tconvert"+ typeName +"ToByte(arr" + dimsStr + ",\"\", tmp);\n");
+                dataFieldSizeStr.append("\ttmp+=*tmp;\n")
+                argStr.insert(0, typeName + " arr");
+                dimsToBytes.append("\t*tmp++ = 5;\n");
+            }
+			arrayType = NULL;
+		}
+    }
+    
+    string appendDataType = "${APPEND_DATA_TYPE_AND_DIMENSIONS}";
+    found = str.find(appendDataType);
+    if(found != string::npos){
+        str.replace(found, appendDataType.length(),  dimsToBytes);
+    }
+    dataFieldSizeStr.append("\n\n");
+    string appendTag = "${APPEND_CONVERSIONS}";
+    found = str.find(appendTag);
+    if(found != string::npos){
+        str.replace(found, appendTag.length(), dataFieldSizeStr);
+    }
+    
+    
+    
+    string typeTag = "${ARRAY_TYPE}";
+    found = str.find(typeTag);
+    if(found != string::npos){
+        str.replace(found, typeTag.length(), argStr);
+    }    
+    
+    return str;    
+}
+
+
 void
 processIDLFile(const char fileName[]);
 
