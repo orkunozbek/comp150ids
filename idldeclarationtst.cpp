@@ -420,6 +420,15 @@ processIDLFile(const char fileName[]) {
   arraySizeFunction.assign((istreambuf_iterator<char>(t)),istreambuf_iterator<char>());
   printf("%s\n", arraySizeFunction.c_str());
   t.close();
+  
+  t.open("arrayconversionfunction");
+  string arrayConversionFunction;
+  t.seekg(0, ios::end);   
+  arrayConversionFunction.reserve(t.tellg());
+  t.seekg(0, ios::beg);
+  arrayConversionFunction.assign((istreambuf_iterator<char>(t)),istreambuf_iterator<char>());
+  printf("%s\n", arrayConversionFunction.c_str());
+  t.close();
 
   //
   // Open the file
@@ -514,6 +523,8 @@ processIDLFile(const char fileName[]) {
     }else if(typep->isArray()){
         string arraySizeFunctionTmpStr = arraySizeFunction;
         cout << createArraySizeFunction(arraySizeFunctionTmpStr, typep) << endl;
+        string arrayConversionFunctionTmpStr = arrayConversionFunction;
+        cout << createArrayConversionFunction(arrayConversionFunctionTmpStr, typep) << endl;
 	    // int i = 0;
 	    //         //cout <<  typep-> getArrayBound() << " " << typep->getName() << " " ;
 	    //         cout << "for(int i" << i << "= 0; i" << i << "< " << typep->getArrayBound() <<  "; i" << i << "++)\n";
