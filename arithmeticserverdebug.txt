@@ -1,164 +1,164 @@
-12/07/2012 02:21:38.632755 ./arithmeticserver: rpcstubinitialize: Creating C150StreamSocket
-12/07/2012 02:21:38.634918 ./arithmeticserver: rpcserver.cpp: calling C150StreamSocket::accept
-12/07/2012 02:21:40.484169 ./arithmeticserver: C150StreamSocket::read: successful read with len=4 |....|
-12/07/2012 02:21:40.484402 ./arithmeticserver: C150StreamSocket::read: successful read with len=4 |add.|
-12/07/2012 02:21:40.484528 ./arithmeticserver: C150StreamSocket::read: successful read with len=4 |....|
-12/07/2012 02:21:40.484562 ./arithmeticserver: C150StreamSocket::read: successful read with len=11 |.....x.....|
-12/07/2012 02:21:40.484595 ./arithmeticserver: C150StreamSocket::read: successful read with len=4 |....|
-12/07/2012 02:21:40.484629 ./arithmeticserver: C150StreamSocket::read: successful read with len=11 |.....y.....|
-12/07/2012 02:21:40.484666 ./arithmeticserver: simplefunction.stub.cpp: invokingadd(x)
-12/07/2012 02:21:40.484696 ./arithmeticserver: simplefunction.stub.cpp: returned fromadd(x)
-12/07/2012 02:21:40.484755 ./arithmeticserver: C150StreamSocket::write: attempting to send packet with len=5 |DONE.|
-12/07/2012 02:21:40.484802 ./arithmeticserver: C150StreamSocket::write: Success writing packet with len=5 |DONE.|
-12/07/2012 02:21:40.484836 ./arithmeticserver: C150StreamSocket::write: attempting to send packet with len=20 |.........retval.....|
-12/07/2012 02:21:40.484869 ./arithmeticserver: C150StreamSocket::write: Success writing packet with len=20 |.........retval.....|
-12/07/2012 02:21:40.487762 ./arithmeticserver: C150StreamSocket::read: successful read with len=4 |....|
-12/07/2012 02:21:40.529243 ./arithmeticserver: C150StreamSocket::read: successful read with len=9 |subtract.|
-12/07/2012 02:21:40.529284 ./arithmeticserver: C150StreamSocket::read: successful read with len=4 |....|
-12/07/2012 02:21:40.529317 ./arithmeticserver: C150StreamSocket::read: successful read with len=11 |.....x.....|
-12/07/2012 02:21:40.529350 ./arithmeticserver: C150StreamSocket::read: successful read with len=4 |....|
-12/07/2012 02:21:40.529391 ./arithmeticserver: C150StreamSocket::read: successful read with len=11 |.....y.....|
-12/07/2012 02:21:40.529496 ./arithmeticserver: simplefunction.stub.cpp: invokingsubtract(x)
-12/07/2012 02:21:40.529527 ./arithmeticserver: simplefunction.stub.cpp: returned fromsubtract(x)
-12/07/2012 02:21:40.529562 ./arithmeticserver: C150StreamSocket::write: attempting to send packet with len=5 |DONE.|
-12/07/2012 02:21:40.529605 ./arithmeticserver: C150StreamSocket::write: Success writing packet with len=5 |DONE.|
-12/07/2012 02:21:40.529637 ./arithmeticserver: C150StreamSocket::write: attempting to send packet with len=20 |.........retval.....|
-12/07/2012 02:21:40.529669 ./arithmeticserver: C150StreamSocket::write: Success writing packet with len=20 |.........retval.....|
-12/07/2012 02:21:40.572702 ./arithmeticserver: C150StreamSocket::read: successful read with len=4 |....|
-12/07/2012 02:21:40.614416 ./arithmeticserver: C150StreamSocket::read: successful read with len=9 |multiply.|
-12/07/2012 02:21:40.614463 ./arithmeticserver: C150StreamSocket::read: successful read with len=4 |....|
-12/07/2012 02:21:40.614496 ./arithmeticserver: C150StreamSocket::read: successful read with len=11 |.....x.....|
-12/07/2012 02:21:40.614529 ./arithmeticserver: C150StreamSocket::read: successful read with len=4 |....|
-12/07/2012 02:21:40.614569 ./arithmeticserver: C150StreamSocket::read: successful read with len=11 |.....y.....|
-12/07/2012 02:21:40.614598 ./arithmeticserver: simplefunction.stub.cpp: invokingmultiply(x)
-12/07/2012 02:21:40.614628 ./arithmeticserver: simplefunction.stub.cpp: returned frommultiply(x)
-12/07/2012 02:21:40.614661 ./arithmeticserver: C150StreamSocket::write: attempting to send packet with len=5 |DONE.|
-12/07/2012 02:21:40.614704 ./arithmeticserver: C150StreamSocket::write: Success writing packet with len=5 |DONE.|
-12/07/2012 02:21:40.614736 ./arithmeticserver: C150StreamSocket::write: attempting to send packet with len=20 |.........retval.....|
-12/07/2012 02:21:40.614768 ./arithmeticserver: C150StreamSocket::write: Success writing packet with len=20 |.........retval.....|
-12/07/2012 02:21:40.657846 ./arithmeticserver: C150StreamSocket::read: successful read with len=4 |....|
-12/07/2012 02:21:40.699313 ./arithmeticserver: C150StreamSocket::read: successful read with len=7 |divide.|
-12/07/2012 02:21:40.699353 ./arithmeticserver: C150StreamSocket::read: successful read with len=4 |....|
-12/07/2012 02:21:40.699405 ./arithmeticserver: C150StreamSocket::read: successful read with len=11 |.....x.....|
-12/07/2012 02:21:40.699441 ./arithmeticserver: C150StreamSocket::read: successful read with len=4 |....|
-12/07/2012 02:21:40.699482 ./arithmeticserver: C150StreamSocket::read: successful read with len=11 |.....y.....|
-12/07/2012 02:21:40.699511 ./arithmeticserver: simplefunction.stub.cpp: invokingdivide(x)
-12/07/2012 02:21:40.699541 ./arithmeticserver: simplefunction.stub.cpp: returned fromdivide(x)
-12/07/2012 02:21:40.699575 ./arithmeticserver: C150StreamSocket::write: attempting to send packet with len=5 |DONE.|
-12/07/2012 02:21:40.699618 ./arithmeticserver: C150StreamSocket::write: Success writing packet with len=5 |DONE.|
-12/07/2012 02:21:40.699650 ./arithmeticserver: C150StreamSocket::write: attempting to send packet with len=20 |.........retval.....|
-12/07/2012 02:21:40.699683 ./arithmeticserver: C150StreamSocket::write: Success writing packet with len=20 |.........retval.....|
-12/07/2012 02:21:40.742771 ./arithmeticserver: C150StreamSocket::read: successful read with len=4 |....|
-12/07/2012 02:21:40.784230 ./arithmeticserver: C150StreamSocket::read: successful read with len=11 |getStudent.|
-12/07/2012 02:21:40.784270 ./arithmeticserver: C150StreamSocket::read: successful read with len=4 |....|
-12/07/2012 02:21:40.784311 ./arithmeticserver: C150StreamSocket::read: successful read with len=12 |.....id.....|
-12/07/2012 02:21:40.784341 ./arithmeticserver: simplefunction.stub.cpp: invokinggetStudent(i)
-12/07/2012 02:21:40.784371 ./arithmeticserver: simplefunction.stub.cpp: returned fromgetStudent(i)
-12/07/2012 02:21:40.784456 ./arithmeticserver: C150StreamSocket::write: attempting to send packet with len=5 |DONE.|
-12/07/2012 02:21:40.784500 ./arithmeticserver: C150StreamSocket::write: Success writing packet with len=5 |DONE.|
-12/07/2012 02:21:40.784532 ./arithmeticserver: C150StreamSocket::write: attempting to send packet with len=32 | ........retval..........id.....|
-12/07/2012 02:21:40.784565 ./arithmeticserver: C150StreamSocket::write: Success writing packet with len=32 | ........retval..........id.....|
-12/07/2012 02:21:40.827735 ./arithmeticserver: C150StreamSocket::read: successful read with len=4 |....|
-12/07/2012 02:21:40.874654 ./arithmeticserver: C150StreamSocket::read: successful read with len=11 |getStudent.|
-12/07/2012 02:21:40.874699 ./arithmeticserver: C150StreamSocket::read: successful read with len=4 |....|
-12/07/2012 02:21:40.874753 ./arithmeticserver: C150StreamSocket::read: successful read with len=12 |.....id.....|
-12/07/2012 02:21:40.874783 ./arithmeticserver: simplefunction.stub.cpp: invokinggetStudent(i)
-12/07/2012 02:21:40.874812 ./arithmeticserver: simplefunction.stub.cpp: returned fromgetStudent(i)
-12/07/2012 02:21:40.874850 ./arithmeticserver: C150StreamSocket::write: attempting to send packet with len=5 |DONE.|
-12/07/2012 02:21:40.874894 ./arithmeticserver: C150StreamSocket::write: Success writing packet with len=5 |DONE.|
-12/07/2012 02:21:40.874928 ./arithmeticserver: C150StreamSocket::write: attempting to send packet with len=32 | ........retval..........id.....|
-12/07/2012 02:21:40.874961 ./arithmeticserver: C150StreamSocket::write: Success writing packet with len=32 | ........retval..........id.....|
-12/07/2012 02:21:40.917744 ./arithmeticserver: C150StreamSocket::read: successful read with len=4 |....|
-12/07/2012 02:21:40.959208 ./arithmeticserver: C150StreamSocket::read: successful read with len=11 |studentAdd.|
-12/07/2012 02:21:40.959254 ./arithmeticserver: C150StreamSocket::read: successful read with len=4 |....|
-12/07/2012 02:21:40.959288 ./arithmeticserver: C150StreamSocket::read: successful read with len=23 |.....s..........id.....|
-12/07/2012 02:21:40.959347 ./arithmeticserver: C150StreamSocket::read: successful read with len=4 |....|
-12/07/2012 02:21:40.959442 ./arithmeticserver: C150StreamSocket::read: successful read with len=23 |.....t..........id.....|
-12/07/2012 02:21:40.959472 ./arithmeticserver: simplefunction.stub.cpp: invokingstudentAdd(s)
-12/07/2012 02:21:40.959502 ./arithmeticserver: simplefunction.stub.cpp: returned fromstudentAdd(s)
-12/07/2012 02:21:40.959536 ./arithmeticserver: C150StreamSocket::write: attempting to send packet with len=5 |DONE.|
-12/07/2012 02:21:40.959579 ./arithmeticserver: C150StreamSocket::write: Success writing packet with len=5 |DONE.|
-12/07/2012 02:21:40.959611 ./arithmeticserver: C150StreamSocket::write: attempting to send packet with len=20 |.........retval.....|
-12/07/2012 02:21:40.959644 ./arithmeticserver: C150StreamSocket::write: Success writing packet with len=20 |.........retval.....|
-12/07/2012 02:21:41.002690 ./arithmeticserver: C150StreamSocket::read: successful read with len=4 |....|
-12/07/2012 02:21:41.044396 ./arithmeticserver: C150StreamSocket::read: successful read with len=14 |vertexAddXPos.|
-12/07/2012 02:21:41.044439 ./arithmeticserver: C150StreamSocket::read: successful read with len=4 |)...|
-12/07/2012 02:21:41.044475 ./arithmeticserver: C150StreamSocket::read: successful read with len=37 |.....x..........x..............y.....|
-12/07/2012 02:21:41.044508 ./arithmeticserver: C150StreamSocket::read: successful read with len=4 |)...|
-12/07/2012 02:21:41.044549 ./arithmeticserver: C150StreamSocket::read: successful read with len=37 |.....y..........x.2............y.d...|
-12/07/2012 02:21:41.044579 ./arithmeticserver: simplefunction.stub.cpp: invokingvertexAddXPos(x)
-12/07/2012 02:21:41.044609 ./arithmeticserver: simplefunction.stub.cpp: returned fromvertexAddXPos(x)
-12/07/2012 02:21:41.044643 ./arithmeticserver: C150StreamSocket::write: attempting to send packet with len=5 |DONE.|
-12/07/2012 02:21:41.044686 ./arithmeticserver: C150StreamSocket::write: Success writing packet with len=5 |DONE.|
-12/07/2012 02:21:41.044748 ./arithmeticserver: C150StreamSocket::write: attempting to send packet with len=20 |.........retval.7...|
-12/07/2012 02:21:41.044781 ./arithmeticserver: C150StreamSocket::write: Success writing packet with len=20 |.........retval.7...|
-12/07/2012 02:21:41.087822 ./arithmeticserver: C150StreamSocket::read: successful read with len=4 |....|
-12/07/2012 02:21:41.129299 ./arithmeticserver: C150StreamSocket::read: successful read with len=14 |vertexAddYPos.|
-12/07/2012 02:21:41.129375 ./arithmeticserver: C150StreamSocket::read: successful read with len=4 |)...|
-12/07/2012 02:21:41.129411 ./arithmeticserver: C150StreamSocket::read: successful read with len=37 |.....x..........x.2............y.d...|
-12/07/2012 02:21:41.129445 ./arithmeticserver: C150StreamSocket::read: successful read with len=4 |)...|
-12/07/2012 02:21:41.129486 ./arithmeticserver: C150StreamSocket::read: successful read with len=37 |.....y..........x..............y.....|
-12/07/2012 02:21:41.129516 ./arithmeticserver: simplefunction.stub.cpp: invokingvertexAddYPos(x)
-12/07/2012 02:21:41.129546 ./arithmeticserver: simplefunction.stub.cpp: returned fromvertexAddYPos(x)
-12/07/2012 02:21:41.129580 ./arithmeticserver: C150StreamSocket::write: attempting to send packet with len=5 |DONE.|
-12/07/2012 02:21:41.129625 ./arithmeticserver: C150StreamSocket::write: Success writing packet with len=5 |DONE.|
-12/07/2012 02:21:41.129657 ./arithmeticserver: C150StreamSocket::write: attempting to send packet with len=20 |.........retval.n...|
-12/07/2012 02:21:41.129690 ./arithmeticserver: C150StreamSocket::write: Success writing packet with len=20 |.........retval.n...|
-12/07/2012 02:21:41.172731 ./arithmeticserver: C150StreamSocket::read: successful read with len=4 |....|
-12/07/2012 02:21:41.214134 ./arithmeticserver: C150StreamSocket::read: successful read with len=13 |createVertex.|
-12/07/2012 02:21:41.214173 ./arithmeticserver: C150StreamSocket::read: successful read with len=4 |....|
-12/07/2012 02:21:41.214218 ./arithmeticserver: C150StreamSocket::read: successful read with len=11 |.....x.....|
-12/07/2012 02:21:41.214251 ./arithmeticserver: C150StreamSocket::read: successful read with len=4 |....|
-12/07/2012 02:21:41.214291 ./arithmeticserver: C150StreamSocket::read: successful read with len=11 |.....y.$...|
-12/07/2012 02:21:41.214360 ./arithmeticserver: simplefunction.stub.cpp: invokingcreateVertex(x)
-12/07/2012 02:21:41.214391 ./arithmeticserver: simplefunction.stub.cpp: returned fromcreateVertex(x)
-12/07/2012 02:21:41.214427 ./arithmeticserver: C150StreamSocket::write: attempting to send packet with len=5 |DONE.|
-12/07/2012 02:21:41.214470 ./arithmeticserver: C150StreamSocket::write: Success writing packet with len=5 |DONE.|
-12/07/2012 02:21:41.214504 ./arithmeticserver: C150StreamSocket::write: attempting to send packet with len=46 |.........retval..........x..............y.$...|
-12/07/2012 02:21:41.214536 ./arithmeticserver: C150StreamSocket::write: Success writing packet with len=46 |.........retval..........x..............y.$...|
-12/07/2012 02:21:41.257650 ./arithmeticserver: C150StreamSocket::read: successful read with len=4 |....|
-12/07/2012 02:21:41.299359 ./arithmeticserver: C150StreamSocket::read: successful read with len=16 |createRectangle.|
-12/07/2012 02:21:41.299397 ./arithmeticserver: C150StreamSocket::read: successful read with len=4 |)...|
-12/07/2012 02:21:41.299432 ./arithmeticserver: C150StreamSocket::read: successful read with len=37 |.....x..........x..............y.....|
-12/07/2012 02:21:41.299465 ./arithmeticserver: C150StreamSocket::read: successful read with len=4 |)...|
-12/07/2012 02:21:41.299506 ./arithmeticserver: C150StreamSocket::read: successful read with len=37 |.....y..........x.2............y.d...|
-12/07/2012 02:21:41.299536 ./arithmeticserver: simplefunction.stub.cpp: invokingcreateRectangle(x)
-12/07/2012 02:21:41.299566 ./arithmeticserver: simplefunction.stub.cpp: returned fromcreateRectangle(x)
-12/07/2012 02:21:41.299602 ./arithmeticserver: C150StreamSocket::write: attempting to send packet with len=5 |DONE.|
-12/07/2012 02:21:41.299642 ./arithmeticserver: C150StreamSocket::write: Success writing packet with len=5 |DONE.|
-12/07/2012 02:21:41.299678 ./arithmeticserver: C150StreamSocket::write: attempting to send packet with len=110 |n........retval./........corner1..........x..............y...../........corner2..........x.2........|
-12/07/2012 02:21:41.299711 ./arithmeticserver: C150StreamSocket::write: Success writing packet with len=110 |n........retval./........corner1..........x..............y...../........corner2..........x.2........|
-12/07/2012 02:21:41.342508 ./arithmeticserver: C150StreamSocket::read: successful read with len=4 |....|
-12/07/2012 02:21:41.384244 ./arithmeticserver: C150StreamSocket::read: successful read with len=16 |createRectangle.|
-12/07/2012 02:21:41.384281 ./arithmeticserver: C150StreamSocket::read: successful read with len=4 |)...|
-12/07/2012 02:21:41.384365 ./arithmeticserver: C150StreamSocket::read: successful read with len=37 |.....x..........x.2............y.d...|
-12/07/2012 02:21:41.384399 ./arithmeticserver: C150StreamSocket::read: successful read with len=4 |)...|
-12/07/2012 02:21:41.384441 ./arithmeticserver: C150StreamSocket::read: successful read with len=37 |.....y..........x..............y.....|
-12/07/2012 02:21:41.384471 ./arithmeticserver: simplefunction.stub.cpp: invokingcreateRectangle(x)
-12/07/2012 02:21:41.384501 ./arithmeticserver: simplefunction.stub.cpp: returned fromcreateRectangle(x)
-12/07/2012 02:21:41.384538 ./arithmeticserver: C150StreamSocket::write: attempting to send packet with len=5 |DONE.|
-12/07/2012 02:21:41.384580 ./arithmeticserver: C150StreamSocket::write: Success writing packet with len=5 |DONE.|
-12/07/2012 02:21:41.384615 ./arithmeticserver: C150StreamSocket::write: attempting to send packet with len=110 |n........retval./........corner1..........x.2............y.d.../........corner2..........x..........|
-12/07/2012 02:21:41.384648 ./arithmeticserver: C150StreamSocket::write: Success writing packet with len=110 |n........retval./........corner1..........x.2............y.d.../........corner2..........x..........|
-12/07/2012 02:21:41.427740 ./arithmeticserver: C150StreamSocket::read: successful read with len=4 |....|
-12/07/2012 02:21:41.469180 ./arithmeticserver: C150StreamSocket::read: successful read with len=13 |rectangleAdd.|
-12/07/2012 02:21:41.469219 ./arithmeticserver: C150StreamSocket::read: successful read with len=4 |j...|
-12/07/2012 02:21:41.469256 ./arithmeticserver: C150StreamSocket::read: successful read with len=102 |.....r1./........corner1..........x..............y...../........corner2..........x.2............y.d.|
-12/07/2012 02:21:41.469421 ./arithmeticserver: C150StreamSocket::read: successful read with len=4 |j...|
-12/07/2012 02:21:41.469462 ./arithmeticserver: C150StreamSocket::read: successful read with len=102 |.....r2./........corner1..........x.2............y.d.../........corner2..........x..............y...|
-12/07/2012 02:21:41.469492 ./arithmeticserver: simplefunction.stub.cpp: invokingrectangleAdd(r1r)
-12/07/2012 02:21:41.469522 ./arithmeticserver: simplefunction.stub.cpp: returned fromrectangleAdd(r1r)
-12/07/2012 02:21:41.469555 ./arithmeticserver: C150StreamSocket::write: attempting to send packet with len=5 |DONE.|
-12/07/2012 02:21:41.469599 ./arithmeticserver: C150StreamSocket::write: Success writing packet with len=5 |DONE.|
-12/07/2012 02:21:41.469631 ./arithmeticserver: C150StreamSocket::write: attempting to send packet with len=20 |.........retval.J...|
-12/07/2012 02:21:41.469664 ./arithmeticserver: C150StreamSocket::write: Success writing packet with len=20 |.........retval.J...|
-12/07/2012 02:21:41.512642 ./arithmeticserver: C150StreamSocket::read: successful read with len=4 |....|
-12/07/2012 02:21:41.554084 ./arithmeticserver: C150StreamSocket::read: successful read with len=24 |rectangleCornerDistance.|
-12/07/2012 02:21:41.554122 ./arithmeticserver: C150StreamSocket::read: successful read with len=4 |j...|
-12/07/2012 02:21:41.554159 ./arithmeticserver: C150StreamSocket::read: successful read with len=102 |.....r1./........corner1..........x.2............y.d.../........corner2..........x..............y...|
-12/07/2012 02:21:41.554190 ./arithmeticserver: simplefunction.stub.cpp: invokingrectangleCornerDistance(r)
-12/07/2012 02:21:41.554223 ./arithmeticserver: simplefunction.stub.cpp: returned fromrectangleCornerDistance(r)
-12/07/2012 02:21:41.554257 ./arithmeticserver: C150StreamSocket::write: attempting to send packet with len=5 |DONE.|
-12/07/2012 02:21:41.554331 ./arithmeticserver: C150StreamSocket::write: Success writing packet with len=5 |DONE.|
-12/07/2012 02:21:41.554363 ./arithmeticserver: C150StreamSocket::write: attempting to send packet with len=20 |.........retval..?.B|
-12/07/2012 02:21:41.554396 ./arithmeticserver: C150StreamSocket::write: Success writing packet with len=20 |.........retval..?.B|
+12/07/2012 20:14:26.893801 ./arithmeticserver: rpcstubinitialize: Creating C150StreamSocket
+12/07/2012 20:14:27.113217 ./arithmeticserver: rpcserver.cpp: calling C150StreamSocket::accept
+12/07/2012 20:14:33.417533 ./arithmeticserver: C150StreamSocket::read: successful read with len=4 |....|
+12/07/2012 20:14:33.417803 ./arithmeticserver: C150StreamSocket::read: successful read with len=4 |add.|
+12/07/2012 20:14:33.417837 ./arithmeticserver: C150StreamSocket::read: successful read with len=4 |....|
+12/07/2012 20:14:33.417870 ./arithmeticserver: C150StreamSocket::read: successful read with len=11 |.....x.....|
+12/07/2012 20:14:33.417903 ./arithmeticserver: C150StreamSocket::read: successful read with len=4 |....|
+12/07/2012 20:14:33.417936 ./arithmeticserver: C150StreamSocket::read: successful read with len=11 |.....y.....|
+12/07/2012 20:14:33.417973 ./arithmeticserver: simplefunction.stub.cpp: invokingadd(x)
+12/07/2012 20:14:33.418002 ./arithmeticserver: simplefunction.stub.cpp: returned fromadd(x)
+12/07/2012 20:14:33.418076 ./arithmeticserver: C150StreamSocket::write: attempting to send packet with len=5 |DONE.|
+12/07/2012 20:14:33.418124 ./arithmeticserver: C150StreamSocket::write: Success writing packet with len=5 |DONE.|
+12/07/2012 20:14:33.418156 ./arithmeticserver: C150StreamSocket::write: attempting to send packet with len=20 |.........retval.....|
+12/07/2012 20:14:33.418189 ./arithmeticserver: C150StreamSocket::write: Success writing packet with len=20 |.........retval.....|
+12/07/2012 20:14:33.421400 ./arithmeticserver: C150StreamSocket::read: successful read with len=4 |....|
+12/07/2012 20:14:33.462853 ./arithmeticserver: C150StreamSocket::read: successful read with len=9 |subtract.|
+12/07/2012 20:14:33.462891 ./arithmeticserver: C150StreamSocket::read: successful read with len=4 |....|
+12/07/2012 20:14:33.462924 ./arithmeticserver: C150StreamSocket::read: successful read with len=11 |.....x.....|
+12/07/2012 20:14:33.462956 ./arithmeticserver: C150StreamSocket::read: successful read with len=4 |....|
+12/07/2012 20:14:33.462996 ./arithmeticserver: C150StreamSocket::read: successful read with len=11 |.....y.....|
+12/07/2012 20:14:33.463055 ./arithmeticserver: simplefunction.stub.cpp: invokingsubtract(x)
+12/07/2012 20:14:33.463085 ./arithmeticserver: simplefunction.stub.cpp: returned fromsubtract(x)
+12/07/2012 20:14:33.463117 ./arithmeticserver: C150StreamSocket::write: attempting to send packet with len=5 |DONE.|
+12/07/2012 20:14:33.463159 ./arithmeticserver: C150StreamSocket::write: Success writing packet with len=5 |DONE.|
+12/07/2012 20:14:33.463190 ./arithmeticserver: C150StreamSocket::write: attempting to send packet with len=20 |.........retval.....|
+12/07/2012 20:14:33.463222 ./arithmeticserver: C150StreamSocket::write: Success writing packet with len=20 |.........retval.....|
+12/07/2012 20:14:33.505285 ./arithmeticserver: C150StreamSocket::read: successful read with len=4 |....|
+12/07/2012 20:14:33.546767 ./arithmeticserver: C150StreamSocket::read: successful read with len=9 |multiply.|
+12/07/2012 20:14:33.546804 ./arithmeticserver: C150StreamSocket::read: successful read with len=4 |....|
+12/07/2012 20:14:33.546837 ./arithmeticserver: C150StreamSocket::read: successful read with len=11 |.....x.....|
+12/07/2012 20:14:33.546870 ./arithmeticserver: C150StreamSocket::read: successful read with len=4 |....|
+12/07/2012 20:14:33.546909 ./arithmeticserver: C150StreamSocket::read: successful read with len=11 |.....y.....|
+12/07/2012 20:14:33.546938 ./arithmeticserver: simplefunction.stub.cpp: invokingmultiply(x)
+12/07/2012 20:14:33.546967 ./arithmeticserver: simplefunction.stub.cpp: returned frommultiply(x)
+12/07/2012 20:14:33.547029 ./arithmeticserver: C150StreamSocket::write: attempting to send packet with len=5 |DONE.|
+12/07/2012 20:14:33.547075 ./arithmeticserver: C150StreamSocket::write: Success writing packet with len=5 |DONE.|
+12/07/2012 20:14:33.547107 ./arithmeticserver: C150StreamSocket::write: attempting to send packet with len=20 |.........retval.....|
+12/07/2012 20:14:33.547138 ./arithmeticserver: C150StreamSocket::write: Success writing packet with len=20 |.........retval.....|
+12/07/2012 20:14:33.589463 ./arithmeticserver: C150StreamSocket::read: successful read with len=4 |....|
+12/07/2012 20:14:33.630856 ./arithmeticserver: C150StreamSocket::read: successful read with len=7 |divide.|
+12/07/2012 20:14:33.630895 ./arithmeticserver: C150StreamSocket::read: successful read with len=4 |....|
+12/07/2012 20:14:33.630928 ./arithmeticserver: C150StreamSocket::read: successful read with len=11 |.....x.....|
+12/07/2012 20:14:33.630960 ./arithmeticserver: C150StreamSocket::read: successful read with len=4 |....|
+12/07/2012 20:14:33.631034 ./arithmeticserver: C150StreamSocket::read: successful read with len=11 |.....y.....|
+12/07/2012 20:14:33.631065 ./arithmeticserver: simplefunction.stub.cpp: invokingdivide(x)
+12/07/2012 20:14:33.631095 ./arithmeticserver: simplefunction.stub.cpp: returned fromdivide(x)
+12/07/2012 20:14:33.631128 ./arithmeticserver: C150StreamSocket::write: attempting to send packet with len=5 |DONE.|
+12/07/2012 20:14:33.631173 ./arithmeticserver: C150StreamSocket::write: Success writing packet with len=5 |DONE.|
+12/07/2012 20:14:33.631204 ./arithmeticserver: C150StreamSocket::write: attempting to send packet with len=20 |.........retval.....|
+12/07/2012 20:14:33.631237 ./arithmeticserver: C150StreamSocket::write: Success writing packet with len=20 |.........retval.....|
+12/07/2012 20:14:33.674325 ./arithmeticserver: C150StreamSocket::read: successful read with len=4 |....|
+12/07/2012 20:14:33.716021 ./arithmeticserver: C150StreamSocket::read: successful read with len=11 |getStudent.|
+12/07/2012 20:14:33.716062 ./arithmeticserver: C150StreamSocket::read: successful read with len=4 |....|
+12/07/2012 20:14:33.716103 ./arithmeticserver: C150StreamSocket::read: successful read with len=12 |.....id.....|
+12/07/2012 20:14:33.716133 ./arithmeticserver: simplefunction.stub.cpp: invokinggetStudent(i)
+12/07/2012 20:14:33.716162 ./arithmeticserver: simplefunction.stub.cpp: returned fromgetStudent(i)
+12/07/2012 20:14:33.716196 ./arithmeticserver: C150StreamSocket::write: attempting to send packet with len=5 |DONE.|
+12/07/2012 20:14:33.716238 ./arithmeticserver: C150StreamSocket::write: Success writing packet with len=5 |DONE.|
+12/07/2012 20:14:33.716270 ./arithmeticserver: C150StreamSocket::write: attempting to send packet with len=32 | ........retval..........id.....|
+12/07/2012 20:14:33.716303 ./arithmeticserver: C150StreamSocket::write: Success writing packet with len=32 | ........retval..........id.....|
+12/07/2012 20:14:33.759466 ./arithmeticserver: C150StreamSocket::read: successful read with len=4 |....|
+12/07/2012 20:14:33.800920 ./arithmeticserver: C150StreamSocket::read: successful read with len=11 |getStudent.|
+12/07/2012 20:14:33.800958 ./arithmeticserver: C150StreamSocket::read: successful read with len=4 |....|
+12/07/2012 20:14:33.801050 ./arithmeticserver: C150StreamSocket::read: successful read with len=12 |.....id.....|
+12/07/2012 20:14:33.801080 ./arithmeticserver: simplefunction.stub.cpp: invokinggetStudent(i)
+12/07/2012 20:14:33.801109 ./arithmeticserver: simplefunction.stub.cpp: returned fromgetStudent(i)
+12/07/2012 20:14:33.801142 ./arithmeticserver: C150StreamSocket::write: attempting to send packet with len=5 |DONE.|
+12/07/2012 20:14:33.801185 ./arithmeticserver: C150StreamSocket::write: Success writing packet with len=5 |DONE.|
+12/07/2012 20:14:33.801217 ./arithmeticserver: C150StreamSocket::write: attempting to send packet with len=32 | ........retval..........id.....|
+12/07/2012 20:14:33.801249 ./arithmeticserver: C150StreamSocket::write: Success writing packet with len=32 | ........retval..........id.....|
+12/07/2012 20:14:33.844388 ./arithmeticserver: C150StreamSocket::read: successful read with len=4 |....|
+12/07/2012 20:14:33.885892 ./arithmeticserver: C150StreamSocket::read: successful read with len=11 |studentAdd.|
+12/07/2012 20:14:33.885932 ./arithmeticserver: C150StreamSocket::read: successful read with len=4 |....|
+12/07/2012 20:14:33.885989 ./arithmeticserver: C150StreamSocket::read: successful read with len=23 |.....s..........id.....|
+12/07/2012 20:14:33.886035 ./arithmeticserver: C150StreamSocket::read: successful read with len=4 |....|
+12/07/2012 20:14:33.886076 ./arithmeticserver: C150StreamSocket::read: successful read with len=23 |.....t..........id.....|
+12/07/2012 20:14:33.886105 ./arithmeticserver: simplefunction.stub.cpp: invokingstudentAdd(s)
+12/07/2012 20:14:33.886135 ./arithmeticserver: simplefunction.stub.cpp: returned fromstudentAdd(s)
+12/07/2012 20:14:33.886167 ./arithmeticserver: C150StreamSocket::write: attempting to send packet with len=5 |DONE.|
+12/07/2012 20:14:33.886210 ./arithmeticserver: C150StreamSocket::write: Success writing packet with len=5 |DONE.|
+12/07/2012 20:14:33.886241 ./arithmeticserver: C150StreamSocket::write: attempting to send packet with len=20 |.........retval.....|
+12/07/2012 20:14:33.886273 ./arithmeticserver: C150StreamSocket::write: Success writing packet with len=20 |.........retval.....|
+12/07/2012 20:14:33.929664 ./arithmeticserver: C150StreamSocket::read: successful read with len=4 |....|
+12/07/2012 20:14:33.970826 ./arithmeticserver: C150StreamSocket::read: successful read with len=14 |vertexAddXPos.|
+12/07/2012 20:14:33.970869 ./arithmeticserver: C150StreamSocket::read: successful read with len=4 |)...|
+12/07/2012 20:14:33.970903 ./arithmeticserver: C150StreamSocket::read: successful read with len=37 |.....x..........x..............y.....|
+12/07/2012 20:14:33.970936 ./arithmeticserver: C150StreamSocket::read: successful read with len=4 |)...|
+12/07/2012 20:14:33.970998 ./arithmeticserver: C150StreamSocket::read: successful read with len=37 |.....y..........x.2............y.d...|
+12/07/2012 20:14:33.971027 ./arithmeticserver: simplefunction.stub.cpp: invokingvertexAddXPos(x)
+12/07/2012 20:14:33.971057 ./arithmeticserver: simplefunction.stub.cpp: returned fromvertexAddXPos(x)
+12/07/2012 20:14:33.971090 ./arithmeticserver: C150StreamSocket::write: attempting to send packet with len=5 |DONE.|
+12/07/2012 20:14:33.971133 ./arithmeticserver: C150StreamSocket::write: Success writing packet with len=5 |DONE.|
+12/07/2012 20:14:33.971206 ./arithmeticserver: C150StreamSocket::write: attempting to send packet with len=20 |.........retval.7...|
+12/07/2012 20:14:33.971239 ./arithmeticserver: C150StreamSocket::write: Success writing packet with len=20 |.........retval.7...|
+12/07/2012 20:14:34.014325 ./arithmeticserver: C150StreamSocket::read: successful read with len=4 |....|
+12/07/2012 20:14:34.055768 ./arithmeticserver: C150StreamSocket::read: successful read with len=14 |vertexAddYPos.|
+12/07/2012 20:14:34.055809 ./arithmeticserver: C150StreamSocket::read: successful read with len=4 |)...|
+12/07/2012 20:14:34.055842 ./arithmeticserver: C150StreamSocket::read: successful read with len=37 |.....x..........x.2............y.d...|
+12/07/2012 20:14:34.055875 ./arithmeticserver: C150StreamSocket::read: successful read with len=4 |)...|
+12/07/2012 20:14:34.055915 ./arithmeticserver: C150StreamSocket::read: successful read with len=37 |.....y..........x..............y.....|
+12/07/2012 20:14:34.056035 ./arithmeticserver: simplefunction.stub.cpp: invokingvertexAddYPos(x)
+12/07/2012 20:14:34.056064 ./arithmeticserver: simplefunction.stub.cpp: returned fromvertexAddYPos(x)
+12/07/2012 20:14:34.056098 ./arithmeticserver: C150StreamSocket::write: attempting to send packet with len=5 |DONE.|
+12/07/2012 20:14:34.056141 ./arithmeticserver: C150StreamSocket::write: Success writing packet with len=5 |DONE.|
+12/07/2012 20:14:34.056173 ./arithmeticserver: C150StreamSocket::write: attempting to send packet with len=20 |.........retval.n...|
+12/07/2012 20:14:34.056205 ./arithmeticserver: C150StreamSocket::write: Success writing packet with len=20 |.........retval.n...|
+12/07/2012 20:14:34.099256 ./arithmeticserver: C150StreamSocket::read: successful read with len=4 |....|
+12/07/2012 20:14:34.144063 ./arithmeticserver: C150StreamSocket::read: successful read with len=13 |createVertex.|
+12/07/2012 20:14:34.144105 ./arithmeticserver: C150StreamSocket::read: successful read with len=4 |....|
+12/07/2012 20:14:34.144151 ./arithmeticserver: C150StreamSocket::read: successful read with len=11 |.....x.....|
+12/07/2012 20:14:34.144184 ./arithmeticserver: C150StreamSocket::read: successful read with len=4 |....|
+12/07/2012 20:14:34.144226 ./arithmeticserver: C150StreamSocket::read: successful read with len=11 |.....y.$...|
+12/07/2012 20:14:34.144256 ./arithmeticserver: simplefunction.stub.cpp: invokingcreateVertex(x)
+12/07/2012 20:14:34.144285 ./arithmeticserver: simplefunction.stub.cpp: returned fromcreateVertex(x)
+12/07/2012 20:14:34.144320 ./arithmeticserver: C150StreamSocket::write: attempting to send packet with len=5 |DONE.|
+12/07/2012 20:14:34.144364 ./arithmeticserver: C150StreamSocket::write: Success writing packet with len=5 |DONE.|
+12/07/2012 20:14:34.144398 ./arithmeticserver: C150StreamSocket::write: attempting to send packet with len=46 |.........retval..........x..............y.$...|
+12/07/2012 20:14:34.144430 ./arithmeticserver: C150StreamSocket::write: Success writing packet with len=46 |.........retval..........x..............y.$...|
+12/07/2012 20:14:34.187203 ./arithmeticserver: C150StreamSocket::read: successful read with len=4 |....|
+12/07/2012 20:14:34.229023 ./arithmeticserver: C150StreamSocket::read: successful read with len=16 |createRectangle.|
+12/07/2012 20:14:34.229066 ./arithmeticserver: C150StreamSocket::read: successful read with len=4 |)...|
+12/07/2012 20:14:34.229100 ./arithmeticserver: C150StreamSocket::read: successful read with len=37 |.....x..........x..............y.....|
+12/07/2012 20:14:34.229134 ./arithmeticserver: C150StreamSocket::read: successful read with len=4 |)...|
+12/07/2012 20:14:34.229176 ./arithmeticserver: C150StreamSocket::read: successful read with len=37 |.....y..........x.2............y.d...|
+12/07/2012 20:14:34.229206 ./arithmeticserver: simplefunction.stub.cpp: invokingcreateRectangle(x)
+12/07/2012 20:14:34.229235 ./arithmeticserver: simplefunction.stub.cpp: returned fromcreateRectangle(x)
+12/07/2012 20:14:34.229272 ./arithmeticserver: C150StreamSocket::write: attempting to send packet with len=5 |DONE.|
+12/07/2012 20:14:34.229315 ./arithmeticserver: C150StreamSocket::write: Success writing packet with len=5 |DONE.|
+12/07/2012 20:14:34.229350 ./arithmeticserver: C150StreamSocket::write: attempting to send packet with len=110 |n........retval./........corner1..........x..............y...../........corner2..........x.2........|
+12/07/2012 20:14:34.229383 ./arithmeticserver: C150StreamSocket::write: Success writing packet with len=110 |n........retval./........corner1..........x..............y...../........corner2..........x.2........|
+12/07/2012 20:14:34.283175 ./arithmeticserver: C150StreamSocket::read: successful read with len=4 |....|
+12/07/2012 20:14:34.324317 ./arithmeticserver: C150StreamSocket::read: successful read with len=16 |createRectangle.|
+12/07/2012 20:14:34.324357 ./arithmeticserver: C150StreamSocket::read: successful read with len=4 |)...|
+12/07/2012 20:14:34.324391 ./arithmeticserver: C150StreamSocket::read: successful read with len=37 |.....x..........x.2............y.d...|
+12/07/2012 20:14:34.324424 ./arithmeticserver: C150StreamSocket::read: successful read with len=4 |)...|
+12/07/2012 20:14:34.324465 ./arithmeticserver: C150StreamSocket::read: successful read with len=37 |.....y..........x..............y.....|
+12/07/2012 20:14:34.324495 ./arithmeticserver: simplefunction.stub.cpp: invokingcreateRectangle(x)
+12/07/2012 20:14:34.324524 ./arithmeticserver: simplefunction.stub.cpp: returned fromcreateRectangle(x)
+12/07/2012 20:14:34.324561 ./arithmeticserver: C150StreamSocket::write: attempting to send packet with len=5 |DONE.|
+12/07/2012 20:14:34.324603 ./arithmeticserver: C150StreamSocket::write: Success writing packet with len=5 |DONE.|
+12/07/2012 20:14:34.324638 ./arithmeticserver: C150StreamSocket::write: attempting to send packet with len=110 |n........retval./........corner1..........x.2............y.d.../........corner2..........x..........|
+12/07/2012 20:14:34.324671 ./arithmeticserver: C150StreamSocket::write: Success writing packet with len=110 |n........retval./........corner1..........x.2............y.d.../........corner2..........x..........|
+12/07/2012 20:14:34.367335 ./arithmeticserver: C150StreamSocket::read: successful read with len=4 |....|
+12/07/2012 20:14:34.408503 ./arithmeticserver: C150StreamSocket::read: successful read with len=13 |rectangleAdd.|
+12/07/2012 20:14:34.408543 ./arithmeticserver: C150StreamSocket::read: successful read with len=4 |j...|
+12/07/2012 20:14:34.408579 ./arithmeticserver: C150StreamSocket::read: successful read with len=102 |.....r1./........corner1..........x..............y...../........corner2..........x.2............y.d.|
+12/07/2012 20:14:34.408613 ./arithmeticserver: C150StreamSocket::read: successful read with len=4 |j...|
+12/07/2012 20:14:34.408650 ./arithmeticserver: C150StreamSocket::read: successful read with len=102 |.....r2./........corner1..........x.2............y.d.../........corner2..........x..............y...|
+12/07/2012 20:14:34.408680 ./arithmeticserver: simplefunction.stub.cpp: invokingrectangleAdd(r1r)
+12/07/2012 20:14:34.408709 ./arithmeticserver: simplefunction.stub.cpp: returned fromrectangleAdd(r1r)
+12/07/2012 20:14:34.408742 ./arithmeticserver: C150StreamSocket::write: attempting to send packet with len=5 |DONE.|
+12/07/2012 20:14:34.408785 ./arithmeticserver: C150StreamSocket::write: Success writing packet with len=5 |DONE.|
+12/07/2012 20:14:34.408817 ./arithmeticserver: C150StreamSocket::write: attempting to send packet with len=20 |.........retval.J...|
+12/07/2012 20:14:34.408849 ./arithmeticserver: C150StreamSocket::write: Success writing packet with len=20 |.........retval.J...|
+12/07/2012 20:14:34.451213 ./arithmeticserver: C150StreamSocket::read: successful read with len=4 |....|
+12/07/2012 20:14:34.492669 ./arithmeticserver: C150StreamSocket::read: successful read with len=24 |rectangleCornerDistance.|
+12/07/2012 20:14:34.492708 ./arithmeticserver: C150StreamSocket::read: successful read with len=4 |j...|
+12/07/2012 20:14:34.492745 ./arithmeticserver: C150StreamSocket::read: successful read with len=102 |.....r1./........corner1..........x.2............y.d.../........corner2..........x..............y...|
+12/07/2012 20:14:34.492775 ./arithmeticserver: simplefunction.stub.cpp: invokingrectangleCornerDistance(r)
+12/07/2012 20:14:34.492813 ./arithmeticserver: simplefunction.stub.cpp: returned fromrectangleCornerDistance(r)
+12/07/2012 20:14:34.492847 ./arithmeticserver: C150StreamSocket::write: attempting to send packet with len=5 |DONE.|
+12/07/2012 20:14:34.492927 ./arithmeticserver: C150StreamSocket::write: Success writing packet with len=5 |DONE.|
+12/07/2012 20:14:34.492960 ./arithmeticserver: C150StreamSocket::write: attempting to send packet with len=20 |.........retval..?.B|
+12/07/2012 20:14:34.492993 ./arithmeticserver: C150StreamSocket::write: Success writing packet with len=20 |.........retval..?.B|
