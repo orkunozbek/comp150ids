@@ -43,8 +43,17 @@
 #include "typedeclaration.h"
 #include <string>
 #include <streambuf>
+#include <vector>
+#include <sstream>
 
 using namespace std;
+
+string intToString ( int Number )
+ {
+    ostringstream ss;
+    ss << Number;
+    return ss.str();
+ }
 
 
 string createStructConversionFunction(string str, TypeDeclaration *typep){
@@ -140,6 +149,63 @@ string createStructSizeFunction(string str, TypeDeclaration *typep){
 }
 
 
+string createArraySizeFunction(string str, TypeDeclaration *typep){
+    string typeNameStr = typep->getName();
+    replace(typeNameStr.begin(),typeNameStr.end(), '[', '_');
+	replace(typeNameStr.begin(),typeNameStr.end(), ']', '_');
+    
+    // Replace the type name
+    string typeNameStrTag = "${ARRAY_TYPE_S}";
+    size_t found = str.find(typeNameStr);
+    if(found!=string::npos){
+        str.replace(found, typeNameStrTag.length(), typeNameStr);
+    }
+    // Append the dim data representation length
+    // Keep a vector of array dimensions
+    string dimsDataStr = "\tlen+=0";
+    string dataFieldSizeStr = "";
+    string dimsStr = "";
+    TypeDeclaration *arrayType = typep->getArrayMemberType();
+    int i = 0;
+    dimsDataStr.append(" + " + intToString(typep->getArrayBound()) + "*sizeof(int)");
+    dataFieldSizeStr.append("for(int i" + i + "= 0; i" + i + "< " + intToString(typep->getArrayBound()) +  "; i" + i + "++)\n";);
+    dimsStr.append("[i" + i + "]");
+    while(arrayType){
+        i++;
+        if(arrayType->isArray()){
+            dimsDataStr.append(" + " + intToString(arrayType->getArrayBound()) + "*sizeof(int)");
+		    dataFieldSizeStr.append("for(int i" + i + "= 0; i" + i + "< " + intToString(arrayType->getArrayBound()) +  "; i" + i + "++)\n";)
+		    dimsStr.append("[i" + i + "]");
+			arrayType = arrayType->getArrayMemberType();
+		}
+		else{
+            dimsDataStr.append(";\n");
+            string typeName =arrayType->getName();
+            
+		    if (type == "int")
+          		dataFieldSizeStr.append("\tlen+=getIntFieldSize(\"\");\n");
+          	else if(type == "float")
+              	dataFieldSizeStr.append("\tlen+=getFloatFieldSize(\"\");\n");
+            else if(type == "string")
+            	dataFieldSizeStr.append("\tlen+=getStringFieldSize(\"\", arr" + dimsStr + ");\n");
+			else{
+                dataFieldSizeStr.append("\tlen+=get"+ typeName +"FieldSize(arr" + dimsStr + ",\"\");\n");
+            }
+			arrayType = NULL;
+		}
+    }
+    
+    dimsDataStr.append("\n\n");
+    dimsDataStr.append(dataFieldSizeStr);
+    string appendTag = "${APPEND_DATA_CONVERSION}";
+    found = str.find(appendTag);
+    if(found != string::npos){
+        str.replace(found, appendTag.length(), dimsDataStr);
+    }
+    return str;
+}
+
+
 void
 processIDLFile(const char fileName[]);
 
@@ -228,6 +294,16 @@ processIDLFile(const char fileName[]) {
   t.seekg(0, ios::beg);
   convertFunctionStr.assign((istreambuf_iterator<char>(t)),istreambuf_iterator<char>());
   printf("%s\n", convertFunctionStr.c_str());
+  t.close();
+  
+  
+  t.open("arraysizefunction");
+  string arraySizeFunction;
+  t.seekg(0, ios::end);   
+  arraySizeFunction.reserve(t.tellg());
+  t.seekg(0, ios::beg);
+  arraySizeFunction.assign((istreambuf_iterator<char>(t)),istreambuf_iterator<char>());
+  printf("%s\n", arraySizeFunction.c_str());
   t.close();
 
   //
@@ -321,26 +397,28 @@ processIDLFile(const char fileName[]) {
     	string structConversionFunction = convertFunctionStr;
     	cout << createStructConversionFunction(structConversionFunction, typep) << endl;
     }else if(typep->isArray()){
-	    int i = 0;
-    	//cout <<  typep-> getArrayBound() << " " << typep->getName() << " " ;
-    	cout << "for(int i" << i << "= 0; i" << i << "< " << typep->getArrayBound() <<  "; i" << i << "++)\n";
-    	//string str = "for(int i" + i + "= 0; i" + i + "< " + typep->getArrayBound()+ "; i" + i+ "++)\n";
-	    TypeDeclaration *arrayType = typep->getArrayMemberType();
-	    
-    	while(arrayType){
-    		i++;
-    		
-    		if(arrayType->isArray()){
-    		    //cout <<  arrayType-> getArrayBound() << " " << arrayType->getName() <<  " " ;
-    		    cout << "for(int i" << i << "= 0; i" << i << "< " << arrayType->getArrayBound() <<  "; i" << i << "++)\n";	
-    			arrayType = arrayType->getArrayMemberType();
-    		}
-    		else{
-    			cout << "convertTo" <<arrayType->getName() << "(),tmp+=*tmp";
-    			arrayType = NULL;
-    		}
-    	}
-    	cout << endl;
+        string arraySizeFunctionTmpStr = arraySizeFunction;
+        cout << createArraySizeFunction(arraySizeFunctionTmpStr, typep) << endl;
+	    // int i = 0;
+	    //         //cout <<  typep-> getArrayBound() << " " << typep->getName() << " " ;
+	    //         cout << "for(int i" << i << "= 0; i" << i << "< " << typep->getArrayBound() <<  "; i" << i << "++)\n";
+	    //         //string str = "for(int i" + i + "= 0; i" + i + "< " + typep->getArrayBound()+ "; i" + i+ "++)\n";
+	    //         TypeDeclaration *arrayType = typep->getArrayMemberType();
+	    //         
+	    //         while(arrayType){
+	    //             i++;
+	    //             
+	    //             if(arrayType->isArray()){
+	    //                 //cout <<  arrayType-> getArrayBound() << " " << arrayType->getName() <<  " " ;
+	    //                 cout << "for(int i" << i << "= 0; i" << i << "< " << arrayType->getArrayBound() <<  "; i" << i << "++)\n";  
+	    //                 arrayType = arrayType->getArrayMemberType();
+	    //             }
+	    //             else{
+	    //                 cout << "convertTo" <<arrayType->getName() << "(),tmp+=*tmp";
+	    //                 arrayType = NULL;
+	    //             }
+	    //         }
+	    //         cout << endl;
     }
 
     typep->to_string_stream(formattedType);   // format the type info into the buffer

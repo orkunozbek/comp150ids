@@ -1,0 +1,23 @@
+void *convert${ARRAY_TYPE_S}ToByte(${ARRAY_TYPE} arr, string fieldName, char *data){
+	size_t len = get${ARRAY_TYPE_S}FieldSize(arr,fieldName);
+	
+	if (data== NULL)
+		data = (char*)malloc(len);
+	
+	char *tmp = data;
+	tmp+= sizeof(int);
+	*tmp++ = 6;
+	
+	${APPEND_DATA_TYPE_AND_DIMENSIONS}
+	
+	int fieldLen = fieldName.length()+1;
+	memcpy(tmp, &fieldLen, sizeof(int) );
+	tmp+=sizeof(int);
+	memcpy(tmp, fieldName.c_str(), fieldLen);
+	tmp += fieldLen;
+	
+	${APPEND_CONVERSIONS}
+	
+	memcpy(data, &len, sizeof(int));
+	return data;	
+}
