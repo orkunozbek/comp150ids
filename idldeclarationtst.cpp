@@ -233,8 +233,9 @@ string createArrayConversionFunction(string str, TypeDeclaration *typep){
     // Replace the type name
     string typeNameStrTag = "${ARRAY_TYPE_S}";
     size_t found = str.find(typeNameStrTag);
-    if(found!=string::npos){
+    while(found!=string::npos){
         str.replace(found, typeNameStrTag.length(), typeNameStr);
+        found = str.find(typeNameStrTag, found+1);
     }
     
     
@@ -258,38 +259,37 @@ string createArrayConversionFunction(string str, TypeDeclaration *typep){
         	argStr.append("[" + intToString(arrayType->getArrayBound())+ "]");
 		    dataFieldSizeStr.append("\tfor(int i" + intToString(i) + "= 0; i" + intToString(i) + "< " + intToString(arrayType->getArrayBound()) +  "; i" + intToString(i) + "++)\n");
 		    dimsStr.append("[i" + intToString(i) + "]");
-		    dimsToBytes.append("\tbound = " + intToString(typep->getArrayBound()) + ";\n");
+		    dimsToBytes.append("\tbound = " + intToString(arrayType->getArrayBound()) + ";\n");
             dimsToBytes.append("\tmemcpy(tmp, &bound, sizeof(int));\n");
             dimsToBytes.append("\ttmp+=sizeof(int);\n");
 			arrayType = arrayType->getArrayMemberType();
 		}
 		else{
-		    dimsToBytes.insert(0,"\tint numDims = " + i + ";\n");
-            dimsToBytes.append("\tmemcpy(tmp, &numDims, sizeof(int));\n");
-            dimsToBytes.append("\ttmp+=sizeof(int);\n");
+			
+		    dimsToBytes.insert(0,"\tint numDims = " + intToString(i) + ";\n" + "\tmemcpy(tmp, &numDims, sizeof(int));\n" + "\ttmp+=sizeof(int);\n");
             string typeName =arrayType->getName();
             
 		    if (typeName == "int"){
-          		dataFieldSizeStr.append("\tconvertIntToByte(arr" + dimsStr + ", \"\", tmp);\n");
-          		dataFieldSizeStr.append("\ttmp+=*tmp;\n")
+          		dataFieldSizeStr.append("\tconvertIntToByte(arr" + dimsStr + ", \"\", tmp), ");
+          		dataFieldSizeStr.append("\ttmp+=*tmp;\n");
           		argStr.insert(0, "int arr");
                 dimsToBytes.append("\t*tmp++ = 1;\n");
           	}
           	else if(typeName == "float"){
-              	dataFieldSizeStr.append("\tconvertFloatToByte(arr" + dimsStr + ", \"\", tmp);\n");
-          		dataFieldSizeStr.append("\ttmp+=*tmp;\n")
+              	dataFieldSizeStr.append("\tconvertFloatToByte(arr" + dimsStr + ", \"\", tmp), ");
+          		dataFieldSizeStr.append("\ttmp+=*tmp;\n");
               	argStr.insert(0, "float arr");
               	dimsToBytes.append("\t*tmp++ = 2;\n");
             }	
             else if(typeName == "string"){
-            	dataFieldSizeStr.append("\tconvertStringToByte(arr" + dimsStr + ", \"\", tmp);\n");
-            	dataFieldSizeStr.append("\ttmp+=*tmp;\n")
+            	dataFieldSizeStr.append("\tconvertStringToByte(arr" + dimsStr + ", \"\", tmp), ");
+            	dataFieldSizeStr.append("\ttmp+=*tmp;\n");
             	argStr.insert(0, "string arr");
             	dimsToBytes.append("\t*tmp++ = 4;\n");
             }
 			else{
-                dataFieldSizeStr.append("\tconvert"+ typeName +"ToByte(arr" + dimsStr + ",\"\", tmp);\n");
-                dataFieldSizeStr.append("\ttmp+=*tmp;\n")
+                dataFieldSizeStr.append("\tconvert"+ typeName +"ToByte(arr" + dimsStr + ",\"\", tmp), ");
+                dataFieldSizeStr.append("\ttmp+=*tmp;\n");
                 argStr.insert(0, typeName + " arr");
                 dimsToBytes.append("\t*tmp++ = 5;\n");
             }

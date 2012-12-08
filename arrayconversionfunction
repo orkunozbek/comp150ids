@@ -1,4 +1,4 @@
-void *convert${ARRAY_TYPE_S}ToByte(${ARRAY_TYPE}, string fieldName, char *data){
+void *convert${ARRAY_TYPE_S}ToByte(${ARRAY_TYPE} arr, string fieldName, char *data){
 	size_t len = get${ARRAY_TYPE_S}FieldSize(arr,fieldName);
 	
 	if (data== NULL)
@@ -8,7 +8,7 @@ void *convert${ARRAY_TYPE_S}ToByte(${ARRAY_TYPE}, string fieldName, char *data){
 	tmp+= sizeof(int);
 	*tmp++ = 6;
 	
-	${APPEND_DATA_TYPE_AND_DIMENSIONS}
+${APPEND_DATA_TYPE_AND_DIMENSIONS}
 	
 	int fieldLen = fieldName.length()+1;
 	memcpy(tmp, &fieldLen, sizeof(int) );
@@ -16,7 +16,7 @@ void *convert${ARRAY_TYPE_S}ToByte(${ARRAY_TYPE}, string fieldName, char *data){
 	memcpy(tmp, fieldName.c_str(), fieldLen);
 	tmp += fieldLen;
 	
-	${APPEND_CONVERSIONS}
+${APPEND_CONVERSIONS}
 	
 	memcpy(data, &len, sizeof(int));
 	return data;	
