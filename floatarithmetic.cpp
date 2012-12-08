@@ -37,3 +37,11 @@ float divide(float x, float y) {
   return x/y;
 }
 
+float addArray(float x[15], float y[15]){
+	float sum = 0.0;
+	for(int i =0; i< 15; i++){
+		sum += x[i] + y[i];
+	}
+	return sum;
+}
+

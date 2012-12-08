@@ -3,3 +3,4 @@ size_t get${ARRAY_TYPE_S}FieldSize(${ARRAY_TYPE}, string fieldName){
 ${APPEND_DATA_CONVERSION}
 	return len;
 }
+

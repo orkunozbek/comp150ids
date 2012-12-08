@@ -14,6 +14,78 @@ using namespace C150NETWORK;  // for all the comp150 utilities
 void getFunctionNamefromStream();
 void readNByte(char* buf, int i);
 
+size_t get__float_15_FieldSize(float arr[15], string fieldName);
+void *convert__float_15_ToByte(float arr[15], string fieldName, char *data);
+void fromDataTo__float_15_(char *data, float arr[15]);
+size_t get__float_15_FieldSize(float arr[15], string fieldName){
+	size_t len = sizeof(int) + 1 + sizeof(int) + 1 + sizeof(int) + fieldName.length() + 1;
+	len+=0 + sizeof(int);
+
+
+	for(int i0= 0; i0< 15; i0++)
+	len+=getFloatFieldSize("");
+
+	return len;
+}
+
+void *convert__float_15_ToByte(float arr[15], string fieldName, char *data){
+	size_t len = get__float_15_FieldSize(arr,fieldName);
+	
+	if (data== NULL)
+		data = (char*)malloc(len);
+	
+	char *tmp = data;
+	tmp+= sizeof(int);
+	*tmp++ = 6;
+	
+	int numDims = 1;
+	memcpy(tmp, &numDims, sizeof(int));
+	tmp+=sizeof(int);
+	int bound = 15;
+	memcpy(tmp, &bound, sizeof(int));
+	tmp+=sizeof(int);
+	*tmp++ = 2;
+
+	
+	int fieldLen = fieldName.length()+1;
+	memcpy(tmp, &fieldLen, sizeof(int) );
+	tmp+=sizeof(int);
+	memcpy(tmp, fieldName.c_str(), fieldLen);
+	tmp += fieldLen;
+	
+	for(int i0= 0; i0< 15; i0++)
+	convertFloatToByte(arr[i0], "", tmp), 	tmp+=*tmp;
+
+
+
+	
+	memcpy(data, &len, sizeof(int));
+	return data;	
+}
+
+void fromDataTo__float_15_(char *data, float arr[15]){
+	char *tmp = data;
+	//int len = *(int*)tmp;
+	tmp+=sizeof(int);
+	tmp++;
+	
+	tmp+=sizeof(int);
+	tmp+=sizeof(int);
+	tmp++;
+	
+	
+	int fieldNameLen = *(int*)tmp;
+	tmp+=sizeof(int)+fieldNameLen;
+
+	for(int i0= 0; i0< 15; i0++)
+	arr[i0]= fromDataToFloat(tmp),	tmp+=*tmp;
+
+
+
+
+}
+
+
 
 
 
@@ -44,6 +116,37 @@ float add(float x,float y){
 	readNByte(arg0, (*(int*)retLenPtr) - sizeof(int));
 	float retval = fromDataToFloat(data0);
 	c150debug->printf(C150RPCDEBUG,"floatarithmetic.proxy.cpp: add successful return from remote cal");
+	return retval;
+
+
+}
+
+float addArray(float x[15],float y[15]){
+	char readBuffer[5];
+	c150debug->printf(C150RPCDEBUG,"floatarithmetic.proxy.cpp: invoking");
+	int functionLength = strlen("addArray")+1;
+	RPCPROXYSOCKET->write((char*)&functionLength, sizeof(int));
+	RPCPROXYSOCKET->write("addArray", strlen("addArray")+1);
+	float arrayData0 = (char*)convert__float_15_ToByte(x,"x", NULL);
+	RPCPROXYSOCKET->write(arrayData0, *(int*)arrayData0);
+
+	float arrayData1 = (char*)convert__float_15_ToByte(y,"y", NULL);
+	RPCPROXYSOCKET->write(arrayData1, *(int*)arrayData1);
+
+	c150debug->printf(C150RPCDEBUG,"floatarithmetic.proxy.cpp: returned from");
+	RPCPROXYSOCKET->read(readBuffer, sizeof(readBuffer));
+	if (strncmp(readBuffer,"DONE", sizeof(readBuffer))!=0) {
+		throw C150Exception("floatarithmetic.proxy.cpp: addArray received invalid response from the server");
+	}
+	char* retLenPtr = (char*) malloc(sizeof(int));
+	readNByte(retLenPtr, sizeof(int));
+	char* arg0 = (char*) malloc(*(int *)retLenPtr);
+	memcpy(arg0, retLenPtr, sizeof(int));
+	char *data0 = arg0;
+	arg0 += sizeof(int);
+	readNByte(arg0, (*(int*)retLenPtr) - sizeof(int));
+	float retval = fromDataToFloat(data0);
+	c150debug->printf(C150RPCDEBUG,"floatarithmetic.proxy.cpp: addArray successful return from remote cal");
 	return retval;
 
 

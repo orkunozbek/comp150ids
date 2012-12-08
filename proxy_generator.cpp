@@ -1,6 +1,7 @@
 #include <fstream>
 #include <sstream>
 #include <iostream>
+#include <sstream>
 #include <cstdio>
 #include "c150exceptions.h"
 #include "declarations.h"
@@ -10,6 +11,24 @@
 #include <stdlib.h>
 using namespace std;
 
+
+string intToString ( int Number )
+{
+	ostringstream ss;
+	ss << Number;
+	return ss.str();
+}
+
+string arrayTypeNameHelper(TypeDeclaration *typep){
+	string typeNameStr = typep->getName();
+    replace(typeNameStr.begin(),typeNameStr.end(), '[', '_');
+	replace(typeNameStr.begin(),typeNameStr.end(), ']', '_');
+	return typeNameStr;
+}
+
+string arrayTypeToVariableHelper(TypeDeclaration *typep){
+	return "";
+}
 
 string createStructConversionFunction(string str, TypeDeclaration *typep){
 	string name = "${STRUCT_NAME}";
@@ -44,6 +63,9 @@ string createStructConversionFunction(string str, TypeDeclaration *typep){
           if(typep->isStruct()){
               appendedStr.append("\tconvert" + typep->getName() + "ToByte(s." + memp->getName() + ", \"" + memp->getName() + "\", tmp);\n");
               appendedStr.append("\ttmp+=*tmp;\n");
+          }else if(typep->isArray()){
+          	  appendedStr.append("\tconvert" + arrayTypeNameHelper(typep) + "ToByte(s." + memp->getName() + ", \"" + memp->getName() + "\", tmp);\n");
+              appendedStr.append("\ttmp+=*tmp;\n");
           }
       }
     }
@@ -75,6 +97,9 @@ string createStructConversionFunction(string str, TypeDeclaration *typep){
             if(typep->isStruct()){
                 appendedStr.append("\ts->" + memberName + "= *fromDataTo" + typep->getName() + "(tmp);\n");
                 appendedStr.append("\ttmp+=*tmp;\n");
+            }else if(typep->isArray()){
+            	appendedStr.append("\tfromDataTo" + arrayTypeNameHelper(typep) + "(tmp, s->" +memberName+ ");\n");
+                appendedStr.append("\ttmp+=*tmp;\n"); 
             }
         }
     }
@@ -119,6 +144,207 @@ string createStructSizeFunction(string str, TypeDeclaration *typep){
     str.replace(found, size.length(), appendedStr);
 	
 	return str;
+}
+
+string createArraySizeFunction(string str, TypeDeclaration *typep, string& functionPrototype){
+    string typeNameStr = typep->getName();
+    replace(typeNameStr.begin(),typeNameStr.end(), '[', '_');
+	replace(typeNameStr.begin(),typeNameStr.end(), ']', '_');
+    // Replace the type name
+    string typeNameStrTag = "${ARRAY_TYPE_S}";
+    size_t found = str.find(typeNameStrTag);
+    if(found!=string::npos){
+        str.replace(found, typeNameStrTag.length(), typeNameStr);
+    }
+    // Append the dim data representation length
+    // Keep a vector of array dimensions
+    string dimsDataStr = "\tlen+=0";
+    string dataFieldSizeStr = "";
+    string dimsStr = "";
+    string argStr = "";
+    TypeDeclaration *arrayType = typep->getArrayMemberType();
+    int i = 0;
+    dimsDataStr.append(" + sizeof(int)");
+    dataFieldSizeStr.append("\tfor(int i" + intToString(i) + "= 0; i" + intToString(i) + "< " + intToString(typep->getArrayBound()) +  "; i" + intToString(i) + "++)\n");
+    dimsStr.append("[i" + intToString(i) + "]");
+    argStr.append("[" + intToString(typep->getArrayBound())+ "]");
+    while(arrayType){
+        i++;
+        if(arrayType->isArray()){
+        	argStr.append("[" + intToString(arrayType->getArrayBound())+ "]");
+            dimsDataStr.append(" + sizeof(int)");
+		    dataFieldSizeStr.append("\tfor(int i" + intToString(i) + "= 0; i" + intToString(i) + "< " + intToString(arrayType->getArrayBound()) +  "; i" + intToString(i) + "++)\n");
+		    dimsStr.append("[i" + intToString(i) + "]");
+			arrayType = arrayType->getArrayMemberType();
+		}
+		else{
+            dimsDataStr.append(";\n");
+            string typeName =arrayType->getName();
+            
+		    if (typeName == "int"){
+          		dataFieldSizeStr.append("\tlen+=getIntFieldSize(\"\");\n");
+          		argStr.insert(0, "int arr");
+          	}
+          	else if(typeName == "float"){
+              	dataFieldSizeStr.append("\tlen+=getFloatFieldSize(\"\");\n");
+              	argStr.insert(0, "float arr");
+            }	
+            else if(typeName == "string"){
+            	dataFieldSizeStr.append("\tlen+=getStringFieldSize(\"\", arr" + dimsStr + ");\n");
+            	argStr.insert(0, "string arr");
+            }
+			else{
+                dataFieldSizeStr.append("\tlen+=get"+ typeName +"FieldSize(arr" + dimsStr + ",\"\");\n");
+                argStr.insert(0, typeName + " arr");
+            }
+			arrayType = NULL;
+		}
+    }
+    
+    dimsDataStr.append("\n\n");
+    dimsDataStr.append(dataFieldSizeStr);
+    string appendTag = "${APPEND_DATA_CONVERSION}";
+    found = str.find(appendTag);
+    if(found != string::npos){
+        str.replace(found, appendTag.length(), dimsDataStr);
+    }
+    
+    
+    
+    string typeTag = "${ARRAY_TYPE}";
+    found = str.find(typeTag);
+    if(found != string::npos){
+        str.replace(found, typeTag.length(), argStr);
+    }    
+    functionPrototype.append("size_t get" + typeNameStr + "FieldSize("+ argStr + ", string fieldName);\n");
+    
+    return str;
+}
+
+
+string createArrayConversionFunction(string str, TypeDeclaration *typep, string& functionPrototype){
+    string typeNameStr = typep->getName();
+    replace(typeNameStr.begin(),typeNameStr.end(), '[', '_');
+	replace(typeNameStr.begin(),typeNameStr.end(), ']', '_');
+    // Replace the type name
+    string typeNameStrTag = "${ARRAY_TYPE_S}";
+    size_t found = str.find(typeNameStrTag);
+    while(found!=string::npos){
+        str.replace(found, typeNameStrTag.length(), typeNameStr);
+        found = str.find(typeNameStrTag, found+1);
+    }
+    
+    
+    // Append the dim data representation length
+    // Keep a vector of array dimensions
+    string dimsToBytes = "";
+    string dataFieldSizeStr = "";
+    string buildArrayStr = "";
+    string dimsStr = "";
+    string argStr = "";
+    string itDimsStr = "";
+    TypeDeclaration *arrayType = typep->getArrayMemberType();
+    int i = 0;
+    dataFieldSizeStr.append("\tfor(int i" + intToString(i) + "= 0; i" + intToString(i) + "< " + intToString(typep->getArrayBound()) +  "; i" + intToString(i) + "++)\n");
+    buildArrayStr.append("\tfor(int i" + intToString(i) + "= 0; i" + intToString(i) + "< " + intToString(typep->getArrayBound()) +  "; i" + intToString(i) + "++)\n");
+    dimsStr.append("[i" + intToString(i) + "]");
+    argStr.append("[" + intToString(typep->getArrayBound())+ "]");
+    dimsToBytes.append("\tint bound = " + intToString(typep->getArrayBound()) + ";\n");
+    dimsToBytes.append("\tmemcpy(tmp, &bound, sizeof(int));\n");
+    dimsToBytes.append("\ttmp+=sizeof(int);\n");
+    itDimsStr.append("\ttmp+=sizeof(int);\n");
+    while(arrayType){
+        i++;
+        if(arrayType->isArray()){
+        	argStr.append("[" + intToString(arrayType->getArrayBound())+ "]");
+		    dataFieldSizeStr.append("\tfor(int i" + intToString(i) + "= 0; i" + intToString(i) + "< " + intToString(arrayType->getArrayBound()) +  "; i" + intToString(i) + "++)\n");
+            buildArrayStr.append("\tfor(int i" + intToString(i) + "= 0; i" + intToString(i) + "< " + intToString(arrayType->getArrayBound()) +  "; i" + intToString(i) + "++)\n");
+		    dimsStr.append("[i" + intToString(i) + "]");
+		    dimsToBytes.append("\tbound = " + intToString(arrayType->getArrayBound()) + ";\n");
+            dimsToBytes.append("\tmemcpy(tmp, &bound, sizeof(int));\n");
+            dimsToBytes.append("\ttmp+=sizeof(int);\n");
+            itDimsStr.append("\ttmp+=sizeof(int);\n");
+			arrayType = arrayType->getArrayMemberType();
+		}
+		else{
+			
+		    dimsToBytes.insert(0,"\tint numDims = " + intToString(i) + ";\n" + "\tmemcpy(tmp, &numDims, sizeof(int));\n" + "\ttmp+=sizeof(int);\n");
+		    itDimsStr.insert(0, "\ttmp+=sizeof(int);\n");
+		    itDimsStr.append("\ttmp++;\n");
+            string typeName =arrayType->getName();
+            
+		    if (typeName == "int"){
+          		dataFieldSizeStr.append("\tconvertIntToByte(arr" + dimsStr + ", \"\", tmp), ");
+          		dataFieldSizeStr.append("\ttmp+=*tmp;\n");
+          		buildArrayStr.append("\tarr" +dimsStr + "= fromDataToInt(tmp),");
+                buildArrayStr.append("\ttmp+=*tmp;\n");
+          		argStr.insert(0, "int arr");
+                dimsToBytes.append("\t*tmp++ = 1;\n");
+          	}
+          	else if(typeName == "float"){
+              	dataFieldSizeStr.append("\tconvertFloatToByte(arr" + dimsStr + ", \"\", tmp), ");
+          		dataFieldSizeStr.append("\ttmp+=*tmp;\n");
+          		buildArrayStr.append("\tarr" +dimsStr + "= fromDataToFloat(tmp),");
+                buildArrayStr.append("\ttmp+=*tmp;\n");
+              	argStr.insert(0, "float arr");
+              	dimsToBytes.append("\t*tmp++ = 2;\n");
+            }	
+            else if(typeName == "string"){
+            	dataFieldSizeStr.append("\tconvertStringToByte(arr" + dimsStr + ", \"\", tmp), ");
+            	dataFieldSizeStr.append("\ttmp+=*tmp;\n");
+            	buildArrayStr.append("\tarr" +dimsStr + "= fromDataToString(tmp),");
+                buildArrayStr.append("\ttmp+=*tmp;\n");
+            	argStr.insert(0, "string arr");
+            	dimsToBytes.append("\t*tmp++ = 4;\n");
+            }
+			else{
+                dataFieldSizeStr.append("\tconvert"+ typeName +"ToByte(arr" + dimsStr + ",\"\", tmp), ");
+                dataFieldSizeStr.append("\ttmp+=*tmp;\n");
+                buildArrayStr.append("\tarr" +dimsStr + "= *fromDataTo" + typeName + "(tmp),");
+                buildArrayStr.append("\ttmp+=*tmp;\n");
+                argStr.insert(0, typeName + " arr");
+                dimsToBytes.append("\t*tmp++ = 5;\n");
+            }
+			arrayType = NULL;
+		}
+    }
+    
+    string appendDataType = "${APPEND_DATA_TYPE_AND_DIMENSIONS}";
+    found = str.find(appendDataType);
+    if(found != string::npos){
+        str.replace(found, appendDataType.length(),  dimsToBytes);
+    }
+    dataFieldSizeStr.append("\n\n");
+    string appendTag = "${APPEND_CONVERSIONS}";
+    found = str.find(appendTag);
+    if(found != string::npos){
+        str.replace(found, appendTag.length(), dataFieldSizeStr);
+    }
+    
+    buildArrayStr.append("\n\n");
+    string buildArrTag = "${BUILD_ARRAY}";
+    found = str.find(buildArrTag);
+    if(found != string::npos){
+        str.replace(found, buildArrTag.length(), buildArrayStr);
+    }
+    
+    string itDimsTag = "${ITERATE_DIMS_AND_BASE_DATA}";
+    found = str.find(itDimsTag);
+    if(found != string::npos){
+        str.replace(found, itDimsTag.length(), itDimsStr);
+    }
+    
+    
+    
+    string typeTag = "${ARRAY_TYPE}";
+    found = str.find(typeTag);
+    while(found != string::npos){
+        str.replace(found, typeTag.length(), argStr);
+        found = str.find(typeTag, found+1);
+    }    
+    functionPrototype.append("void *convert" +typeNameStr+ "ToByte("+argStr+", string fieldName, char *data);\n");
+    functionPrototype.append("void fromDataTo"+typeNameStr+"(char *data, "+argStr+");\n");
+    return str;    
 }
 
 int main(int argc, char *argv[]){
@@ -175,6 +401,22 @@ int main(int argc, char *argv[]){
   	t.seekg(0, ios::beg);
   	structConversionStr.assign((istreambuf_iterator<char>(t)),istreambuf_iterator<char>());
   	t.close();
+  	
+  	t.open("arraysizefunction");
+  	string arraySizeFunction;
+  	t.seekg(0, ios::end);   
+  	arraySizeFunction.reserve(t.tellg());
+  	t.seekg(0, ios::beg);
+  	arraySizeFunction.assign((istreambuf_iterator<char>(t)),istreambuf_iterator<char>());
+  	t.close();
+  
+  	t.open("arrayconversionfunction");
+  	string arrayConversionFunction;
+  	t.seekg(0, ios::end);   
+  	arrayConversionFunction.reserve(t.tellg());
+  	t.seekg(0, ios::beg);
+  	arrayConversionFunction.assign((istreambuf_iterator<char>(t)),istreambuf_iterator<char>());
+  	t.close();
 	
 	//printf("1\n");
 	
@@ -217,6 +459,13 @@ int main(int argc, char *argv[]){
 		    	string structConversionFunction = structConversionStr;
 		    	conversionCode.append(createStructConversionFunction(structConversionFunction, typep));
 		    	conversionCode.append("\n\n\n");
+		    }else if(typep->isArray()){
+				string arraySizeFunctionTmpStr = arraySizeFunction;
+		        string functionPrototype = "";
+		        conversionCode.append(createArraySizeFunction(arraySizeFunctionTmpStr, typep, functionPrototype));
+		        string arrayConversionFunctionTmpStr = arrayConversionFunction;
+		        conversionCode.append(createArrayConversionFunction(arrayConversionFunctionTmpStr, typep, functionPrototype));
+		    	conversionFunctionHeaders.append(functionPrototype);
 		    }
 		} 
       	//printf("3\n");
@@ -239,7 +488,7 @@ int main(int argc, char *argv[]){
       			Arg_or_Member_Declaration* argp = args[argnum];
       			typeNameStr = argp->getType()->getName();
       			argNameStr  = argp->getName();
-      			funcHeadStr.append(typeNameStr + " " + argNameStr + ",");
+      			
       			// Holds the value of argNum
 				char strBuffer[33];
 				snprintf(strBuffer, sizeof(strBuffer), "%d", (int)argnum);
@@ -247,18 +496,39 @@ int main(int argc, char *argv[]){
 	  			if(typeNameStr == "int"){
 	  				argumentConversions.append("\tchar *intData" + strNum + " = (char*)convertIntToByte(" + argNameStr + ",\"" + argNameStr + "\", NULL);\n");
 	  				argumentConversions.append("\tRPCPROXYSOCKET->write(intData" + strNum + ", *(int*)intData" + strNum + ");\n");
+	  				funcHeadStr.append(typeNameStr + " " + argNameStr + ",");
 	  			}else if(typeNameStr == "float"){
 	      			argumentConversions.append("\tchar *floatData" + strNum+ " = (char*)convertFloatToByte(" + argNameStr + ", \"" + argNameStr + "\", NULL);\n");
 	      			argumentConversions.append("\tRPCPROXYSOCKET->write(floatData" + strNum + ", *(int*)floatData" + strNum + ");\n");
+	      			funcHeadStr.append(typeNameStr + " " + argNameStr + ",");
 	  			}else if(typeNameStr == "string"){
 	      			argumentConversions.append("\tchar *stringData" + strNum + " = (char*)convertStringToByte(" + argNameStr + ", \"" + argNameStr + "\", NULL);\n");
 	      			argumentConversions.append("\tRPCPROXYSOCKET->write(stringData" + strNum + ", *(int*)stringData" + strNum + ");\n");
+	      			funcHeadStr.append(typeNameStr + " " + argNameStr + ",");
 	  			}else{
 	  				// handle struct and arrays here
 	  				TypeDeclaration *typep = argp->getType();
 	  				if(typep->isStruct()){
 	  					argumentConversions.append("\tchar *sData" + strNum + " = (char*)convert" + typep->getName() + "ToByte(" + argNameStr + ",\"" + argNameStr + "\", NULL);\n");
 	  					argumentConversions.append("\tRPCPROXYSOCKET->write(sData" + strNum + ", *(int*)sData" + strNum + ");\n");
+	  					funcHeadStr.append(typeNameStr + " " + argNameStr + ",");
+	  				}else if(typep->isArray()){
+	  					string argStr = "";
+	  					TypeDeclaration *arrayType = typep->getArrayMemberType();
+	  					argStr.append("[" + intToString(typep->getArrayBound())+ "]");
+	  					while(arrayType){
+	  						if(arrayType->isArray()){
+	  							argStr.append("[" + intToString(arrayType->getArrayBound())+ "]");
+	  							arrayType = arrayType->getArrayMemberType();
+	  						}else{
+	  							typeNameStr = arrayType->getName();
+	  							arrayType = NULL;
+	  						}
+	  					}
+	  					
+	  					argumentConversions.append("\t"+ typeNameStr +" arrayData" + strNum + " = (char*)convert" + arrayTypeNameHelper(typep) + "ToByte(" + argNameStr + ",\"" + argNameStr + "\", NULL);\n");
+	  					argumentConversions.append("\tRPCPROXYSOCKET->write(arrayData" + strNum + ", *(int*)arrayData" + strNum + ");\n");	  				
+	  					funcHeadStr.append(typeNameStr + " " + argNameStr + argStr + ",");
 	  				}
 	  			}
 	  			argumentConversions.append("\n");
