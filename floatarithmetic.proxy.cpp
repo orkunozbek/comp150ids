@@ -5,13 +5,18 @@
 #include "c150debug.h"
 #include "TypeConverters.h"
 
+
 #include "floatarithmetic.idl"
-//INSERT_IDL_HEADERS_HERE
+
 
 using namespace C150NETWORK;  // for all the comp150 utilities 
 
 void getFunctionNamefromStream();
 void readNByte(char* buf, int i);
+
+
+
+
 
 float add(float x,float y){
 	char readBuffer[5];
@@ -137,7 +142,7 @@ float subtract(float x,float y){
 
 }
 
-//INSERT_PROXIES_HERE
+
 
 
 // Networking codes

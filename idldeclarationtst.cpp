@@ -153,10 +153,10 @@ string createArraySizeFunction(string str, TypeDeclaration *typep){
     string typeNameStr = typep->getName();
     replace(typeNameStr.begin(),typeNameStr.end(), '[', '_');
 	replace(typeNameStr.begin(),typeNameStr.end(), ']', '_');
-    
+    cout << "TYPEEEE NAME STRR" << typeNameStr <<  endl;
     // Replace the type name
     string typeNameStrTag = "${ARRAY_TYPE_S}";
-    size_t found = str.find(typeNameStr);
+    size_t found = str.find(typeNameStrTag);
     if(found!=string::npos){
         str.replace(found, typeNameStrTag.length(), typeNameStr);
     }
@@ -165,31 +165,41 @@ string createArraySizeFunction(string str, TypeDeclaration *typep){
     string dimsDataStr = "\tlen+=0";
     string dataFieldSizeStr = "";
     string dimsStr = "";
+    string argStr = "";
     TypeDeclaration *arrayType = typep->getArrayMemberType();
     int i = 0;
-    dimsDataStr.append(" + " + intToString(typep->getArrayBound()) + "*sizeof(int)");
-    dataFieldSizeStr.append("for(int i" + i + "= 0; i" + i + "< " + intToString(typep->getArrayBound()) +  "; i" + i + "++)\n";);
-    dimsStr.append("[i" + i + "]");
+    dimsDataStr.append(" + sizeof(int)");
+    dataFieldSizeStr.append("\tfor(int i" + intToString(i) + "= 0; i" + intToString(i) + "< " + intToString(typep->getArrayBound()) +  "; i" + intToString(i) + "++)\n");
+    dimsStr.append("[i" + intToString(i) + "]");
+    argStr.append("[" + intToString(typep->getArrayBound())+ "]");
     while(arrayType){
         i++;
         if(arrayType->isArray()){
-            dimsDataStr.append(" + " + intToString(arrayType->getArrayBound()) + "*sizeof(int)");
-		    dataFieldSizeStr.append("for(int i" + i + "= 0; i" + i + "< " + intToString(arrayType->getArrayBound()) +  "; i" + i + "++)\n";)
-		    dimsStr.append("[i" + i + "]");
+        	argStr.append("[" + intToString(arrayType->getArrayBound())+ "]");
+            dimsDataStr.append(" + sizeof(int)");
+		    dataFieldSizeStr.append("\tfor(int i" + intToString(i) + "= 0; i" + intToString(i) + "< " + intToString(arrayType->getArrayBound()) +  "; i" + intToString(i) + "++)\n");
+		    dimsStr.append("[i" + intToString(i) + "]");
 			arrayType = arrayType->getArrayMemberType();
 		}
 		else{
             dimsDataStr.append(";\n");
             string typeName =arrayType->getName();
             
-		    if (type == "int")
+		    if (typeName == "int"){
           		dataFieldSizeStr.append("\tlen+=getIntFieldSize(\"\");\n");
-          	else if(type == "float")
+          		argStr.insert(0, "int arr");
+          	}
+          	else if(typeName == "float"){
               	dataFieldSizeStr.append("\tlen+=getFloatFieldSize(\"\");\n");
-            else if(type == "string")
+              	argStr.insert(0, "float arr");
+            }	
+            else if(typeName == "string"){
             	dataFieldSizeStr.append("\tlen+=getStringFieldSize(\"\", arr" + dimsStr + ");\n");
+            	argStr.insert(0, "string arr");
+            }
 			else{
                 dataFieldSizeStr.append("\tlen+=get"+ typeName +"FieldSize(arr" + dimsStr + ",\"\");\n");
+                argStr.insert(0, typeName + " arr");
             }
 			arrayType = NULL;
 		}
@@ -202,6 +212,15 @@ string createArraySizeFunction(string str, TypeDeclaration *typep){
     if(found != string::npos){
         str.replace(found, appendTag.length(), dimsDataStr);
     }
+    
+    
+    
+    string typeTag = "${ARRAY_TYPE}";
+    found = str.find(typeTag);
+    if(found != string::npos){
+        str.replace(found, typeTag.length(), argStr);
+    }    
+    
     return str;
 }
 

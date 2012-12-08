@@ -12,6 +12,9 @@ void getFunctionNamefromStream();
 void readNByte(char* buf, int i); 
 
 
+
+
+
 float __add(float x,float y){
 	char doneBuffer[5] = "DONE";
 	c150debug->printf(C150RPCDEBUG,"simplefunction.stub.cpp: invokingadd(x)");
